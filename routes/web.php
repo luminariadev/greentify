@@ -1,16 +1,19 @@
 <?php
 use App\Http\Controllers\AuthController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
-// Rute-rute untuk autentikasi
+// Auth routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Rute-rute publik
+// Public pages
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -18,10 +21,10 @@ Route::get('/', function () {
 Route::get('/contact', [ContactFormController::class, 'showForm'])->name('contact.form');
 Route::post('/contact', [ContactFormController::class, 'store'])->name('contact.store');
 
-Route::get('/blogspot', function () {
-    return view('blogspot');
-})->name('blogspot');
+// Blogspot - dynamic articles index
+Route::get('/blogspot', [ArticleController::class, 'index'])->name('blogspot');
 
+// Category pages - static for now (can be dynamic later)
 Route::get('/limbah', function () {
     return view('blog.limbah');
 })->name('limbah');
@@ -37,3 +40,28 @@ Route::get('/penghijauan', function () {
 Route::get('/hutan', function () {
     return view('blog.hutan');
 })->name('hutan');
+
+// Articles CRUD (auth required for create/edit/delete)
+Route::middleware('auth')->group(function () {
+    Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
+    Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
+    Route::get('/my-articles', [ArticleController::class, 'myArticles'])->name('articles.my');
+    Route::get('/articles/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
+    Route::put('/articles/{article}', [ArticleController::class, 'update'])->name('articles.update');
+    Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+});
+
+// Public article show (no auth) - uses slug binding
+Route::get('/articles/{article:slug}', [ArticleController::class, 'show'])->name('articles.show');
+
+// Comments
+Route::middleware('auth')->group(function () {
+    Route::post('/articles/{article}/comments', [CommentController::class, 'store'])->name('comments.store');
+    Route::post('/comments/{comment}/reply', [CommentController::class, 'reply'])->name('comments.reply');
+});
+
+// Profile
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.user');
+});
