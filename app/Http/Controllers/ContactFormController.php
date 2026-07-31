@@ -7,6 +7,11 @@ use App\Models\Pesan;
 
 class ContactFormController extends Controller
 {
+    public function showForm()
+    {
+        return view('contact');
+    }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([

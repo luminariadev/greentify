@@ -10,21 +10,17 @@ Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Rute-rute yang perlu autentikasi
-Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('welcome');
+// Rute-rute publik
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
 
+Route::get('/contact', [ContactFormController::class, 'showForm'])->name('contact.form');
+Route::post('/contact', [ContactFormController::class, 'store'])->name('contact.store');
 
-    Route::get('/contact', [ContactFormController::class, 'showForm'])->name('contact.form');
-    Route::post('/contact', [ContactFormController::class, 'store'])->name('contact.store');
-    
-
-    Route::get('/blogspot', function () {
-        return view('blogspot');
-    })->name('blogspot');
-});
+Route::get('/blogspot', function () {
+    return view('blogspot');
+})->name('blogspot');
 
 Route::get('/limbah', function () {
     return view('blog.limbah');
