@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact Us | Greentify</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config Verbatim -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#274e3d",
+                    "primary-container": "#1b4332",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#d9c4a5",
+                    "surface-tint": "#3f6653",
+                    "tertiary": "#302410",
+                    "surface-variant": "#e1e3e2",
+                    "surface": "#f9f9f8",
+                    "secondary-fixed": "#a0f4c8",
+                    "primary-fixed-dim": "#a5d0b9",
+                    "outline-variant": "#c1c8c2",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#edeeed",
+                    "on-surface-variant": "#414844",
+                    "on-secondary-container": "#19724f",
+                    "secondary-container": "#a0f4c8",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e7e8e7",
+                    "surface-container-highest": "#e1e3e2",
+                    "on-background": "#191c1c",
+                    "on-surface": "#191c1c",
+                    "surface-bright": "#f9f9f8",
+                    "primary": "#012d1d",
+                    "on-tertiary-fixed-variant": "#53452e",
+                    "tertiary-container": "#473a24",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#d9dad9",
+                    "tertiary-fixed": "#f6dfc0",
+                    "on-primary-fixed": "#002114",
+                    "inverse-surface": "#2e3131",
+                    "on-primary-container": "#86af99",
+                    "primary-fixed": "#c1ecd4",
+                    "on-tertiary-container": "#b7a487",
+                    "outline": "#717973",
+                    "on-secondary-fixed": "#002113",
+                    "background": "#f9f9f8",
+                    "secondary-fixed-dim": "#85d7ad",
+                    "on-error-container": "#93000a",
+                    "secondary": "#0e6c4a",
+                    "inverse-primary": "#a5d0b9",
+                    "inverse-on-surface": "#f0f1f0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max-width": "1200px",
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Playfair Display"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Playfair Display"],
+                    "body-lg": ["Inter"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-sage-wash {
+            background-color: #f3f9f6; /* Custom subtle wash within brand aesthetic */
+        }
+        .form-input-focus:focus {
+            outline: none;
+            border-color: #012d1d;
+            box-shadow: 0 0 0 2px rgba(1, 45, 29, 0.1);
+        }
+        .nature-shadow {
+            box-shadow: 0 10px 30px -5px rgba(27, 67, 50, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-secondary-fixed selection:text-primary overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 bg-surface/90 backdrop-blur-md">
+<nav class="flex justify-between items-center w-full px-gutter py-unit max-w-container-max-width mx-auto">
+<div class="font-display-lg text-display-lg text-primary">Greentify</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Limbah</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Konservasi</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Penghijauan</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Hutan</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Community</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-label-md text-label-md text-on-surface-variant px-4 py-2 hover:bg-surface-container rounded-lg transition-all">Login</button>
+<button class="font-label-md text-label-md bg-primary text-on-primary px-6 py-2 rounded-lg hover:shadow-lg active:scale-95 transition-all">Register</button>
+</div>
+</nav>
+</header>
+<main class="min-h-[calc(100vh-200px)] flex items-center py-margin-desktop bg-sage-wash">
+<div class="max-w-container-max-width mx-auto px-gutter w-full grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+<!-- Left Column: Identity & Contact Details -->
+<div class="md:col-span-5 space-y-12">
+<div class="space-y-4">
+<h1 class="font-headline-md text-headline-md text-primary">Let's connect for a greener future.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        Whether you're starting a local conservation project or looking for waste management solutions, our team is here to support your journey.
+                    </p>
+</div>
+<!-- Contact Info Cards -->
+<div class="space-y-8">
+<div class="flex items-start gap-4 group">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary">Our Sanctuary</h3>
+<p class="text-on-surface-variant mt-1">123 Eco Way, Highland Forest,<br/>Pebble City, GC 45210</p>
+</div>
+</div>
+<div class="flex items-start gap-4 group">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary">Email Inquiries</h3>
+<p class="text-on-surface-variant mt-1">hello@greentify.eco<br/>support@greentify.eco</p>
+</div>
+</div>
+<div class="flex items-start gap-4 group">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined">share</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary">Social Community</h3>
+<div class="flex gap-4 mt-2">
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Instagram</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">X (Twitter)</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Quote Section -->
+<div class="pt-8 border-t border-outline-variant/30">
+<blockquote class="italic text-primary-container font-headline-sm text-headline-sm relative">
+<span class="absolute -left-6 -top-2 opacity-10 text-6xl">"</span>
+                        Nature provides for those who protect it. Let us build bridges between conservation and modern life.
+                    </blockquote>
+<p class="mt-4 font-label-md text-label-md text-on-surface-variant">— Inspired by Rizkia Nuari Fujiana</p>
+</div>
+</div>
+<!-- Right Column: Modern Contact Form -->
+<div class="md:col-span-7">
+<div class="bg-surface-container-lowest p-8 md:p-12 rounded-xl nature-shadow border border-outline-variant/20">
+<form class="space-y-6" id="contactForm">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="name">Full Name</label>
+<input class="w-full px-4 py-3 rounded-lg bg-surface-container border-none focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-on-surface-variant/40 transition-all" id="name" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="email">Email Address</label>
+<input class="w-full px-4 py-3 rounded-lg bg-surface-container border-none focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-on-surface-variant/40 transition-all" id="email" placeholder="john@example.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="subject">Subject</label>
+<select class="w-full px-4 py-3 rounded-lg bg-surface-container border-none focus:ring-2 focus:ring-primary/20 text-on-surface transition-all appearance-none" id="subject">
+<option value="general">General Inquiry</option>
+<option value="limbah">Limbah (Waste Management)</option>
+<option value="konservasi">Konservasi (Conservation)</option>
+<option value="community">Community Support</option>
+<option value="partnership">Partnership</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="message">Message</label>
+<textarea class="w-full px-4 py-3 rounded-lg bg-surface-container border-none focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-on-surface-variant/40 transition-all resize-none" id="message" placeholder="How can we help you today?" rows="5"></textarea>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-all flex items-center justify-center gap-2 group" type="submit">
+                            Send Message
+                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">send</span>
+</button>
+</form>
+<!-- Success Message (Hidden) -->
+<div class="hidden text-center py-12 space-y-4" id="successMessage">
+<div class="w-16 h-16 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined text-3xl">check_circle</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Message Sent!</h2>
+<p class="text-on-surface-variant">Thank you for reaching out. Our eco-specialists will get back to you within 24 hours.</p>
+<button class="text-primary font-label-md hover:underline" onclick="resetForm()">Send another message</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Map Section -->
+<section class="w-full h-96 bg-surface-container relative overflow-hidden">
+<div class="absolute inset-0 grayscale contrast-125 opacity-40">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist topographic map illustration of a lush forest and urban intersection area in a light-mode editorial style. The colors are muted sage and clay, with subtle thin lines indicating trails and sustainable architecture. The lighting is bright and airy, reflecting a modern sustainable urban planning aesthetic." data-location="Jakarta" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9bk2JuCYQwZFjRYWnxCC58CW9pW_707EDPSFLFb5SxoebYEjpVewuN-e_-GJJfOWJh7f4gd3Zc7A948CNrda2sqoEc18dW9vFC4Q3Zh3YOL16-UhQ1tXuLT-Pg0xoYZO7F_I6YUgfI_m_ZdQfj5UwojFd3ssZAQt-4TX1RyviZLnfgsaFQqJqn6bBVcBN4RBFEKCWMN1kiTt9Wav0wH7e1t3IeMgm1Lt3j99EfYpK4y0kj_hefuVFJQ"/>
+</div>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="bg-primary text-on-primary px-4 py-2 rounded-full shadow-2xl flex items-center gap-2 animate-bounce">
+<span class="material-symbols-outlined text-sm">park</span>
+<span class="font-label-sm">Greentify HQ</span>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-16 px-gutter max-w-container-max-width mx-auto flex flex-col md:flex-row justify-between gap-8 bg-surface">
+<div class="space-y-4 max-w-sm">
+<div class="font-headline-sm text-headline-sm text-primary">Greentify</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Empowering individuals and communities to embrace sustainable living through transparency, education, and action.
+            </p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+<div class="flex flex-col gap-3">
+<span class="font-label-md text-primary">Platform</span>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Limbah</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Konservasi</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Hutan</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-md text-primary">Company</span>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">About Us</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-md text-primary">Resources</span>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Sitemap</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-md text-primary">Connect</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">language</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">rss_feed</span>
+</div>
+</div>
+</div>
+</footer>
+<div class="w-full border-t border-outline-variant/20 py-8 px-gutter max-w-container-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+<p class="font-label-sm text-on-surface-variant">© 2024 Greentify. Inspired by Rizkia Nuari Fujiana.</p>
+<div class="flex gap-6">
+<a class="font-label-sm text-on-surface-variant hover:text-primary" href="#">Twitter</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary" href="#">Instagram</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary" href="#">LinkedIn</a>
+</div>
+</div>
+<script>
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Basic animation sequence
+            contactForm.classList.add('opacity-0', 'pointer-events-none', 'transition-all', 'duration-500');
+            
+            setTimeout(() => {
+                contactForm.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+                successMessage.classList.add('animate-fade-in');
+            }, 500);
+        });
+
+        function resetForm() {
+            contactForm.reset();
+            successMessage.classList.add('hidden');
+            contactForm.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+        }
+
+        // Add small scroll reveal interaction
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.nature-shadow').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
+            observer.observe(el);
+        });
+    </script>
+</body></html>

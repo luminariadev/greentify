@@ -1,9 +1,9 @@
 <!-- resources/views/welcome.blade.php -->
 
-@extends('layouts.app')
+@extends('layouts.blog')
 
 @section('content')
     <div class="content">
-        @include('components.content')
+        <!-- Blog categories grid will be rendered here -->
     </div>
 @endsection

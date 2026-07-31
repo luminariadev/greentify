@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Greentify - Eco-Community Authentication</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#274e3d",
+                    "primary-container": "#1b4332",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#d9c4a5",
+                    "surface-tint": "#3f6653",
+                    "tertiary": "#302410",
+                    "surface-variant": "#e1e3e2",
+                    "surface": "#f9f9f8",
+                    "secondary-fixed": "#a0f4c8",
+                    "primary-fixed-dim": "#a5d0b9",
+                    "outline-variant": "#c1c8c2",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#edeeed",
+                    "on-surface-variant": "#414844",
+                    "on-secondary-container": "#19724f",
+                    "secondary-container": "#a0f4c8",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f3f4f3",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e7e8e7",
+                    "surface-container-highest": "#e1e3e2",
+                    "on-background": "#191c1c",
+                    "on-surface": "#191c1c",
+                    "surface-bright": "#f9f9f8",
+                    "primary": "#012d1d",
+                    "on-tertiary-fixed-variant": "#53452e",
+                    "tertiary-container": "#473a24",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#d9dad9",
+                    "tertiary-fixed": "#f6dfc0",
+                    "on-primary-fixed": "#002114",
+                    "inverse-surface": "#2e3131",
+                    "on-primary-container": "#86af99",
+                    "primary-fixed": "#c1ecd4",
+                    "on-tertiary-container": "#b7a487",
+                    "outline": "#717973",
+                    "on-secondary-fixed": "#002113",
+                    "background": "#f9f9f8",
+                    "secondary-fixed-dim": "#85d7ad",
+                    "on-error-container": "#93000a",
+                    "secondary": "#0e6c4a",
+                    "inverse-primary": "#a5d0b9",
+                    "inverse-on-surface": "#f0f1f0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max-width": "1200px",
+                    "gutter": "24px",
+                    "unit": "8px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Playfair Display"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Playfair Display"],
+                    "body-lg": ["Inter"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f9f9f8;
+            color: #191c1c;
+            overflow: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .nature-overlay {
+            background: linear-gradient(to bottom, rgba(1, 45, 29, 0.4), rgba(1, 45, 29, 0.1));
+        }
+        .input-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-stretch">
+<!-- Left Side: Editorial Nature Illustration -->
+<section class="hidden lg:flex lg:w-1/2 relative overflow-hidden group">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center scale-105 transition-transform duration-700 group-hover:scale-100" data-alt="A serene and majestic editorial photograph of a lush tropical forest with sunlight filtering through dense green leaves and ancient trees. The atmosphere is misty and calm, capturing the essence of biodiversity. The visual style is high-end digital publishing, featuring deep forest greens and soft earth tones that evoke environmental consciousness and slow-content tranquility. The lighting is ethereal, creating long rays of soft morning light." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCsWjV-Scrs4py2Wu6thqiTiWFGscKsas5kfhUgckc2k_aEYJnPBcUfBCaQ6OtONQkvWMFBZUXYPlgWOtz2hXV87xaYCF_-jg9VT8okWOH160U_V6tSrfcw96S7QqM4FbyXy__KtrQFsqleXhhRNXiqfjjEm8GCQrwlPWmzgFeNero8CkVA0H04LRO_pTn3oJ-tk30qhLJciPsdATOik6cRt-9RKXKnswj7dSfKh7gN64AMTwFUx-wADg')"></div>
+</div>
+<div class="absolute inset-0 nature-overlay z-10"></div>
+<div class="relative z-20 p-16 flex flex-col justify-between w-full h-full text-surface">
+<div>
+<h1 class="font-display-lg text-display-lg tracking-tight mb-4">Greentify</h1>
+<p class="font-body-lg text-body-lg max-w-md opacity-90 leading-relaxed">
+                    Bridging the gap between digital community and grassroots environmental activism.
+                </p>
+</div>
+<div class="bg-surface/10 backdrop-blur-md p-8 rounded-xl border border-surface/20 max-w-sm">
+<span class="material-symbols-outlined mb-4 text-secondary-fixed">nature_people</span>
+<p class="font-body-md text-body-md italic opacity-90 mb-4">
+                    "Alam bukan hanya tempat untuk dikunjungi, ia adalah rumah."
+                </p>
+<div class="flex items-center gap-3">
+<div class="w-8 h-[1px] bg-secondary-fixed"></div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Eco-Community Jakarta</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Side: Clean Login Form -->
+<main class="w-full lg:w-1/2 bg-surface flex items-center justify-center p-gutter relative">
+<!-- Background Atmospheric Effect -->
+<div class="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[200px]">potted_plant</span>
+</div>
+<div class="w-full max-w-md space-y-12 relative z-10">
+<!-- Mobile Brand Logo -->
+<div class="lg:hidden flex flex-col items-center mb-8">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary">Greentify</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Eco-Community Ecosystem</p>
+</div>
+<header class="space-y-2">
+<h2 class="font-headline-md text-headline-md text-primary">Selamat Datang Kembali</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Akses dashboard konservasi dan limbah Anda.</p>
+</header>
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<!-- Email Field -->
+<div class="space-y-2 group">
+<label class="font-label-md text-label-md text-primary block transition-colors group-focus-within:text-secondary" for="email">Email Alamat</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full pl-12 pr-4 py-3 bg-tertiary-fixed-dim/10 border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent focus:bg-surface-container-lowest input-transition font-body-md text-body-md text-on-surface placeholder-on-surface-variant/50" id="email" name="email" placeholder="nama@email.com" required="" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2 group">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-primary block transition-colors group-focus-within:text-secondary" for="password">Kata Sandi</label>
+<a class="font-label-sm text-label-sm text-secondary hover:underline transition-all" href="#">Lupa sandi?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full pl-12 pr-4 py-3 bg-tertiary-fixed-dim/10 border-transparent rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent focus:bg-surface-container-lowest input-transition font-body-md text-body-md text-on-surface placeholder-on-surface-variant/50" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center gap-3">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary cursor-pointer" id="remember" type="checkbox"/>
+<label class="font-label-md text-label-md text-on-surface-variant cursor-pointer select-none" for="remember">Ingat saya</label>
+</div>
+<!-- Action Button -->
+<button class="w-full bg-primary text-on-primary py-4 rounded-lg font-label-md text-label-md shadow-sm hover:shadow-lg hover:bg-primary-container active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 group" type="submit">
+                    Login
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</form>
+<div class="relative flex items-center py-4">
+<div class="flex-grow border-t border-outline-variant/30"></div>
+<span class="flex-shrink mx-4 font-label-sm text-label-sm text-outline uppercase tracking-widest">Atau masuk dengan</span>
+<div class="flex-grow border-t border-outline-variant/30"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 py-3 px-4 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors font-label-md text-label-md">
+<svg class="w-5 h-5" viewbox="0 0 24 24">
+<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"></path>
+<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+</svg>
+                    Google
+                </button>
+<button class="flex items-center justify-center gap-3 py-3 px-4 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">file_download</span>
+                    Apple
+                </button>
+</div>
+<footer class="text-center pt-8">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Don't have an account? 
+                    <a class="text-secondary font-semibold hover:underline transition-all" href="#">Register</a>
+</p>
+</footer>
+</div>
+<!-- Decorative Subtle Pattern Bottom Right -->
+<div class="absolute bottom-12 right-12 flex gap-4 opacity-10">
+<span class="material-symbols-outlined">eco</span>
+<span class="material-symbols-outlined">recycling</span>
+<span class="material-symbols-outlined">forest</span>
+</div>
+</main>
+<script>
+        // Micro-interaction for input fields focus
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.parentElement.classList.add('scale-[1.01]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.parentElement.classList.remove('scale-[1.01]');
+            });
+        });
+
+        // Simple button click ripple effect (Visual only)
+        document.querySelector('button[type="submit"]').addEventListener('mousedown', function(e) {
+            this.classList.add('scale-95');
+        });
+        document.querySelector('button[type="submit"]').addEventListener('mouseup', function(e) {
+            this.classList.remove('scale-95');
+        });
+    </script>
+</body></html>

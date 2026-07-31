@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Limbah (Waste Management) | Greentify</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#274e3d",
+                        "primary-container": "#1b4332",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#d9c4a5",
+                        "surface-tint": "#3f6653",
+                        "tertiary": "#302410",
+                        "surface-variant": "#e1e3e2",
+                        "surface": "#f9f9f8",
+                        "secondary-fixed": "#a0f4c8",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "outline-variant": "#c1c8c2",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#edeeed",
+                        "on-surface-variant": "#414844",
+                        "on-secondary-container": "#19724f",
+                        "secondary-container": "#a0f4c8",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-tertiary-fixed": "#251a07",
+                        "surface-container-low": "#f3f4f3",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e7e8e7",
+                        "surface-container-highest": "#e1e3e2",
+                        "on-background": "#191c1c",
+                        "on-surface": "#191c1c",
+                        "surface-bright": "#f9f9f8",
+                        "primary": "#012d1d",
+                        "on-tertiary-fixed-variant": "#53452e",
+                        "tertiary-container": "#473a24",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d9dad9",
+                        "tertiary-fixed": "#f6dfc0",
+                        "on-primary-fixed": "#002114",
+                        "inverse-surface": "#2e3131",
+                        "on-primary-container": "#86af99",
+                        "primary-fixed": "#c1ecd4",
+                        "on-tertiary-container": "#b7a487",
+                        "outline": "#717973",
+                        "on-secondary-fixed": "#002113",
+                        "background": "#f9f9f8",
+                        "secondary-fixed-dim": "#85d7ad",
+                        "on-error-container": "#93000a",
+                        "secondary": "#0e6c4a",
+                        "inverse-primary": "#a5d0b9",
+                        "inverse-on-surface": "#f0f1f0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max-width": "1200px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Playfair Display"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .nature-shadow {
+            box-shadow: 0 4px 12px rgba(27, 67, 50, 0.05);
+        }
+        .nature-shadow-hover:hover {
+            box-shadow: 0 12px 30px rgba(27, 67, 50, 0.08);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface border-none">
+<nav class="flex justify-between items-center w-full px-gutter py-unit max-w-container-max-width mx-auto">
+<div class="flex items-center gap-4">
+<span class="font-display-lg text-display-lg text-primary">Greentify</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200" href="#">Limbah</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Konservasi</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Penghijauan</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Hutan</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Community</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-label-md text-label-md text-on-surface-variant px-4 py-2 hover:opacity-100 duration-300">Login</button>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2 rounded-lg scale-95 hover:scale-100 duration-200">Register</button>
+</div>
+</nav>
+</header>
+<div class="flex max-w-container-max-width mx-auto pt-24 min-h-screen">
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="hidden lg:block w-64 h-[calc(100vh-6rem)] sticky top-24 p-4 border-r border-outline-variant/20">
+<div class="flex flex-col h-full bg-surface-container-low rounded-xl p-4">
+<div class="mb-8">
+<h3 class="font-headline-sm text-headline-sm text-primary">Greentify</h3>
+<p class="text-on-surface-variant font-label-sm text-label-sm">Eco-Community</p>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-2 translate-x-1 duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">recycling</span>
+                        Limbah
+                    </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">nature</span>
+                        Konservasi
+                    </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">park</span>
+                        Penghijauan
+                    </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">forest</span>
+                        Hutan
+                    </a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-surface-container-high transition-all font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">group</span>
+                        Community
+                    </a>
+</nav>
+<button class="mt-auto bg-primary text-on-primary py-3 px-4 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">
+                    Join the Community
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-4 md:px-gutter lg:px-margin-desktop pb-24">
+<!-- Category Header -->
+<section class="pt-8 pb-12">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm">Eksplorasi</span>
+<div class="h-px flex-grow bg-outline-variant/30"></div>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary">Limbah (Waste Management)</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+                        Strategies for reducing plastic waste and sustainable living. Pelajari cara mengolah limbah rumah tangga menjadi kompos dan dukung gerakan nol sampah global.
+                    </p>
+</div>
+</section>
+<!-- Featured Article (Bento Grid Style) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-16">
+<div class="md:col-span-8 group cursor-pointer">
+<div class="relative rounded-xl overflow-hidden aspect-[16/9] nature-shadow nature-shadow-hover transition-all duration-500">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A serene landscape showing the impact of effective waste management with a clean, lush forest edge meeting a small, crystal-clear stream. In the foreground, a modern, minimalist eco-friendly waste disposal station is subtly integrated into the organic greenery. The lighting is soft morning sunlight, creating a tranquil and hopeful atmosphere with a professional editorial photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEIt2_2AXB4Lys4jVdwpheA9IsTWnAjbvF5d2VojBBGqAslWZotGMcfHbG-lpGxupDsjkZznP4iHYV1HoEUT1sMIabBQg9vU_B-JOXtFzr6aSycBPXmiF9PF0s4UvsduKbwZl_Bk32ZkVH-puxkv3LpuPA1JBAi64kO8PimCPomO6pXfngCkchVPhNgUVqog32al9bDHiCVtFNlZN1zBxT0MNjVm9omrpOtlLNQmp0k0qVHNah43PvXg"/>
+<div class="absolute bottom-0 left-0 p-8 z-20">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full font-label-sm text-label-sm mb-4 inline-block">Sorotan Utama</span>
+<h2 class="font-headline-md text-headline-md text-on-primary mb-2">Panduan 2024: Zero-Waste di Apartemen Sempit</h2>
+<p class="text-on-primary/80 font-body-md text-body-md line-clamp-2">Bagaimana mengubah ruang kecil menjadi pusat pengolahan limbah mandiri yang estetik dan higienis.</p>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="bg-surface-container-lowest p-6 rounded-xl nature-shadow nature-shadow-hover flex flex-col justify-between border border-outline-variant/20 h-full">
+<div>
+<span class="text-secondary font-label-md text-label-md">Statistik Hari Ini</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-2">1,2jt Ton</h3>
+<p class="text-on-surface-variant font-label-sm text-label-sm">Limbah plastik berhasil dikurangi melalui program komunitas bulan ini.</p>
+</div>
+<div class="mt-4">
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 75%"></div>
+</div>
+<p class="text-right font-label-sm text-label-sm text-secondary mt-2">75% dari Target Tahunan</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Articles Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter gap-y-12">
+<!-- Article 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] rounded-xl overflow-hidden mb-4 relative nature-shadow nature-shadow-hover transition-all">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A close-up, high-end editorial shot of organic kitchen scraps like orange peels and avocado skins being placed into a designer-style ceramic compost bin. The scene is set in a bright, airy kitchen with natural oak accents and pebble-colored surfaces. The lighting is diffused and natural, highlighting textures of the organic material and the sleek finish of the bin." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHwfXruhtiEHvB-Ug-QZDcCi2yajOG0s6i61mJNEpxTTORxBJlE_H3paog6TeAXAhYo8phqKgnwJiMx8vjYGfdfGDUi9lzutk4pdel4pyihvY1kprjrnwr_DfPP5PTe7UapMP7cRf76_IEDtgh9vnSrwbX0uaYGQSqnECKeckLIwJNjjE3GRmfQ6Cnz1CA42uwq6uPkb_y5ZYZ5bA51J7HNB1XB6s3orDV1GSKlinQ7-SeSUt8uj1hbg"/>
+<div class="absolute top-4 left-4">
+<span class="bg-surface-container-lowest/90 backdrop-blur-sm text-primary px-3 py-1 rounded-full font-label-sm text-label-sm">Kompos</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors">Seni Mengompos: Dari Dapur ke Kebun</h3>
+<p class="text-on-surface-variant font-body-md text-body-md mt-2 line-clamp-3 leading-relaxed">
+                        Langkah-langkah praktis mengolah sisa makanan menjadi nutrisi bagi tanah tanpa bau dan hama.
+                    </p>
+<div class="flex items-center gap-3 mt-4 text-on-surface-variant font-label-sm text-label-sm">
+<span>Oleh Rizkia Nuari</span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<span>8 Menit Baca</span>
+</div>
+</div>
+<!-- Article 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/5] rounded-xl overflow-hidden mb-4 relative nature-shadow nature-shadow-hover transition-all">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An artistic composition of recycled glassware and upcycled plastic items, arranged in a minimalist, aesthetically pleasing way on a clay-colored surface. The lighting is soft and directional, casting subtle 'nature shadows'. The overall color palette features forest greens, soft sands, and muted clays, giving the scene a sophisticated and sustainable feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOP5tkKmPXrBOUf9gDKYLdV1PODMXD3vrUIgzMU84CRPA9YBYjcnBD64F_L1qk2fd7VXA3ggYqBY92Lra0Knzq6Zzh0VPVmyra2zte6MDhMABwn0JTpzW4PcHL1Wlji9RONxMuwIxL9wxh66lZS7BhIRaASZnfori5Jf_w-dTeIqdd8Uku54-IXyPzw0I6CqhXZHbnzC6y9R1FfoQqH7gHMn_zkLfQTWoqrQxGSKRvUDxDGFEoukHmzA"/>
+<div class="absolute top-4 left-4">
+<span class="bg-surface-container-lowest/90 backdrop-blur-sm text-primary px-3 py-1 rounded-full font-label-sm text-label-sm">Upcycling</span>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors">Upcycling: Mengubah Sampah Menjadi Hiasan</h3>
+<p class="text-on-surface-variant font-body-md text-body-md mt-2 line-clamp-3 leading-relaxed">
+                        Ide kreatif mendaur ulang kemasan plastik sekali pakai menjadi barang fungsional yang memiliki nilai estetika tinggi di rumah modern.
+                    </p>
+<div class="flex items-center gap-3 mt-4 text-on-surface-variant font-label-sm text-label-sm">
+<span>Oleh Tim Greentify</span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<span>12 Menit Baca</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Right Sidebar (Trending & Contributors) -->
+<aside class="hidden xl:block w-80 sticky top-24 h-fit px-gutter pb-12">
+<div class="flex flex-col gap-12">
+<!-- Trending Topics -->
+<section>
+<h4 class="font-label-md text-label-md text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                        Trending di Limbah
+                    </h4>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high text-on-surface-variant px-4 py-1.5 rounded-full font-label-sm text-label-sm hover:bg-secondary-container hover:text-on-secondary-container cursor-pointer transition-colors">#NoPlastic</span>
+<span class="bg-surface-container-high text-on-surface-variant px-4 py-1.5 rounded-full font-label-sm text-label-sm hover:bg-secondary-container hover:text-on-secondary-container cursor-pointer transition-colors">#CompostLife</span>
+<span class="bg-surface-container-high text-on-surface-variant px-4 py-1.5 rounded-full font-label-sm text-label-sm hover:bg-secondary-container hover:text-on-secondary-container cursor-pointer transition-colors">#EcoFashion</span>
+<span class="bg-surface-container-high text-on-surface-variant px-4 py-1.5 rounded-full font-label-sm text-label-sm hover:bg-secondary-container hover:text-on-secondary-container cursor-pointer transition-colors">#ZeroWasteHome</span>
+<span class="bg-surface-container-high text-on-surface-variant px-4 py-1.5 rounded-full font-label-sm text-label-sm hover:bg-secondary-container hover:text-on-secondary-container cursor-pointer transition-colors">#BokashiBin</span>
+</div>
+</section>
+<!-- Top Contributors -->
+<section>
+<h4 class="font-label-md text-label-md text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">workspace_premium</span>
+                        Top Kontributor
+                    </h4>
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-secondary/20 group-hover:border-secondary transition-colors">
+<img class="w-full h-full object-cover" data-alt="Professional studio portrait of a woman in her 30s with a warm, confident smile, representing a leader in environmental science. She is wearing a soft organic cotton shirt in sage green. The background is a clean, minimalist studio set with soft, warm lighting that emphasizes her approachable yet expert persona." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGq2PhP_UGXrf8T_MYQga057exBqEJ63RYFEVZDL37ZI5rwKrd_o4EPZXPw1hoWqVX7K5Pl3FvYJKlWzqGbleup5e3qQ6-QzxY82kQhErQdUM9k1eJcl5POd_qp3sG8VeAi5zL9vJu657P-hpIliB2mgZqvgHMxZwUo3QwphvSwi-EbZOaR-lJ5Og3-61m4RoCSEnmzyrwhGebkwS22rXmUvHXZeUbgLysEjq2ggTMg3TaYmzOmDccOw"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Dr. Sarah K.</p>
+<p class="text-on-surface-variant font-label-sm text-label-sm">42 Artikel Terbit</p>
+</div>
+</div>
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-secondary/20 group-hover:border-secondary transition-colors">
+<img class="w-full h-full object-cover" data-alt="Headshot of an enthusiastic young male environmentalist with glasses, looking directly into the camera. He is standing in a lush greenhouse with soft sun rays filtering through the leaves. The image has a natural, earthy feel with rich greens and warm shadows, conveying a sense of dedication to nature." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjAc_2aTBMPVdIzjDmGyl83cUDgVyJmdMdLoUJTZ8GjoAHMNU3TbZXRtBLMKspGteZsivKdfHDXvrfVWMiWMUoWY4-CLJ6vYSNUsXJ4dUeSXTQbGxH5xtjbiYyb5H6DCxZS28dDW0j1cxGhgGYr-vof4UdziDTtBDF-zWtQxStf8o737qsdvTGYfpOxoRfhv-bONh3N1qPO-vqK2-kUdjVkgexYad9RlvY2x_hlKc5q4TL8abchkI0rQ"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Andi Pratama</p>
+<p class="text-on-surface-variant font-label-sm text-label-sm">38 Kontribusi Komunitas</p>
+</div>
+</div>
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-secondary/20 group-hover:border-secondary transition-colors">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of an elderly man with a kind face and silver hair, who looks like a wise mentor. He is wearing a classic neutral linen shirt. The lighting is soft and golden, like a late afternoon sun, creating a peaceful and authoritative editorial look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv27R367WMUWIMzTXr4dVrFxPfL4zuOlrAEbwtFvQcRHva4kiD6EqtJPUgTmrV23z8UEYDMeSat0JF4iRxBrC8YXm0Dwdmhwz8FvViieBMxwGAmjG-Z2cdTH6P8eW6TdQssLio3FXAjh_DWRN81BiSEI-Pk4qCs1lAHp2nGuSONjbdIBKfnlHQVT-mjJguh0D4rA7jymnNMasjnZ4t0AfiFiiU-5qZ2rT3T3XfLHJ3dLJzglefUCFrHw"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Prof. Hendro</p>
+<p class="text-on-surface-variant font-label-sm text-label-sm">Dosen Lingkungan Hidup</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter Card -->
+<div class="bg-primary p-6 rounded-xl text-on-primary">
+<h5 class="font-headline-sm text-headline-sm mb-2">Terus Terupdate</h5>
+<p class="font-label-sm text-label-sm text-on-primary/70 mb-4">Dapatkan tips mingguan pengelolaan limbah langsung di emailmu.</p>
+<div class="flex flex-col gap-2">
+<input class="bg-on-primary/10 border-none rounded-lg text-on-primary placeholder:text-on-primary/40 focus:ring-secondary text-sm" placeholder="Alamat email..." type="email"/>
+<button class="bg-secondary text-on-secondary py-2 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">Langganan</button>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary mt-12">
+<div class="w-full py-16 px-gutter max-w-container-max-width mx-auto flex flex-col md:flex-row justify-between gap-8">
+<div class="flex flex-col gap-4">
+<span class="font-headline-sm text-headline-sm text-on-primary">Greentify</span>
+<p class="text-on-primary/80 font-body-md text-body-md max-w-xs">Komunitas progresif untuk gaya hidup berkelanjutan dan masa depan hijau.</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="flex flex-col gap-3">
+<h6 class="font-label-md text-label-md font-bold mb-2">Navigasi</h6>
+<a class="text-on-primary/80 font-label-sm text-label-sm hover:text-secondary-fixed transition-colors" href="#">Sitemap</a>
+<a class="text-on-primary/80 font-label-sm text-label-sm hover:text-secondary-fixed transition-colors" href="#">Hutan</a>
+<a class="text-on-primary/80 font-label-sm text-label-sm hover:text-secondary-fixed transition-colors" href="#">Limbah</a>
+</div>
+<div class="flex flex-col gap-3">
+<h6 class="font-label-md text-label-md font-bold mb-2">Legal</h6>
+<a class="text-on-primary/80 font-label-sm text-label-sm hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-primary/80 font-label-sm text-label-sm hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-3">
+<h6 class="font-label-md text-label-md font-bold mb-2">Bantuan</h6>
+<a class="text-on-primary/80 font-label-sm text-label-sm hover:text-secondary-fixed transition-colors" href="#">Contact Us</a>
+<a class="text-on-primary/80 font-label-sm text-label-sm hover:text-secondary-fixed transition-colors" href="#">FAQ</a>
+</div>
+</div>
+</div>
+<div class="max-w-container-max-width mx-auto px-gutter py-8 border-t border-on-primary/10 text-center">
+<p class="text-on-primary/60 font-label-sm text-label-sm">© 2024 Greentify. Inspired by Rizkia Nuari Fujiana.</p>
+</div>
+</footer>
+<!-- Mobile Bottom Nav -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container border-none z-50 px-gutter py-3 flex justify-around items-center rounded-t-2xl nature-shadow">
+<a class="flex flex-col items-center gap-1 text-secondary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">recycling</span>
+<span class="text-[10px] font-medium">Limbah</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">nature</span>
+<span class="text-[10px] font-medium">Konservasi</span>
+</a>
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center -translate-y-6 nature-shadow text-on-primary">
+<span class="material-symbols-outlined">add</span>
+</div>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">forest</span>
+<span class="text-[10px] font-medium">Hutan</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-medium">Community</span>
+</a>
+</div>
+<script>
+        // Micro-interactions for scrolling effects
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('nature-shadow', 'bg-surface/90', 'backdrop-blur-md');
+            } else {
+                header.classList.remove('nature-shadow', 'bg-surface/90', 'backdrop-blur-md');
+            }
+        });
+
+        // Simple smooth entrance for cards
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.group').forEach(card => {
+            card.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
+            observer.observe(card);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Greentify - Hutan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .nature-shadow {
+            box-shadow: 0 10px 30px -5px rgba(27, 67, 50, 0.05), 0 4px 6px -2px rgba(27, 67, 50, 0.03);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f9f9f8;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1b4332;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#274e3d",
+                        "primary-container": "#1b4332",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#d9c4a5",
+                        "surface-tint": "#3f6653",
+                        "tertiary": "#302410",
+                        "surface-variant": "#e1e3e2",
+                        "surface": "#f9f9f8",
+                        "secondary-fixed": "#a0f4c8",
+                        "primary-fixed-dim": "#a5d0b9",
+                        "outline-variant": "#c1c8c2",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#edeeed",
+                        "on-surface-variant": "#414844",
+                        "on-secondary-container": "#19724f",
+                        "secondary-container": "#a0f4c8",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-tertiary-fixed": "#251a07",
+                        "surface-container-low": "#f3f4f3",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e7e8e7",
+                        "surface-container-highest": "#e1e3e2",
+                        "on-background": "#191c1c",
+                        "on-surface": "#191c1c",
+                        "surface-bright": "#f9f9f8",
+                        "primary": "#012d1d",
+                        "on-tertiary-fixed-variant": "#53452e",
+                        "tertiary-container": "#473a24",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d9dad9",
+                        "tertiary-fixed": "#f6dfc0",
+                        "on-primary-fixed": "#002114",
+                        "inverse-surface": "#2e3131",
+                        "on-primary-container": "#86af99",
+                        "primary-fixed": "#c1ecd4",
+                        "on-tertiary-container": "#b7a487",
+                        "outline": "#717973",
+                        "on-secondary-fixed": "#002113",
+                        "background": "#f9f9f8",
+                        "secondary-fixed-dim": "#85d7ad",
+                        "on-error-container": "#93000a",
+                        "secondary": "#0e6c4a",
+                        "inverse-primary": "#a5d0b9",
+                        "inverse-on-surface": "#f0f1f0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max-width": "1200px",
+                        "gutter": "24px",
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Playfair Display"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- WebGL Background Context (Subtle Atmosphere) -->
+<div class="fixed inset-0 pointer-events-none z-0 opacity-20">
+
+</div>
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-md">
+<nav class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max-width mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-display-lg text-[24px] lg:text-[32px] font-extrabold text-primary tracking-tight">Greentify</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Limbah</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Konservasi</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Penghijauan</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Hutan</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Community</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden lg:block font-label-md text-label-md text-on-surface-variant px-4 py-2 hover:bg-surface-container rounded-lg transition-all">Login</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md hover:scale-95 duration-200 shadow-lg">Register</button>
+<button class="md:hidden p-2 text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+</header>
+<div class="flex max-w-screen-2xl mx-auto pt-20">
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="hidden lg:flex flex-col h-[calc(100vh-80px)] w-64 fixed left-0 top-20 p-4 border-r border-outline-variant/20 bg-surface-container/30">
+<div class="space-y-2 mt-4">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="recycling">recycling</span>
+<span class="font-label-md text-label-md">Limbah</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="nature">nature</span>
+<span class="font-label-md text-label-md">Konservasi</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="park">park</span>
+<span class="font-label-md text-label-md">Penghijauan</span>
+</a>
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container px-4 py-3 rounded-lg transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="forest" style="font-variation-settings: 'FILL' 1;">forest</span>
+<span class="font-label-md text-label-md">Hutan</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Community</span>
+</a>
+</div>
+<div class="mt-auto p-4 rounded-xl bg-primary-container text-on-primary-container">
+<p class="font-label-sm text-[11px] uppercase tracking-wider opacity-80 mb-2">Greentify Premium</p>
+<p class="font-headline-sm text-sm mb-4 leading-snug">Become an Eco-Guardian today.</p>
+<button class="w-full py-2 bg-secondary-fixed text-on-secondary-fixed rounded-lg font-label-md text-xs">Join the Community</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 w-full lg:ml-64 px-margin-mobile md:px-gutter lg:px-margin-desktop py-12 relative z-10">
+<!-- Category Header -->
+<section class="mb-16">
+<div class="max-w-3xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-secondary/10 text-secondary rounded-full mb-6">
+<span class="material-symbols-outlined text-[18px]">forest</span>
+<span class="font-label-sm uppercase tracking-widest">Featured Category</span>
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6">Hutan (Forestry)</h1>
+<p class="font-body-lg text-on-surface-variant leading-relaxed">Protecting our rainforests and biodiversity is more than a duty—it's a necessity for planetary survival. Explore our deep dives into sustainable logging, reforestation efforts, and the indigenous wisdom guarding the world's lungs.</p>
+</div>
+</section>
+<!-- Featured Article (Editorial Hero) -->
+<section class="mb-16">
+<div class="grid lg:grid-cols-2 bg-white rounded-xl overflow-hidden nature-shadow border border-outline-variant/10">
+<div class="relative min-h-[320px]">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A lush, dense tropical rainforest scene captured during the golden hour. Sunbeams pierce through high canopy layers of ancient mahogany and teak trees, illuminating floating mist and vibrant green ferns below. The image is captured in a cinematic, editorial photography style with rich forest green and golden amber tones, emphasizing the majesty and depth of untouched nature." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMHXBqXfTajiZMZN8SV-HdV62FW_qVeOxmtAQiyssl_Md_KJJPwgZiydPqDSmsmw5avC0zF8SkjXW-aMifEa2D1t-3eNnWlTlUMQk6MF8DP-1vSRrR5q_c21utM1QaeU3w58hjnDNVJoeJIcqx9gfRKCTO_tKzafc8Qoo6l1tav5N-1ERp8r-q3pt6NshF63V9iut5sd-IGP9vv1OrCZZwJgk5aLh_USwfK_2700nsOyINDhI-Gjn8AA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+</div>
+<div class="p-8 md:p-12 flex flex-col justify-center">
+<span class="text-secondary font-label-md mb-4">Deep Dive • 12 min read</span>
+<h2 class="font-headline-md text-primary mb-4">The Silent Sentinels: How Ancient Peatlands Store More Carbon Than We Thought</h2>
+<p class="text-on-surface-variant mb-8 line-clamp-3">Recent satellite imaging reveals that Indonesia's hidden peatlands hold nearly twice the carbon capacity previously estimated, highlighting the urgent need for strict protection.</p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover border-2 border-primary-fixed" data-alt="Professional studio portrait of an environmental scientist, a woman in her late 30s with a kind and intelligent expression. She is wearing a soft beige linen shirt, suggesting a sustainable lifestyle. The lighting is high-key and minimalist, with a clean, bright studio background that aligns with a premium modern editorial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAo3vMNSLoMKtbAdcO0EivP0MiZZYPdwQKsy_GYffMcS4C9nyiJDtvsvv6KguosP4dNnPpgoWVSIhCsYzZmVldBw3kELsBE8BtVgoW7ttVKFVzSQw4Ulrp7hk_eCmndjH-N0jPhsPCDKzdCdz0si6MuxK6QuxQ7tEUYgt5IglgE-LROez3WIJOMQbnSCfCN5_thD9z4fyFeW8Mz7hPQspdYUSrtPlAbwTsycjrCykjzGXukAQAvFUZVnQ"/>
+<div>
+<p class="font-label-md text-primary">Dr. Elara Vance</p>
+<p class="font-label-sm text-on-surface-variant">Lead Conservationist</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Articles Grid (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+<!-- Card 1 -->
+<div class="group bg-white rounded-xl nature-shadow overflow-hidden border border-outline-variant/10 flex flex-col hover:scale-[1.02] transition-transform duration-300">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A macro photograph of a young oak sapling emerging from a bed of moss and fallen brown leaves. Soft, diffused morning light highlights the delicate green veins of the new leaves. The aesthetic is clean and organic, utilizing a palette of moss greens, earthy browns, and soft pebbles, perfectly matching a high-end minimalist nature journal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxg_V3xIFXSMHsbsB5BuIPFC8en1f53o56YWuj4ZnGuhh_ReMFxso0UfWzy9pu2qTECjm6lqTujWvRdy6MT4U7dWHyJuRh_FkHloQCQOWIgfRdzFw1BSqPnTKzY7FZtm_3bEyVMl--e3Gbv6t4csuHxqaKq9UFgjNa1LbsBwkojTSNz_1obVIyksE3Ss279h3CXO_n4HIaRZ5ypB1a8PrSmViqAEozOnLvEDUuVQzPo1zGdLHyPmDp9A"/>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex gap-2 mb-3">
+<span class="bg-surface-container text-primary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Research</span>
+</div>
+<h3 class="font-headline-sm text-lg text-primary mb-3">Reforestation vs. Rewilding: Which is Better?</h3>
+<p class="text-on-surface-variant text-sm line-clamp-3 mb-6">Unpacking the science behind active tree planting and natural regeneration in damaged ecosystems.</p>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-[12px] text-on-surface-variant">May 14, 2024</span>
+<a class="text-secondary font-label-md flex items-center gap-1 group-hover:gap-2 transition-all" href="#">Read <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+</div>
+</div>
+<!-- Card 2 (Text Heavy / Opinion) -->
+<div class="bg-primary text-on-primary rounded-xl p-8 flex flex-col justify-between border border-primary-container">
+<div>
+<span class="material-symbols-outlined text-secondary-fixed mb-6 text-3xl">format_quote</span>
+<h3 class="font-headline-sm text-xl mb-6">"If we lose the Amazon, we lose the ability to regulate our planet's temperature. It's that simple."</h3>
+<p class="opacity-80 text-sm italic">— Chief Almir Narayamoga Surui</p>
+</div>
+<div class="pt-8 border-t border-white/10 mt-8">
+<p class="font-label-md">Indigenous Guardianship</p>
+<p class="text-xs opacity-60">Voices from the Frontlines</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group bg-white rounded-xl nature-shadow overflow-hidden border border-outline-variant/10 flex flex-col hover:scale-[1.02] transition-transform duration-300">
+<div class="h-48 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Aerial drone photography of a sustainable pine forest plantation. The trees are arranged in a rhythmic, artistic pattern with deep shadows between rows, creating a graphic and textured visual. The colors are dominated by cool evergreen and deep shadows, providing a sophisticated, professional digital publishing look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmoE82DRWeJrxyRbdLhTXEuz1E7imog_gcR_3zj1Sg3Efd3AKr65O1_qSkrlweLRJpnQg7RPLUOuSwFL4FXIyzhnEC8izBFUDEgSgejMibBZ3N0PAXV4L3tt6qEpvOW1QhlxFZG4Jc2pLux0r5mu5VaAEq_UDigOgY6Q_UUEFB7tuRPMw-M9AMl9lhGRjMcwEB75YYPdXAvIy_2pD8We8coxSnkTMwTsmRfpXGrfHqLu-5R9uEYkYLdA"/>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex gap-2 mb-3">
+<span class="bg-surface-container text-primary px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider">Economy</span>
+</div>
+<h3 class="font-headline-sm text-lg text-primary mb-3">Sustainable Logging: A Necessary Paradox?</h3>
+<p class="text-on-surface-variant text-sm line-clamp-3 mb-6">Exploring how controlled timber harvests can actually provide the funding needed for forest protection.</p>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-[12px] text-on-surface-variant">April 29, 2024</span>
+<a class="text-secondary font-label-md flex items-center gap-1 group-hover:gap-2 transition-all" href="#">Read <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group bg-white rounded-xl nature-shadow overflow-hidden border border-outline-variant/10 flex flex-col md:col-span-2 hover:scale-[1.01] transition-transform duration-300">
+<div class="grid md:grid-cols-5 h-full">
+<div class="md:col-span-2 relative">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="High-resolution photography of an orangutan sitting thoughtfully on a thick vine in a Bornean rainforest. The lighting is soft and ambient, focusing on the texture of the orange fur and the intelligent gaze of the animal. The background is a lush, bokeh-blurred green, emphasizing the connection between wildlife and their habitat in a premium editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0seJTxJK37MvE_nFy5Tt5l9sts1_X8v9RihIRSz9_O4IHQx2DQ0QUrtXQmV0U04Qmutb13rarhTZCMmFcao6HjwmIHWUEtDpQzQ6WoVJ1a5gLhfnpUwgEJ_Bn9W_azDK_GvQGGBikauD0Y2yShOjmeTk5RhAuB1Mr-oFJQwUlRCABLyxa9I2tjKKgdv-JSKApUrueKT3ABG-m1oKePFss0EtawudPrkZgCu9kNrUSMa57vyKgiFcPJA"/>
+</div>
+<div class="md:col-span-3 p-8 flex flex-col justify-center">
+<span class="text-secondary font-label-md mb-2">Wildlife Conservation</span>
+<h3 class="font-headline-sm text-2xl text-primary mb-4">Habitat Corridors: Bridging the Gap for Endangered Species</h3>
+<p class="text-on-surface-variant text-sm mb-6">Small strips of forest connecting larger fragments can be the difference between extinction and survival for isolated wildlife populations.</p>
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-2 text-primary font-label-md border border-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-lg">play_circle</span> Watch Documentary
+                                </button>
+<span class="text-xs text-on-surface-variant">22 minutes • 4K</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 5 (Tool/Resource) -->
+<div class="bg-secondary-container rounded-xl p-8 flex flex-col justify-between nature-shadow border border-secondary/10">
+<div>
+<span class="material-symbols-outlined text-secondary text-4xl mb-6">park</span>
+<h3 class="font-headline-sm text-primary mb-2">Interactive Map: Loss Tracking</h3>
+<p class="text-on-secondary-container/80 text-sm">Real-time alerts and satellite data on deforestation events across South-East Asia.</p>
+</div>
+<button class="mt-8 bg-primary text-on-primary py-3 rounded-lg font-label-md flex justify-center items-center gap-2 hover:brightness-110 transition-all">
+                        Launch Global Forest Watch
+                    </button>
+</div>
+</section>
+<!-- Newsletter / Community Section -->
+<section class="bg-surface-container rounded-2xl p-8 md:p-16 flex flex-col md:flex-row items-center gap-12 border border-outline-variant/30">
+<div class="flex-1">
+<h2 class="font-headline-md text-primary mb-4">The Canopy Dispatch</h2>
+<p class="text-on-surface-variant mb-8">Join 15,000+ forest advocates receiving weekly briefings on conservation science, policy updates, and ways to get involved.</p>
+<div class="flex flex-col sm:flex-row gap-3">
+<input class="flex-1 bg-surface-container-lowest border-outline-variant/30 rounded-lg px-6 py-3 focus:ring-secondary focus:border-secondary transition-all" placeholder="Your email address" type="email"/>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-lg font-label-md hover:bg-primary/90 transition-all">Subscribe</button>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-4 opacity-70">By subscribing, you agree to our Privacy Policy. No spam, just soil and leaves.</p>
+</div>
+<div class="hidden md:block w-1/3">
+<div class="relative w-full aspect-square bg-primary-fixed rounded-full overflow-hidden flex items-center justify-center p-8">
+
+<span class="material-symbols-outlined text-primary text-7xl absolute">eco</span>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary">
+<div class="w-full py-16 px-gutter max-w-container-max-width mx-auto flex flex-col md:flex-row justify-between gap-12">
+<div class="max-w-xs">
+<span class="font-headline-sm text-display-lg-mobile text-secondary-fixed block mb-4">Greentify</span>
+<p class="font-body-md opacity-70 mb-8 leading-relaxed">Cultivating a sustainable future through knowledge, community, and radical transparency. Join us in the fight for a greener Earth.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-secondary-fixed hover:text-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-xl">share</span>
+</a>
+<a class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-secondary-fixed hover:text-primary transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-xl">language</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-12">
+<div>
+<h4 class="font-label-md text-secondary-fixed mb-6 uppercase tracking-widest text-[11px]">Explore</h4>
+<ul class="space-y-4">
+<li><a class="font-label-sm text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Sitemap</a></li>
+<li><a class="font-label-sm text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Community</a></li>
+<li><a class="font-label-sm text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Latest Articles</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-secondary-fixed mb-6 uppercase tracking-widest text-[11px]">Resources</h4>
+<ul class="space-y-4">
+<li><a class="font-label-sm text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="font-label-sm text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a></li>
+<li><a class="font-label-sm text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Support Center</a></li>
+</ul>
+</div>
+<div class="col-span-2 sm:col-span-1">
+<h4 class="font-label-md text-secondary-fixed mb-6 uppercase tracking-widest text-[11px]">Get in Touch</h4>
+<ul class="space-y-4">
+<li><a class="font-label-sm text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Contact Us</a></li>
+<li><a class="font-label-sm text-on-primary/80 hover:text-secondary-fixed transition-colors" href="#">Press Kit</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="border-t border-white/10 w-full py-8 text-center px-gutter">
+<p class="font-label-sm text-[11px] opacity-50">© 2024 Greentify. Inspired by Rizkia Nuari Fujiana. Crafted with purpose for the planet.</p>
+</div>
+</footer>
+<!-- FAB for Interaction -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-secondary text-on-secondary rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all z-50 group">
+<span class="material-symbols-outlined" data-icon="forest" style="font-variation-settings: 'FILL' 1;">forest</span>
+<span class="absolute right-full mr-4 bg-primary text-white px-3 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Donate to Forest Project</span>
+</button>
+<script>
+        // Micro-interactions and subtle scroll reveals
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.nature-shadow');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-8');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700', 'ease-out');
+                observer.observe(card);
+            });
+        });
+    </script>
+</body></html>
