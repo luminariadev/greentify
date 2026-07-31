@@ -13,6 +13,15 @@
         </div>
         <div class="flex items-center gap-4">
             @auth
+                <a href="{{ route('articles.create') }}" class="hidden sm:inline-flex items-center gap-1 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors px-4 py-2">
+                    <span class="material-symbols-outlined text-sm">edit</span> Tulis
+                </a>
+                <a href="{{ route('articles.my') }}" class="hidden sm:inline-flex items-center gap-1 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors px-4 py-2">
+                    <span class="material-symbols-outlined text-sm">article</span> Artikel Saya
+                </a>
+                <a href="{{ route('profile.show') }}" class="hidden sm:inline-flex items-center gap-1 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors px-4 py-2">
+                    <span class="material-symbols-outlined text-sm">person</span> Profil
+                </a>
                 <form method="POST" action="{{ route('logout') }}" class="inline">
                     @csrf
                     <button type="submit" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors px-4 py-2">

@@ -96,14 +96,14 @@ class ArticleController extends Controller
 
     public function edit(Article $article)
     {
-        $this->authorize('update', $article);
+        abort_unless(auth()->id() === $article->user_id, 403);
         $categories = Category::orderBy('name')->get();
         return view('articles.edit', compact('article', 'categories'));
     }
 
     public function update(Request $request, Article $article)
     {
-        $this->authorize('update', $article);
+        abort_unless(auth()->id() === $article->user_id, 403);
 
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -141,7 +141,7 @@ class ArticleController extends Controller
 
     public function destroy(Article $article)
     {
-        $this->authorize('delete', $article);
+        abort_unless(auth()->id() === $article->user_id, 403);
 
         if ($article->featured_image) {
             Storage::disk('public')->delete($article->featured_image);
