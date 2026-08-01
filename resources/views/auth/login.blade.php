@@ -10,28 +10,28 @@
 <body class="min-h-screen flex items-stretch">
 
 <!-- Left Side: Editorial Nature Illustration -->
-<section class="hidden lg:flex lg:w-1/2 relative overflow-hidden group">
+<section class="hidden lg:block lg:w-1/2 relative h-screen sticky top-0">
     <div class="absolute inset-0 z-0">
-        <div class="w-full h-full bg-cover bg-center scale-105 transition-transform duration-700 group-hover:scale-100"
+        <div class="w-full h-full bg-cover bg-center"
              alt="A serene and majestic editorial photograph of a lush tropical forest with sunlight filtering through dense green leaves and ancient trees."
-             style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCsWjV-Scrs4py2Wu6thqiTiWFGscKsas5kfhUgckc2k_aEYJnPBcUfBCaQ6OtONQkvWMFBZUXYPlgWOtz2hXV87xaYCF_-jg9VT8okWOH160U_V6tSrfcw96S7QqM4FbyXy__KtrQFsqleXhhRNXiqfjjEm8GCQrwlPWmzgFeNero8CkVA0H04LRO_pTn3oJ-tk30qhLJciPsdATOik6cRt-9RKXKnswj7dSfKh7gN64AMTwFUx-wADg')"></div>
+             style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSj--lywyacXphOfKDLX1VtathH_pFjc5irDfBSYg4L55hCkrGezosOKiSSKtxEBKryaKIyGoI1lVeds8sUpvtpw6i0t02FfROZPG6u-Uxz4AktPFoDCTfOUyE4Ub04y0D7pAoqWKm4wjhcgLX-dNGbdzQwE99hHl235fw1B5c68jhvD8Awq98mGAbIl3QHKkwTviFPRYuxpQwA3kUBUUVdJDg5W4UBmUkdqrBX-kc5Hz3RT6QhmbWKw')"></div>
     </div>
     <div class="absolute inset-0 nature-overlay z-10"></div>
-    <div class="relative z-20 p-16 flex flex-col justify-between w-full h-full text-surface">
+    <div class="relative z-20 p-16 flex flex-col justify-between w-full h-full text-white">
         <div>
             <h1 class="font-display-lg text-display-lg tracking-tight mb-4">Greentify</h1>
-            <p class="font-body-lg text-body-lg max-w-md opacity-90 leading-relaxed">
+            <p class="font-body-lg text-body-lg max-w-md opacity-95 leading-relaxed">
                 Bridging the gap between digital community and grassroots environmental activism.
             </p>
         </div>
-        <div class="bg-surface/10 backdrop-blur-md p-8 rounded-xl border border-surface/20 max-w-sm">
+        <div class="bg-black/20 backdrop-blur-md p-8 rounded-xl border border-white/20 max-w-sm self-start">
             <span class="material-symbols-outlined mb-4 text-secondary-fixed">nature_people</span>
-            <p class="font-body-md text-body-md italic opacity-90 mb-4">
+            <p class="font-body-md text-body-md italic opacity-95 mb-4">
                 "Alam bukan hanya tempat untuk dikunjungi, ia adalah rumah."
             </p>
             <div class="flex items-center gap-3">
                 <div class="w-8 h-[1px] bg-secondary-fixed"></div>
-                <span class="font-label-sm text-label-sm uppercase tracking-widest">Eco-Community Jakarta</span>
+                <span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary-fixed">Eco-Community Jakarta</span>
             </div>
         </div>
     </div>

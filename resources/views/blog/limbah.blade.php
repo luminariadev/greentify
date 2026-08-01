@@ -3,12 +3,9 @@
 @section('title', 'Limbah (Waste Management) - Greentify')
 
 @section('content')
-<div class="flex max-w-container-max-width mx-auto pt-24 min-h-screen">
-    <!-- Sidebar -->
-    @include('components.blog-sidebar', ['activeCategory' => 'limbah'])
-
-    <!-- Main Content Canvas -->
-    <main class="flex-1 w-full lg:ml-64 px-margin-mobile md:px-gutter lg:px-margin-desktop py-12 relative z-10">
+<div class="max-w-container-max-width mx-auto px-gutter pt-24">
+    <!-- Main Content (full width, no sidebar) -->
+    <main class="py-12 relative z-10">
         <!-- Category Header -->
         <section class="mb-16">
             <div class="max-w-3xl">
