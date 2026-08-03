@@ -16,6 +16,14 @@ class ProfileController extends Controller
             ->latest('published_at')
             ->paginate(10);
 
-        return view('profile.show', compact('user', 'articles'));
+        // Follow state + counts for current user
+        $isFollowing = auth()->check() && auth()->id() !== $user->id
+            ? auth()->user()->following()->where('following_id', $user->id)->exists()
+            : false;
+
+        $followersCount = $user->followers()->count();
+        $followingCount = $user->following()->count();
+
+        return view('profile.show', compact('user', 'articles', 'isFollowing', 'followersCount', 'followingCount'));
     }
 }

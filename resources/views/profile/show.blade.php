@@ -19,14 +19,30 @@
                         <p class="font-label-sm text-label-sm text-on-surface-variant">Artikel</p>
                     </div>
                     <div class="bg-surface-container-low rounded-xl p-4 min-w-[100px]">
-                        <p class="font-headline-sm text-headline-sm text-primary">{{ $user->articles()->where('status', 'published')->count() }}</p>
-                        <p class="font-label-sm text-label-sm text-on-surface-variant">Published</p>
+                        <p class="font-headline-sm text-headline-sm text-primary">{{ $followersCount }}</p>
+                        <p class="font-label-sm text-label-sm text-on-surface-variant">Followers</p>
                     </div>
                     <div class="bg-surface-container-low rounded-xl p-4 min-w-[100px]">
-                        <p class="font-headline-sm text-headline-sm text-primary">{{ $user->articles()->where('status', 'draft')->count() }}</p>
-                        <p class="font-label-sm text-label-sm text-on-surface-variant">Draft</p>
+                        <p class="font-headline-sm text-headline-sm text-primary">{{ $followingCount }}</p>
+                        <p class="font-label-sm text-label-sm text-on-surface-variant">Following</p>
                     </div>
                 </div>
+
+                @auth
+                    @if(auth()->id() !== $user->id)
+                        <div class="mt-6">
+                            <button
+                                class="flex items-center gap-2 px-6 py-2.5 rounded-lg font-label-md text-label-md transition-all active:scale-95 {{ $isFollowing ? 'border border-outline-variant text-primary hover:bg-surface-container' : 'bg-primary text-on-primary hover:bg-primary-container' }}"
+                                data-action="follow"
+                                data-user-id="{{ $user->id }}"
+                                aria-pressed="{{ $isFollowing ? 'true' : 'false' }}"
+                            >
+                                <span class="material-symbols-outlined text-sm">{{ $isFollowing ? 'person_remove' : 'person_add' }}</span>
+                                <span class="follow-label">{{ $isFollowing ? 'Mengikuti' : 'Ikuti' }}</span>
+                            </button>
+                        </div>
+                    @endif
+                @endauth
             </div>
         </div>
     </div>

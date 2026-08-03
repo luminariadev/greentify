@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArticleInteractionController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -72,4 +73,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/articles/{article:slug}/like', [ArticleInteractionController::class, 'toggleLike'])->name('articles.like');
     Route::post('/articles/{article:slug}/bookmark', [ArticleInteractionController::class, 'toggleBookmark'])->name('articles.bookmark');
     Route::get('/bookmarks', [ArticleInteractionController::class, 'indexBookmarks'])->name('bookmarks.index');
+});
+
+// Follow interaction
+Route::middleware('auth')->group(function () {
+    Route::post('/users/{user}/follow', [FollowController::class, 'toggleFollow'])->name('users.follow');
 });
