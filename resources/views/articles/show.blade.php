@@ -18,15 +18,37 @@
             <a href="{{ route('profile.user', $article->user) }}" class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-fixed flex items-center justify-center bg-primary-fixed text-primary font-bold text-lg">
                 {{ strtoupper(substr($article->user->name, 0, 1)) }}
             </a>
-            <div>
+            <div class="flex-1">
                 <p class="font-label-md text-label-md text-primary">{{ $article->user->name }}</p>
                 <p class="font-label-sm text-label-sm text-on-surface-variant">
                     {{ $article->published_at ? $article->published_at->format('d M Y') : 'Draft' }}
                 </p>
             </div>
             @auth
-                @if(auth()->id() === $article->user_id)
-                    <div class="ml-auto flex gap-2">
+                <div class="flex items-center gap-2">
+                    <!-- Like Button -->
+                    <button
+                        class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-lg text-primary font-label-md text-label-md hover:bg-surface-container transition-colors"
+                        data-action="like"
+                        data-article-id="{{ $article->id }}"
+                        aria-pressed="{{ $article->liked_by->isNotEmpty() ? 'true' : 'false' }}"
+                    >
+                        <span class="material-symbols-outlined">{{ $article->liked_by->isNotEmpty() ? 'favorite' : 'favorite_border' }}</span>
+                        <span class="like-count">{{ $article->likes_count }}</span>
+                    </button>
+
+                    <!-- Bookmark Button -->
+                    <button
+                        class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-lg text-primary font-label-md text-label-md hover:bg-surface-container transition-colors"
+                        data-action="bookmark"
+                        data-article-id="{{ $article->id }}"
+                        aria-pressed="{{ $article->bookmarked_by->isNotEmpty() ? 'true' : 'false' }}"
+                    >
+                        <span class="material-symbols-outlined">{{ $article->bookmarked_by->isNotEmpty() ? 'bookmark' : 'bookmark_border' }}</span>
+                        <span class="bookmark-count">{{ $article->bookmarks_count }}</span>
+                    </button>
+
+                    @if(auth()->id() === $article->user_id)
                         <a href="{{ route('articles.edit', $article) }}" class="flex items-center gap-1 px-4 py-2 border border-outline-variant rounded-lg text-primary font-label-md text-label-md hover:bg-surface-container transition-colors">
                             <span class="material-symbols-outlined text-sm">edit</span> Edit
                         </a>
@@ -37,8 +59,16 @@
                                 <span class="material-symbols-outlined text-sm">delete</span> Hapus
                             </button>
                         </form>
-                    </div>
-                @endif
+                    @endif
+                </div>
+            @else
+                <div class="flex items-center gap-2 text-on-surface-variant">
+                    <span class="material-symbols-outlined">favorite_border</span>
+                    <span class="like-count">{{ $article->likes_count }}</span>
+                    <span class="mx-2">|</span>
+                    <span class="material-symbols-outlined">bookmark_border</span>
+                    <span class="bookmark-count">{{ $article->bookmarks_count }}</span>
+                </div>
             @endauth
         </div>
     </header>

@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ArticleInteractionController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\ProfileController;
@@ -64,4 +65,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.user');
+});
+
+// Article interactions (Like & Bookmark)
+Route::middleware('auth')->group(function () {
+    Route::post('/articles/{article:slug}/like', [ArticleInteractionController::class, 'toggleLike'])->name('articles.like');
+    Route::post('/articles/{article:slug}/bookmark', [ArticleInteractionController::class, 'toggleBookmark'])->name('articles.bookmark');
+    Route::get('/bookmarks', [ArticleInteractionController::class, 'indexBookmarks'])->name('bookmarks.index');
 });

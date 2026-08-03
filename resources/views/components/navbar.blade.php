@@ -19,6 +19,9 @@
                 <a href="{{ route('articles.my') }}" class="hidden sm:inline-flex items-center gap-1 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors px-4 py-2">
                     <span class="material-symbols-outlined text-sm">article</span> Artikel Saya
                 </a>
+                <a href="{{ route('bookmarks.index') }}" class="hidden sm:inline-flex items-center gap-1 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors px-4 py-2">
+                    <span class="material-symbols-outlined text-sm">bookmark</span> Bookmark
+                </a>
                 <a href="{{ route('profile.show') }}" class="hidden sm:inline-flex items-center gap-1 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors px-4 py-2">
                     <span class="material-symbols-outlined text-sm">person</span> Profil
                 </a>

@@ -36,6 +36,20 @@ class ArticleController extends Controller
         }
 
         $articles = $query->paginate(9)->withQueryString();
+
+        // Eager load counts and current user pivot for like/bookmark UI
+        $articles->loadCount([
+            'likedBy as likes_count',
+            'bookmarkedBy as bookmarks_count',
+        ]);
+
+        if (auth()->check()) {
+            $articles->load([
+                'likedBy' => function ($q) { $q->where('user_id', auth()->id()); },
+                'bookmarkedBy' => function ($q) { $q->where('user_id', auth()->id()); },
+            ]);
+        }
+
         $categories = Category::orderBy('name')->get();
 
         return view('blogspot', compact('articles', 'categories'));
@@ -83,6 +97,20 @@ class ArticleController extends Controller
         }
 
         $article->load(['user', 'category', 'comments.user']);
+
+        // Eager load counts and current user pivot for like/bookmark UI
+        $article->loadCount([
+            'likedBy as likes_count',
+            'bookmarkedBy as bookmarks_count',
+        ]);
+
+        if (auth()->check()) {
+            $article->load([
+                'likedBy' => function ($q) { $q->where('user_id', auth()->id()); },
+                'bookmarkedBy' => function ($q) { $q->where('user_id', auth()->id()); },
+            ]);
+        }
+
         $relatedArticles = Article::with('category')
             ->where('status', 'published')
             ->where('category_id', $article->category_id)
