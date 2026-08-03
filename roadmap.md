@@ -1,8 +1,8 @@
 # Greentify — Roadmap & Development Plan
 
 > **Greentify**: Platform blog dan komunitas lingkungan
-> **Status**: Tahap Awal (MVP)
-> **Update Terakhir**: 30 Juli 2026
+> **Status**: Fase 2 Selesai — Masuk Fase 3 (Fitur Komunitas)
+> **Update Terakhir**: 3 Agustus 2026
 
 ---
 
@@ -26,7 +26,7 @@
 | Aktifkan route logout       | ✅ Selesai | Tadinya dikomentari     |
 | Isi konten halaman kosong   | ✅ Selesai | welcome & blogspot      |
 
-### 🟡 Fase 2: MVP Fitur Inti (Sekarang — Agustus 2026)
+### 🟡 Fase 2: MVP Fitur Inti (Sekarang — Agustus 2026) ✅ SELESAI
 
 | Item                                 | Prioritas | Estimasi |
 | ------------------------------------ | --------- | -------- |
@@ -141,12 +141,12 @@ User bisa lihat & beli produk ramah lingkungan via link afiliasi.
 
 ### Fase 2: MVP Fitur Inti
 
-- [ ] Manajemen Artikel (CRUD)
-- [ ] Kategori Blog Dinamis
-- [ ] Sistem Komentar
-- [ ] Profil Pengguna
-- [ ] Halaman Contact Us (Full page)
-- [ ] UI Refresh (Design System)
+- [x] Manajemen Artikel (CRUD)
+- [x] Kategori Blog Dinamis
+- [x] Sistem Komentar
+- [x] Profil Pengguna
+- [x] Halaman Contact Us (Full page)
+- [x] UI Refresh (Design System)
 
 ### Fase 3: Fitur Komunitas
 

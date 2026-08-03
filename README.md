@@ -21,14 +21,15 @@
 
 ### Saat Ini (MVP)
 - 🔐 User Authentication (Login/Register/Logout)
-- 📝 Blog Posts — 4 Kategori Lingkungan
-- 📬 Contact Form
-- 📱 Responsive Design
-- 🎨 Modern UI with Tailwind CSS
+- 📝 Blog Posts — 4 Kategori Lingkungan (dinamis dari database)
+- ✍️ **User Generated Content (CRUD Artikel) — Lengkap dengan Rich Text Editor & Upload Gambar**
+- 💬 **Sistem Komentar & Reply per Artikel**
+- 👤 **Profil Pengguna — Foto, Bio, & Artikel Saya**
+- 📬 Contact Form (Halaman Penuh)
+- 📱 Responsive Design (Mobile-First)
+- 🎨 Modern UI dengan Design System (Tailwind + Material 3 Forest Theme)
 
-### Rencana Pengembangan
-- ✍️ User Generated Content (CRUD Artikel)
-- 💬 Sistem Komentar & Reply
+### Rencana Pengembangan (Fase 3+)
 - ❤️ Like, Bookmark, Follow User
 - 🔍 Search & Filter Kategori
 - 🏪 Green Marketplace (Affiliate)
@@ -69,6 +70,7 @@ php artisan key:generate
 
 # Configure database in .env, then:
 php artisan migrate
+php artisan db:seed   # kategori + artikel contoh
 
 # Build assets & run
 npm run build
@@ -82,15 +84,25 @@ Greentify/
 ├── app/
 │   ├── Http/Controllers/
 │   │   ├── AuthController.php
+│   │   ├── ArticleController.php    (CRUD + myArticles)
+│   │   ├── CommentController.php    (store + reply)
+│   │   ├── ProfileController.php    (show user + articles)
 │   │   └── ContactFormController.php
 │   └── Models/
 │       ├── User.php
+│       ├── Article.php
+│       ├── Category.php
+│       ├── Comment.php
 │       └── Pesan.php
-├── database/migrations/
+├── database/
+│   ├── migrations/   (users, categories, articles, comments, pesan)
+│   └── seeders/      (CategorySeeder, ArticleSeeder)
 ├── resources/views/
 │   ├── auth/          (login, register)
 │   ├── blog/          (limbah, konservasi, penghijauan, hutan)
-│   ├── components/    (head, sidebar, content, footer)
+│   ├── articles/      (create, edit, show, my-articles)
+│   ├── profile/       (show)
+│   ├── components/    (head, navbar, sidebar, content, footer, blog-sidebar)
 │   └── layouts/       (app, blog)
 └── routes/web.php
 ```
