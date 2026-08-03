@@ -22,6 +22,15 @@
                 <a href="{{ route('bookmarks.index') }}" class="hidden sm:inline-flex items-center gap-1 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors px-4 py-2">
                     <span class="material-symbols-outlined text-sm">bookmark</span> Bookmark
                 </a>
+                <a href="{{ route('notifications.index') }}" class="hidden sm:inline-flex items-center gap-1 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors px-4 py-2 relative">
+                    <span class="material-symbols-outlined text-sm">notifications</span>
+                    @if(auth()->user()->unreadNotifications->isNotEmpty())
+                        <span class="absolute top-1 right-1 min-w-[16px] h-4 px-1 rounded-full bg-error text-on-error text-[10px] font-bold flex items-center justify-center">
+                            {{ auth()->user()->unreadNotifications->count() > 9 ? '9+' : auth()->user()->unreadNotifications->count() }}
+                        </span>
+                    @endif
+                    Notifikasi
+                </a>
                 <a href="{{ route('profile.show') }}" class="hidden sm:inline-flex items-center gap-1 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors px-4 py-2">
                     <span class="material-symbols-outlined text-sm">person</span> Profil
                 </a>

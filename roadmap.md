@@ -1,8 +1,8 @@
 # Greentify — Roadmap & Development Plan
 
 > **Greentify**: Platform blog dan komunitas lingkungan
-> **Status**: Fase 2 Selesai — Masuk Fase 3 (Fitur Komunitas)
-> **Update Terakhir**: 3 Agustus 2026
+> **Status**: Fase 2 & 3 Selesai — Lanjut Fase 4 (Monetisasi) / Fase 5 (Skalabilitas)
+> **Update Terakhir**: 4 Agustus 2026
 
 ---
 
@@ -51,15 +51,15 @@
 | - Responsive mobile-first            |           |          |
 | - Dark mode toggle                   |           |          |
 
-### 🟠 Fase 3: Fitur Komunitas (September — Oktober 2026)
+### 🟠 Fase 3: Fitur Komunitas (September — Oktober 2026) — Sebagian Selesai
 
-| Item                        | Prioritas | Estimasi |
-| --------------------------- | --------- | -------- |
-| **Like & Bookmark Artikel** | 🔴 Tinggi | 1-2 hari |
-| **Follow Antar User**       | 🟡 Sedang | 1-2 hari |
-| **Notifikasi**              | 🟡 Sedang | 2-3 hari |
-| **Search & Filter**         | 🟡 Sedang | 1-2 hari |
-| **Report Content**          | 🟢 Rendah | 1 hari   |
+| Item                        | Prioritas | Status |
+| --------------------------- | --------- | ------ |
+| **Like & Bookmark Artikel** | 🔴 Tinggi | ✅ Selesai |
+| **Follow Antar User**       | 🟡 Sedang | ✅ Selesai |
+| **Notifikasi**              | 🟡 Sedang | ✅ Selesai |
+| **Report Content**          | 🟢 Rendah | ✅ Selesai |
+| **Search & Filter**         | 🟡 Sedang | ✅ Selesai (di blogspot) |
 
 ### 🔴 Fase 4: Monetisasi (November — Desember 2026)
 
@@ -150,11 +150,11 @@ User bisa lihat & beli produk ramah lingkungan via link afiliasi.
 
 ### Fase 3: Fitur Komunitas
 
-- [ ] Like & Bookmark
-- [ ] Follow user
-- [ ] Notifikasi
-- [ ] Search & Filter
-- [ ] Report Content
+- [x] Like & Bookmark
+- [x] Follow user
+- [x] Notifikasi
+- [x] Search & Filter
+- [x] Report Content
 
 ### Fase 4: Monetisasi
 

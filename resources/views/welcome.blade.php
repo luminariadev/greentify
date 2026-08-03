@@ -127,8 +127,12 @@
         <div class="relative z-10">
             <h2 class="font-headline-md text-headline-md mb-4">Join the Green Movement</h2>
             <p class="font-body-lg text-body-lg mb-10 opacity-80 max-w-xl mx-auto">Receive weekly curated environmental insights, project updates, and exclusive community invitations directly to your inbox.</p>
-            <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-                <input class="flex-1 px-6 py-4 rounded-lg bg-on-primary/10 border border-on-primary/20 text-on-primary placeholder:text-on-primary/50 focus:outline-none focus:ring-2 focus:ring-secondary-fixed transition-all" placeholder="Your email address" type="email"/>
+            @if(session('success'))
+                <div class="bg-secondary-fixed/20 text-on-primary border border-on-primary/20 rounded-lg p-4 mb-6 max-w-lg mx-auto">{{ session('success') }}</div>
+            @endif
+            <form method="POST" action="{{ route('newsletter.subscribe') }}" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                @csrf
+                <input name="email" class="flex-1 px-6 py-4 rounded-lg bg-on-primary/10 border border-on-primary/20 text-on-primary placeholder:text-on-primary/50 focus:outline-none focus:ring-2 focus:ring-secondary-fixed transition-all" placeholder="Your email address" type="email" required/>
                 <button class="bg-secondary-container text-on-secondary-container font-label-md text-label-md px-8 py-4 rounded-lg hover:bg-secondary-fixed transition-all active:scale-95 whitespace-nowrap" type="submit">Subscribe Now</button>
             </form>
             <p class="font-label-sm text-label-sm mt-6 opacity-60">We respect your privacy. Unsubscribe at any time.</p>

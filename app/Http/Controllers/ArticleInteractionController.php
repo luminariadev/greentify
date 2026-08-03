@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Notifications\ArticleBookmarked;
+use App\Notifications\ArticleLiked;
 use Illuminate\Http\JsonResponse;
 
 class ArticleInteractionController extends Controller
@@ -20,6 +22,16 @@ class ArticleInteractionController extends Controller
         $liked = $user->likes()->where('article_id', $article->id)->exists();
         $likesCount = $article->likedBy()->count();
 
+        // Notify article owner when a new like happens (skip self-like)
+        if ($liked && $article->user_id !== $user->id) {
+            $article->user->notify(new ArticleLiked(
+                $article->id,
+                $article->title,
+                $user->id,
+                $user->name,
+            ));
+        }
+
         return response()->json([
             'liked' => $liked,
             'likesCount' => $likesCount,
@@ -33,6 +45,16 @@ class ArticleInteractionController extends Controller
 
         $bookmarked = $user->bookmarks()->where('article_id', $article->id)->exists();
         $bookmarksCount = $article->bookmarkedBy()->count();
+
+        // Notify article owner on new bookmark (skip self-bookmark)
+        if ($bookmarked && $article->user_id !== $user->id) {
+            $article->user->notify(new ArticleBookmarked(
+                $article->id,
+                $article->title,
+                $user->id,
+                $user->name,
+            ));
+        }
 
         return response()->json([
             'bookmarked' => $bookmarked,

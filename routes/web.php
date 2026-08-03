@@ -5,7 +5,10 @@ use App\Http\Controllers\ArticleInteractionController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 // Auth routes
@@ -22,6 +25,9 @@ Route::get('/', function () {
 
 Route::get('/contact', [ContactFormController::class, 'showForm'])->name('contact.form');
 Route::post('/contact', [ContactFormController::class, 'store'])->name('contact.store');
+
+// Newsletter
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
 // Blogspot - dynamic articles index
 Route::get('/blogspot', [ArticleController::class, 'index'])->name('blogspot');
@@ -78,4 +84,19 @@ Route::middleware('auth')->group(function () {
 // Follow interaction
 Route::middleware('auth')->group(function () {
     Route::post('/users/{user}/follow', [FollowController::class, 'toggleFollow'])->name('users.follow');
+});
+
+// Notifications
+Route::middleware('auth')->group(function () {
+    Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+    Route::post('/notifications/mark-read', [NotificationController::class, 'markAsRead'])->name('notifications.markRead');
+    Route::post('/notifications/mark-all-read', [NotificationController::class, 'markAllAsRead'])->name('notifications.markAllRead');
+});
+
+// Reports
+Route::middleware('auth')->group(function () {
+    Route::get('/reports/create', [ReportController::class, 'create'])->name('reports.create');
+    Route::post('/reports', [ReportController::class, 'store'])->name('reports.store');
+    Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+    Route::patch('/reports/{report}/review', [ReportController::class, 'review'])->name('reports.review');
 });

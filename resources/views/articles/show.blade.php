@@ -71,6 +71,18 @@
                 </div>
             @endauth
         </div>
+
+        <!-- Report button (non-owner) -->
+        @auth
+            @if(auth()->id() !== $article->user_id)
+                <div class="mt-4 flex justify-end">
+                    <a href="{{ route('reports.create', ['type' => App\Models\Article::class, 'id' => $article->id]) }}" class="flex items-center gap-1 text-on-surface-variant hover:text-error transition-colors font-label-sm text-label-sm">
+                        <span class="material-symbols-outlined text-sm">flag</span> Laporkan
+                    </a>
+                </div>
+            @endif
+        @endauth
+        </div>
     </header>
 
     <!-- Featured Image -->
