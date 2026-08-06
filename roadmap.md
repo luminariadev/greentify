@@ -63,20 +63,20 @@
 
 ### 🔴 Fase 4: Monetisasi (November — Desember 2026)
 
-| Item                                 | Potensi Revenue | Estimasi   |
-| ------------------------------------ | --------------- | ---------- |
-| **Green Marketplace (Afiliasi)**     | 💰💰💰          | 2-3 minggu |
-| - Produk ramah lingkungan            |                 |            |
-| - Affiliate link ke Tokopedia/Shopee |                 |            |
-| **Premium Membership**               | 💰💰            | 1-2 minggu |
-| - Konten eksklusif                   |                 |            |
-| - Article analytics, badge, no ads   |                 |            |
-| **Iklan Ramah Lingkungan**           | 💰              | 1 minggu   |
-| - Banner ads untuk brand hijau       |                 |            |
-| - Sponsored post                     |                 |            |
-| **Donasi / Support Creator**         | 💰              | 1 minggu   |
-| - Fitur tip/donasi                   |                 |            |
-| - Crowdfunding proyek lingkungan     |                 |            |
+| Item                                 | Potensi Revenue | Estimasi   | Status |
+| ------------------------------------ | --------------- | ---------- | ------ |
+| **Green Marketplace (Afiliasi)**     | 💰💰💰          | 2-3 minggu | ✅ Selesai |
+| - Produk ramah lingkungan            |                 |            |        |
+| - Affiliate link ke Tokopedia/Shopee |                 |            |        |
+| **Premium Membership**               | 💰💰            | 1-2 minggu | ⬜ |
+| - Konten eksklusif                   |                 |            |        |
+| - Article analytics, badge, no ads   |                 |            |        |
+| **Iklan Ramah Lingkungan**           | 💰              | 1 minggu   | ⬜ |
+| - Banner ads untuk brand hijau       |                 |            |        |
+| - Sponsored post                     |                 |            |        |
+| **Donasi / Support Creator**         | 💰              | 1 minggu   | ⬜ |
+| - Fitur tip/donasi                   |                 |            |        |
+| - Crowdfunding proyek lingkungan     |                 |            |        |
 
 ### 🟣 Fase 5: Skalabilitas (Januari 2027+)
 
@@ -158,7 +158,7 @@ User bisa lihat & beli produk ramah lingkungan via link afiliasi.
 
 ### Fase 4: Monetisasi
 
-- [ ] Green Marketplace (Afiliasi)
+- [x] Green Marketplace (Afiliasi)
 - [ ] Premium Membership
 - [ ] Iklan & Sponsored Post
 - [ ] Donasi / Crowdfunding
