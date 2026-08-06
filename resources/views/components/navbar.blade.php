@@ -8,6 +8,7 @@
                 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ route('konservasi') }}">Konservasi</a>
                 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ route('penghijauan') }}">Penghijauan</a>
                 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ route('hutan') }}">Hutan</a>
+                <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ route('marketplace.index') }}">Marketplace</a>
                 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="{{ route('contact.form') }}">Contact</a>
             </div>
         </div>
