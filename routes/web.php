@@ -9,6 +9,7 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\MarketplaceController;
 use Illuminate\Support\Facades\Route;
 
 // Auth routes
@@ -28,6 +29,10 @@ Route::post('/contact', [ContactFormController::class, 'store'])->name('contact.
 
 // Newsletter
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+
+// Marketplace (Green Affiliate)
+Route::get('/marketplace', [MarketplaceController::class, 'index'])->name('marketplace.index');
+Route::get('/marketplace/{product}', [MarketplaceController::class, 'show'])->name('marketplace.show');
 
 // Blogspot - dynamic articles index
 Route::get('/blogspot', [ArticleController::class, 'index'])->name('blogspot');
