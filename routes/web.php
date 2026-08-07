@@ -10,6 +10,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\MarketplaceController;
+use App\Http\Controllers\MembershipController;
 use Illuminate\Support\Facades\Route;
 
 // Auth routes
@@ -33,6 +34,14 @@ Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])
 // Marketplace (Green Affiliate)
 Route::get('/marketplace', [MarketplaceController::class, 'index'])->name('marketplace.index');
 Route::get('/marketplace/{product}', [MarketplaceController::class, 'show'])->name('marketplace.show');
+
+// Membership
+Route::middleware('auth')->group(function () {
+    Route::get('/membership', [MembershipController::class, 'status'])->name('membership.status');
+    Route::get('/membership/pricing', [MembershipController::class, 'pricing'])->name('membership.pricing');
+    Route::post('/membership/subscribe/{tier}', [MembershipController::class, 'subscribe'])->name('membership.subscribe');
+    Route::post('/membership/cancel', [MembershipController::class, 'cancel'])->name('membership.cancel');
+});
 
 // Blogspot - dynamic articles index
 Route::get('/blogspot', [ArticleController::class, 'index'])->name('blogspot');
