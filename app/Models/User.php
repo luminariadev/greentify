@@ -26,6 +26,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Article::class, 'article_bookmarks')->withTimestamps();
     }
 
+    public function membership()
+    {
+        return $this->hasOne(Membership::class)->where('is_active', true)->latestOfMany();
+    }
+
     // Users this user follows
     public function following()
     {
