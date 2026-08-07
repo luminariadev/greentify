@@ -68,7 +68,7 @@
 | **Green Marketplace (Afiliasi)**     | 💰💰💰          | 2-3 minggu | ✅ Selesai |
 | - Produk ramah lingkungan            |                 |            |        |
 | - Affiliate link ke Tokopedia/Shopee |                 |            |        |
-| **Premium Membership**               | 💰💰            | 1-2 minggu | ⬜ |
+| **Premium Membership**               | 💰💰            | 1-2 minggu | ✅ Selesai |
 | - Konten eksklusif                   |                 |            |        |
 | - Article analytics, badge, no ads   |                 |            |        |
 | **Iklan Ramah Lingkungan**           | 💰              | 1 minggu   | ⬜ |
@@ -159,7 +159,7 @@ User bisa lihat & beli produk ramah lingkungan via link afiliasi.
 ### Fase 4: Monetisasi
 
 - [x] Green Marketplace (Afiliasi)
-- [ ] Premium Membership
+- [x] Premium Membership
 - [ ] Iklan & Sponsored Post
 - [ ] Donasi / Crowdfunding
 
