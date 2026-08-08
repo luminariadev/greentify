@@ -70,8 +70,7 @@
 | - Affiliate link ke Tokopedia/Shopee |                 |            |        |
 | **Premium Membership**               | 💰💰            | 1-2 minggu | ✅ Selesai |
 | - Konten eksklusif                   |                 |            |        |
-| - Article analytics, badge, no ads   |                 |            |        |
-| **Iklan Ramah Lingkungan**           | 💰              | 1 minggu   | ⬜ |
+| **Iklan Ramah Lingkungan**           | 💰              | 1 minggu   | ✅ Selesai |
 | - Banner ads untuk brand hijau       |                 |            |        |
 | - Sponsored post                     |                 |            |        |
 | **Donasi / Support Creator**         | 💰              | 1 minggu   | ⬜ |
@@ -160,7 +159,7 @@ User bisa lihat & beli produk ramah lingkungan via link afiliasi.
 
 - [x] Green Marketplace (Afiliasi)
 - [x] Premium Membership
-- [ ] Iklan & Sponsored Post
+- [x] Iklan & Sponsored Post
 - [ ] Donasi / Crowdfunding
 
 ---

@@ -30,5 +30,9 @@
         <button class="mt-auto bg-primary text-on-primary py-3 px-4 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">
             Join the Community
         </button>
+
+        <div class="mt-8">
+            <x-ad-display position="sidebar" />
+        </div>
     </div>
 </aside>
