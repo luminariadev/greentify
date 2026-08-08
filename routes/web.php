@@ -13,6 +13,7 @@ use App\Http\Controllers\MarketplaceController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\SponsoredPostController;
+use App\Http\Controllers\DonationController;
 use Illuminate\Support\Facades\Route;
 
 // Auth routes
@@ -51,6 +52,10 @@ Route::get('/ads/{ad}/click', [AdController::class, 'trackClick'])->name('ads.cl
 // Sponsored Posts
 Route::get('/sponsored', [SponsoredPostController::class, 'index'])->name('sponsored.index');
 Route::get('/sponsored/{sponsoredPost:slug}', [SponsoredPostController::class, 'show'])->name('sponsored.show');
+
+// Donations
+Route::get('/donasi', [DonationController::class, 'index'])->name('donation.index');
+Route::post('/donasi', [DonationController::class, 'store'])->name('donation.store');
 
 
 // Blogspot - dynamic articles index
