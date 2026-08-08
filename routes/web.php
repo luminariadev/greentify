@@ -11,6 +11,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\MarketplaceController;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\AdController;
+use App\Http\Controllers\SponsoredPostController;
 use Illuminate\Support\Facades\Route;
 
 // Auth routes
@@ -42,6 +44,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/membership/subscribe/{tier}', [MembershipController::class, 'subscribe'])->name('membership.subscribe');
     Route::post('/membership/cancel', [MembershipController::class, 'cancel'])->name('membership.cancel');
 });
+
+// Ads
+Route::get('/ads/{ad}/click', [AdController::class, 'trackClick'])->name('ads.click');
+
+// Sponsored Posts
+Route::get('/sponsored', [SponsoredPostController::class, 'index'])->name('sponsored.index');
+Route::get('/sponsored/{sponsoredPost:slug}', [SponsoredPostController::class, 'show'])->name('sponsored.show');
+
 
 // Blogspot - dynamic articles index
 Route::get('/blogspot', [ArticleController::class, 'index'])->name('blogspot');
