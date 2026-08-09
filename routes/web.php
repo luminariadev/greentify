@@ -25,7 +25,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Public pages
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing'); // Use new landing page
 })->name('welcome');
 
 Route::get('/contact', [ContactFormController::class, 'showForm'])->name('contact.form');
