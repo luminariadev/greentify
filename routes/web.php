@@ -14,6 +14,7 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\SponsoredPostController;
 use App\Http\Controllers\DonationController;
+use App\Http\Controllers\AdminDashboardController;
 use Illuminate\Support\Facades\Route;
 
 // Auth routes
@@ -56,6 +57,11 @@ Route::get('/sponsored/{sponsoredPost:slug}', [SponsoredPostController::class, '
 // Donations
 Route::get('/donasi', [DonationController::class, 'index'])->name('donation.index');
 Route::post('/donasi', [DonationController::class, 'store'])->name('donation.store');
+
+// Admin
+Route::middleware(['auth', 'admin'])->group(function () { // 'admin' middleware to be created in the future
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+});
 
 
 // Blogspot - dynamic articles index
