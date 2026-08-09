@@ -73,7 +73,7 @@
 | **Iklan Ramah Lingkungan**           | 💰              | 1 minggu   | ✅ Selesai |
 | - Banner ads untuk brand hijau       |                 |            |        |
 | - Sponsored post                     |                 |            |        |
-| **Donasi / Support Creator**         | 💰              | 1 minggu   | ⬜ |
+| **Donasi / Support Creator**         | 💰              | 1 minggu   | ✅ Selesai |
 | - Fitur tip/donasi                   |                 |            |        |
 | - Crowdfunding proyek lingkungan     |                 |            |        |
 
@@ -160,7 +160,9 @@ User bisa lihat & beli produk ramah lingkungan via link afiliasi.
 - [x] Green Marketplace (Afiliasi)
 - [x] Premium Membership
 - [x] Iklan & Sponsored Post
-- [ ] Donasi / Crowdfunding
+- [x] Donasi / Crowdfunding
+
+> ## 🎉 Fase 4 Monetisasi — SELESAI 100% (4/4)
 
 ---
 

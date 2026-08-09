@@ -24,6 +24,8 @@
                     <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('konservasi') }}">Konservasi</a></li>
                     <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('penghijauan') }}">Penghijauan</a></li>
                     <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('hutan') }}">Hutan</a></li>
+                    <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('marketplace.index') }}">Marketplace</a></li>
+                    <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('donation.index') }}">Donasi</a></li>
                     <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('contact.form') }}">Contact</a></li>
                 </ul>
             </div>
