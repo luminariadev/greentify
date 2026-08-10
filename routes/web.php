@@ -58,9 +58,15 @@ Route::get('/sponsored/{sponsoredPost:slug}', [SponsoredPostController::class, '
 Route::get('/donasi', [DonationController::class, 'index'])->name('donation.index');
 Route::post('/donasi', [DonationController::class, 'store'])->name('donation.store');
 
+// Newsletter
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+Route::get('/newsletter/unsubscribe', [NewsletterController::class, 'showUnsubscribeForm'])->name('newsletter.unsubscribe.page');
+Route::post('/newsletter/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
+
 // Admin
 Route::middleware(['auth', 'admin'])->group(function () { // 'admin' middleware to be created in the future
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    Route::post('/admin/newsletter/send', [NewsletterController::class, 'send'])->name('admin.newsletter.send');
 });
 
 
