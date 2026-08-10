@@ -11,6 +11,17 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    // Role helpers
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isModerator(): bool
+    {
+        return $this->role === 'moderator';
+    }
+
     public function articles()
     {
         return $this->hasMany(Article::class);
@@ -52,6 +63,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
