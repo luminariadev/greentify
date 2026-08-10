@@ -39,8 +39,12 @@
     </div>
 
     <div class="mt-10 p-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl">
-        <h2 class="text-xl font-bold text-blue-800 dark:text-blue-200 mb-4">Coming Soon</h2>
-        <p class="text-blue-700 dark:text-blue-300">Fitur lengkap manajemen pengguna, artikel, kategori, dan laporan akan segera hadir!</p>
+        <h2 class="text-xl font-bold text-blue-800 dark:text-blue-200 mb-4">Aksi Admin</h2>
+        <div class="flex flex-wrap gap-4">
+            <a href="{{ route('admin.newsletter.send') }}" class="inline-flex items-center gap-2 bg-primary text-white font-semibold px-6 py-3 rounded-xl hover:bg-primary-dark transition-colors">
+                <span class="material-symbols-outlined text-sm">send</span> Kirim Newsletter
+            </a>
+        </div>
     </div>
 </div>
 @endsection
