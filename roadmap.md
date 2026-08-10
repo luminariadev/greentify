@@ -85,8 +85,8 @@
 | ------------------------- | ---------- | ------ |
 | **Landing Page Publik (SEO)** | 1 minggu   | ✅ Selesai |
 | **Dashboard Admin**           | 1-2 minggu | ✅ Selesai |
-| Email Newsletter          | 1 minggu   | ⬜ |
-| Role & Permission         | 1 minggu   | ⬜ |
+| **Email Newsletter**          | 1 minggu   | ✅ Selesai |
+| **Role & Permission**         | 1 minggu   | ✅ Selesai |
 | API untuk Mobile          | 2-3 minggu | ⬜ |
 | Progressive Web App (PWA) | 1 minggu   | ⬜ |
 
@@ -170,8 +170,8 @@ User bisa lihat & beli produk ramah lingkungan via link afiliasi.
 
 - [x] Landing Page Publik (SEO)
 - [x] Dashboard Admin
-- [ ] Email Newsletter
-- [ ] Role & Permission
+- [x] Email Newsletter
+- [x] Role & Permission
 - [ ] API untuk Mobile
 - [ ] Progressive Web App (PWA)
 
