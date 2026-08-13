@@ -87,8 +87,8 @@
 | **Dashboard Admin**           | 1-2 minggu | ✅ Selesai |
 | **Email Newsletter**          | 1 minggu   | ✅ Selesai |
 | **Role & Permission**         | 1 minggu   | ✅ Selesai |
+| **Progressive Web App (PWA)** | 1 minggu   | ✅ Selesai |
 | API untuk Mobile          | 2-3 minggu | ⬜ |
-| Progressive Web App (PWA) | 1 minggu   | ⬜ |
 
 ---
 
@@ -172,8 +172,10 @@ User bisa lihat & beli produk ramah lingkungan via link afiliasi.
 - [x] Dashboard Admin
 - [x] Email Newsletter
 - [x] Role & Permission
+- [x] Progressive Web App (PWA)
 - [ ] API untuk Mobile
-- [ ] Progressive Web App (PWA)
+
+> ## 🎉 Fase 5 Skalabilitas — 5/6 Selesai
 
 ---
 
