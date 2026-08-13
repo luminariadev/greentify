@@ -7,6 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <title>@yield('title', 'Greentify') | Greentify</title>
     <link rel="icon" href="{{ asset('images/greentify.png') }}" type="image/png"/>
+    <link rel="manifest" href="{{ asset('manifest.json') }}"/>
+    <meta name="theme-color" content="#16a34a"/>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
@@ -46,6 +48,17 @@
             el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
             observer.observe(el);
         });
+    </script>
+
+    <!-- PWA: Register Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('{{ asset("service-worker.js") }}')
+                    .then(reg => console.log('SW registered:', reg.scope))
+                    .catch(err => console.warn('SW registration failed:', err));
+            });
+        }
     </script>
 
     @stack('scripts')
