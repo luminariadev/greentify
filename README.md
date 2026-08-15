@@ -2,6 +2,21 @@
 
 > Platform blog dan komunitas lingkungan untuk meningkatkan kesadaran dan tindakan positif terhadap pelestarian alam.
 
+![Laravel](https://img.shields.io/badge/Laravel-11-FF2D20?logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.4-4479A1?logo=mysql&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white)
+![PWA](https://img.shields.io/badge/PWA-Ready-5A0FC8)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+## 📈 Status Proyek
+
+| Fase | Status |
+|------|--------|
+| Fase 0-3 (Fitur Inti) | ✅ Selesai |
+| Fase 4: Monetisasi | ✅ 100% (Marketplace, Membership, Iklan, Donasi) |
+| Fase 5: Skalabilitas | ✅ 100% (Landing SEO, Admin, Newsletter, Role, PWA, API Mobile) |
+
 ## 📖 About
 
 **Greentify** adalah platform blog dan komunitas lingkungan yang didedikasikan untuk meningkatkan kesadaran dan tindakan positif terhadap lingkungan. Platform ini menyediakan berbagai informasi, sumber daya, dan ide kreatif untuk membantu individu dan komunitas dalam upaya mereka untuk menjaga dan merawat alam.
