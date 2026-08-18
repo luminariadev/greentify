@@ -103,25 +103,58 @@ Greentify/
 │   │   ├── ArticleController.php    (CRUD + myArticles)
 │   │   ├── CommentController.php    (store + reply)
 │   │   ├── ProfileController.php    (show user + articles)
-│   │   └── ContactFormController.php
-│   └── Models/
-│       ├── User.php
-│       ├── Article.php
-│       ├── Category.php
-│       ├── Comment.php
-│       └── Pesan.php
+│   │   ├── ContactFormController.php
+│   │   ├── MembershipController.php (Premium tiers)
+│   │   ├── DonationController.php   (QRIS/Transfer/E-Wallet)
+│   │   ├── NewsletterController.php (subscribe/unsubscribe/send)
+│   │   ├── AdController.php         (Iklan ramah lingkungan)
+│   │   ├── SponsoredPostController.php
+│   │   ├── MarketplaceController.php (Green Affiliate)
+│   │   ├── AdminDashboardController.php
+│   │   └── Api/                     (Auth, Article, Category — REST API)
+│   ├── Mail/NewsletterEmail.php     (Mailable queueable)
+│   ├── Models/
+│   │   ├── User.php                 (role: user|admin|moderator)
+│   │   ├── Article.php, Category.php, Comment.php, Pesan.php
+│   │   ├── Membership.php, MembershipTier.php
+│   │   ├── Donation.php, Subscriber.php, Ad.php, SponsoredPost.php
+│   │   └── Product.php, AffiliateCategory.php
+│   └── Http/Middleware/
+│       ├── CheckMembershipAccess.php
+│       └── CheckAdminRole.php
 ├── database/
-│   ├── migrations/   (users, categories, articles, comments, pesan)
-│   └── seeders/      (CategorySeeder, ArticleSeeder)
+│   ├── migrations/   (users, categories, articles, comments, pesan, dll.)
+│   └── seeders/      (CategorySeeder, ArticleSeeder, MembershipTiersSeeder, dll.)
+├── public/
+│   ├── manifest.json + service-worker.js  (PWA)
+│   └── images/icons/                      (PWA icons)
 ├── resources/views/
-│   ├── auth/          (login, register)
-│   ├── blog/          (limbah, konservasi, penghijauan, hutan)
-│   ├── articles/      (create, edit, show, my-articles)
-│   ├── profile/       (show)
-│   ├── components/    (head, navbar, sidebar, content, footer, blog-sidebar)
+│   ├── membership/    (pricing, status)
+│   ├── donation/      (index)
+│   ├── newsletter/    (unsubscribe)
+│   ├── sponsored/     (index, show)
+│   ├── admin/         (dashboard, newsletter/send)
 │   └── layouts/       (app, blog)
-└── routes/web.php
+├── routes/
+│   ├── web.php
+│   └── api.php        (REST API: /api/auth, /api/articles, /api/categories)
+├── tests/Feature/     (Donation, Membership, Marketplace, Newsletter, API)
+└── .github/workflows/ (ci.yml — PHP matrix, Pint, Node build)
 ```
+
+## 🔌 API Endpoints (REST)
+
+| Method | Endpoint | Deskripsi | Auth |
+|--------|----------|-----------|------|
+| POST | `/api/register` | Registrasi user | ❌ |
+| POST | `/api/login` | Login + token Sanctum | ❌ |
+| POST | `/api/logout` | Logout + revoke token | ✅ |
+| GET | `/api/articles` | List artikel (paginasi) | ❌ |
+| GET | `/api/articles/{id}` | Detail artikel | ❌ |
+| GET | `/api/categories` | List kategori | ❌ |
+| GET | `/api/categories/{id}` | Detail kategori | ❌ |
+
+Contoh auth: `Authorization: Bearer {token}` (Sanctum).
 
 ## 📈 Roadmap
 
