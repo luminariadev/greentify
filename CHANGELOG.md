@@ -4,6 +4,12 @@ Semua perubahan penting pada Greentify dicatat di sini.
 
 Format berdasarkan [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.5.1] - 2026-08-31
+
+### Maintenance
+- Dependency security audit and version alignment
+- Documentation refresh and project metadata update
+
 ## [0.5.0] - 2026-08-17
 
 ### Added
