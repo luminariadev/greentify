@@ -1,8 +1,8 @@
 # Greentify — Roadmap & Development Plan
 
 > **Greentify**: Platform blog dan komunitas lingkungan
-> **Status**: Fase 2 & 3 Selesai — Lanjut Fase 4 (Monetisasi) / Fase 5 (Skalabilitas)
-> **Update Terakhir**: 4 Agustus 2026
+> **Status**: Fase 2–5 Selesai — API Mobile (Fase 5) baru diselesaikan 26 Sep 2026
+> **Update Terakhir**: 26 September 2026
 
 ---
 
@@ -88,9 +88,25 @@
 | **Email Newsletter**          | 1 minggu   | ✅ Selesai |
 | **Role & Permission**         | 1 minggu   | ✅ Selesai |
 | **Progressive Web App (PWA)** | 1 minggu   | ✅ Selesai |
-| API untuk Mobile          | 2-3 minggu | ⬜ |
+| **API untuk Mobile**        | 2-3 minggu | ✅ Selesai (26 Sep 2026) |
 
----
+> ## 🎉 Fase 5 Skalabilitas — 6/6 Selesai
+
+### Endpoint API Mobile (v1)
+
+| Method | Endpoint                    | Auth     | Keterangan                        |
+| ------ | --------------------------- | -------- | --------------------------------- |
+| POST   | `/api/register`             | ❌       | Issue Sanctum token               |
+| POST   | `/api/login`                | ❌       | Issue Sanctum token               |
+| POST   | `/api/logout`               | ✅ Bearer| Mencabut token aktif              |
+| GET    | `/api/user`                 | ✅ Bearer| Profil user saat ini              |
+| GET    | `/api/articles`             | ❌       | Published only, `per_page` 1–50  |
+| GET    | `/api/articles/{id}`        | ❌       | Draft 404 kecuali penulis/staff  |
+| GET    | `/api/categories`           | ❌       | Hanya kategori berisi artikel    |
+| GET    | `/api/categories/{id}`      | ❌       | Lengkap dengan `articles_count`  |
+
+Semua response memakai `App\Http\Resources` sehingga payload konsisten
+(`data`, `meta`, `links`) dan tanggal dalam format ISO-8601.
 
 ## 💰 Analisis Monetisasi Detail
 
@@ -173,9 +189,11 @@ User bisa lihat & beli produk ramah lingkungan via link afiliasi.
 - [x] Email Newsletter
 - [x] Role & Permission
 - [x] Progressive Web App (PWA)
-- [ ] API untuk Mobile
+- [x] API untuk Mobile (Sanctum token + ArticleResource/CategoryResource)
 
-> ## 🎉 Fase 5 Skalabilitas — 5/6 Selesai
+> ## 🎉 Fase 5 Skalabilitas — 6/6 Selesai
+> Roadmap seluruh fase (0–5) sudah tuntas. Fokus berikutnya: integrasi
+> payment gateway (Membership & Donasi masih free-activation).
 
 ---
 
