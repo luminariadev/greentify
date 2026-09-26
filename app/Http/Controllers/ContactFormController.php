@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Pesan;
+use Illuminate\Http\Request;
 
 class ContactFormController extends Controller
 {
@@ -25,4 +25,3 @@ class ContactFormController extends Controller
         return back()->with('success', 'Your message has been sent successfully!');
     }
 }
-

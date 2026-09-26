@@ -1,8 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -55,7 +56,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         // Redirect ke halaman welcome dengan pesan sukses
-        return redirect()->route('welcome')->with('success', 'Registration successful! Welcome, ' . $user->name);
+        return redirect()->route('welcome')->with('success', 'Registration successful! Welcome, '.$user->name);
     }
 
     public function logout(Request $request)

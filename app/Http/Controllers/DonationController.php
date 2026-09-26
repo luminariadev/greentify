@@ -38,10 +38,10 @@ class DonationController extends Controller
             'message' => $validated['message'] ?? null,
             'payment_method' => $validated['payment_method'],
             'status' => 'completed', // Mock: langsung sukses (integrasi payment gateway = task masa depan)
-            'reference' => 'DON-' . strtoupper(Str::random(10)),
+            'reference' => 'DON-'.strtoupper(Str::random(10)),
         ]);
 
         return redirect()->route('donation.index')
-            ->with('success', "Terima kasih atas donasi Anda sebesar Rp " . number_format((float) $donation->amount, 0, ',', '.') . "! 🌱");
+            ->with('success', 'Terima kasih atas donasi Anda sebesar Rp '.number_format((float) $donation->amount, 0, ',', '.').'! 🌱');
     }
 }

@@ -26,7 +26,7 @@ class MembershipController extends Controller
      */
     public function subscribe(Request $request, MembershipTier $tier): RedirectResponse
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             return redirect()->route('login')->with('error', 'Login terlebih dahulu untuk berlangganan.');
         }
 

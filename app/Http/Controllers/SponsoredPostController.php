@@ -22,7 +22,7 @@ class SponsoredPostController extends Controller
      */
     public function show(SponsoredPost $sponsoredPost): View
     {
-        if (!$sponsoredPost->is_published || ($sponsoredPost->published_at && $sponsoredPost->published_at->isFuture())) {
+        if (! $sponsoredPost->is_published || ($sponsoredPost->published_at && $sponsoredPost->published_at->isFuture())) {
             abort(404);
         }
 

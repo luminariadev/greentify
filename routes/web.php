@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdController;
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArticleInteractionController;
 use App\Http\Controllers\AuthController;
@@ -9,8 +9,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\FollowController;
-use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\MarketplaceController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;

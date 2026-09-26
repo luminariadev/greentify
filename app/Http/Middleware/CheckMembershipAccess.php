@@ -15,13 +15,13 @@ class CheckMembershipAccess
      */
     public function handle(Request $request, Closure $next, string $minTier = 'green'): Response
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             return redirect()->route('login')->with('error', 'Login diperlukan untuk akses konten premium.');
         }
 
         $user = auth()->user();
 
-        if (!$user->membership || !$user->membership->is_active || $user->membership->isExpired()) {
+        if (! $user->membership || ! $user->membership->is_active || $user->membership->isExpired()) {
             return redirect()->route('membership.pricing')->with('error', 'Anda tidak memiliki membership aktif untuk akses fitur ini.');
         }
 

@@ -25,7 +25,7 @@ class ArticleSeeder extends Seeder
                 'excerpt' => 'Mulai dari botol minum hingga kantong belanja — langkah kecil yang dampaknya luar biasa bagi laut kita.',
                 'content' => $this->longContent(
                     'Mengurangi sampah plastik tidak harus berarti mengubah seluruh gaya hidup dalam semalam. '
-                    . 'Dengan lima kebiasaan sederhana berikut, keluarga Anda sudah berkontribusi nyata menjaga kebersihan laut dan tanah.',
+                    .'Dengan lima kebiasaan sederhana berikut, keluarga Anda sudah berkontribusi nyata menjaga kebersihan laut dan tanah.',
                     [
                         'Ganti botol plastik dengan tumbler stainless steel atau kaca.',
                         'Bawa tas belanja sendiri saat berbelanja — lipat kecil dan simpan di tas.',
@@ -42,7 +42,7 @@ class ArticleSeeder extends Seeder
                 'excerpt' => 'Zero waste bukan berarti nol sampah total — tapi tentang membuat pilihan yang lebih sadar setiap hari.',
                 'content' => $this->longContent(
                     'Gerakan zero waste mengajak kita untuk memikirkan kembali cara kita mengonsumsi. '
-                    . 'Prinsip 5R — Refuse, Reduce, Reuse, Recycle, Rot — menjadi panduan utama.',
+                    .'Prinsip 5R — Refuse, Reduce, Reuse, Recycle, Rot — menjadi panduan utama.',
                     [
                         'Refuse: tolak barang sekali pakai yang tidak benar-benar diperlukan.',
                         'Reduce: beli lebih sedikit, pilih kualitas daripada kuantitas.',
@@ -61,7 +61,7 @@ class ArticleSeeder extends Seeder
                 'excerpt' => 'Dua miliar orang hidup di negara dengan tekanan air tinggi. Konservasi dimulai dari keran rumah Anda.',
                 'content' => $this->longContent(
                     'Menurut UN-Water, satu dari empat orang di dunia tidak memiliki akses air minum yang aman. '
-                    . 'Indonesia sendiri menghadapi tantangan besar dalam mengelola sumber daya air bersih.',
+                    .'Indonesia sendiri menghadapi tantangan besar dalam mengelola sumber daya air bersih.',
                     [
                         'Matikan keran saat menyikat gigi — hemat hingga 12 liter per menit.',
                         'Perbaiki kebocoran pipa sekecil apa pun.',
@@ -78,7 +78,7 @@ class ArticleSeeder extends Seeder
                 'excerpt' => 'Koral bleaching mengancam 75% terumbu karang dunia. Inisiatif lokal bisa membuat perbedaan besar.',
                 'content' => $this->longContent(
                     'Terumbu karang adalah rumah bagi 25% spesies laut meskipun hanya menutupi kurang dari 1% dasar laut. '
-                    . 'Pemanasan global dan polusi telah menyebabkan pemutihan massal yang mengkhawatirkan.',
+                    .'Pemanasan global dan polusi telah menyebabkan pemutihan massal yang mengkhawatirkan.',
                     [
                         'Gunakan tabir surya reef-safe yang bebas oxybenzone dan octinoxate.',
                         'Kurangi jejak karbon: kurangi konsumsi energi dan transportasi.',
@@ -97,7 +97,7 @@ class ArticleSeeder extends Seeder
                 'excerpt' => 'Jakarta dan kota-kota besar mulai beralih ke pertanian vertikal dan rooftop garden.',
                 'content' => $this->longContent(
                     'Pertanian perkotaan bukan lagi konsep futuristik. Di Jakarta, beberapa gedung komersial sudah '
-                    . 'memiliki rooftop garden yang menghasilkan sayuran organik untuk kafe dan restoran di bawahnya.',
+                    .'memiliki rooftop garden yang menghasilkan sayuran organik untuk kafe dan restoran di bawahnya.',
                     [
                         'Mulai dengan tanaman sederhana: kangkung, selada, dan tomat cherry.',
                         'Manfaatkan lahan kosong: teras, balkon, atau halaman belakang.',
@@ -114,7 +114,7 @@ class ArticleSeeder extends Seeder
                 'excerpt' => 'Hutan bakau terbukti mengurangi kekuatan gelombang laut hingga 80% — investasi alami terbaik.',
                 'content' => $this->longContent(
                     'Indonesia memiliki garis pantai terpanjang keempat di dunia dan hutan mangrove terluas di Asia Tenggara. '
-                    . 'Namun, deforestasi mangrove mengancam perlindungan alami ini.',
+                    .'Namun, deforestasi mangrove mengancam perlindungan alami ini.',
                     [
                         'Ikut program penanaman mangrove di pesisir terdekat.',
                         'Dukung regulasi perlindungan hutan bakau di daerah Anda.',
@@ -133,7 +133,7 @@ class ArticleSeeder extends Seeder
                 'excerpt' => 'Satu hektar hutan hujan hilang setiap 10 detik. Para aktivis lokal membagikan kisah mereka.',
                 'content' => $this->longContent(
                     'Kalimantan adalah rumah bagi salah satu hutan hujan tropis tertua di dunia. '
-                    . 'Namun ekspansi perkebunan sawit dan pertambangan terus menggerogoti warisan alam ini.',
+                    .'Namun ekspansi perkebunan sawit dan pertambangan terus menggerogoti warisan alam ini.',
                     [
                         'Dukung produk sawit berkelanjutan (RSPO certified).',
                         'Konsumsi lebih sedikit daging — peternakan adalah pendorong utama deforestasi.',
@@ -150,7 +150,7 @@ class ArticleSeeder extends Seeder
                 'excerpt' => 'Dari orangutan Sumatera hingga badak Jawa — daftar merah yang harus kita perjuangkan.',
                 'content' => $this->longContent(
                     'Indonesia adalah salah satu dari 17 negara megabiodiversity di dunia dengan lebih dari 130.000 '
-                    . 'spesies tumbuhan dan hewan. Namun banyak yang terancam punah.',
+                    .'spesies tumbuhan dan hewan. Namun banyak yang terancam punah.',
                     [
                         'Orangutan Kalimantan: populasi turun 50% dalam 60 tahun.',
                         'Harimau Sumatera: kurang dari 400 individu tersisa.',
@@ -165,7 +165,9 @@ class ArticleSeeder extends Seeder
 
         foreach ($articles as $data) {
             $category = Category::where('slug', $data['category'])->first();
-            if (!$category) continue;
+            if (! $category) {
+                continue;
+            }
 
             Article::updateOrCreate(
                 ['slug' => Str::slug($data['title'])],
@@ -185,13 +187,14 @@ class ArticleSeeder extends Seeder
 
     private function longContent(string $intro, array $points): string
     {
-        $html  = "<p>{$intro}</p>\n\n";
+        $html = "<p>{$intro}</p>\n\n";
         $html .= "<h3>Yang Bisa Anda Mulai Hari Ini</h3>\n<ul>\n";
         foreach ($points as $point) {
             $html .= "<li>{$point}</li>\n";
         }
         $html .= "</ul>\n\n";
-        $html .= "<p>Perubahan besar dimulai dari langkah kecil. Bersama-sama, kita bisa membuat perbedaan nyata bagi planet ini.</p>";
+        $html .= '<p>Perubahan besar dimulai dari langkah kecil. Bersama-sama, kita bisa membuat perbedaan nyata bagi planet ini.</p>';
+
         return $html;
     }
 }

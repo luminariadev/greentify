@@ -15,6 +15,7 @@ class NotificationController extends Controller
     public function index(Request $request)
     {
         $notifications = $request->user()->notifications()->latest()->paginate(20);
+
         return view('notifications.index', compact('notifications'));
     }
 
@@ -33,6 +34,7 @@ class NotificationController extends Controller
     public function markAllAsRead(Request $request): RedirectResponse
     {
         $request->user()->unreadNotifications()->update(['read_at' => now()]);
+
         return back()->with('success', 'Semua notifikasi ditandai sudah dibaca.');
     }
 }

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
-use App\Models\SponsoredPost;
-use Illuminate\View\View;
 
 class AdController extends Controller
 {

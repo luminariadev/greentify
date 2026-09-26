@@ -69,13 +69,13 @@ class ArticleInteractionController extends Controller
         $articles = Article::whereHas('bookmarkedBy', function ($q) use ($user) {
             $q->where('user_id', $user->id);
         })
-        ->with(['category', 'user'])
-        ->withCount([
-            'likedBy as likes_count',
-            'bookmarkedBy as bookmarks_count',
-        ])
-        ->latest('published_at')
-        ->paginate(12);
+            ->with(['category', 'user'])
+            ->withCount([
+                'likedBy as likes_count',
+                'bookmarkedBy as bookmarks_count',
+            ])
+            ->latest('published_at')
+            ->paginate(12);
 
         return view('bookmarks.index', compact('articles'));
     }

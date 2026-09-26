@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -30,8 +30,8 @@ class ArticleController extends Controller
         if ($request->filled('search')) {
             $query->where(function ($q) use ($request) {
                 $q->where('title', 'like', "%{$request->search}%")
-                  ->orWhere('content', 'like', "%{$request->search}%")
-                  ->orWhere('excerpt', 'like', "%{$request->search}%");
+                    ->orWhere('content', 'like', "%{$request->search}%")
+                    ->orWhere('excerpt', 'like', "%{$request->search}%");
             });
         }
 
@@ -45,8 +45,12 @@ class ArticleController extends Controller
 
         if (auth()->check()) {
             $articles->load([
-                'likedBy' => function ($q) { $q->where('user_id', auth()->id()); },
-                'bookmarkedBy' => function ($q) { $q->where('user_id', auth()->id()); },
+                'likedBy' => function ($q) {
+                    $q->where('user_id', auth()->id());
+                },
+                'bookmarkedBy' => function ($q) {
+                    $q->where('user_id', auth()->id());
+                },
             ]);
         }
 
@@ -58,6 +62,7 @@ class ArticleController extends Controller
     public function create()
     {
         $categories = Category::orderBy('name')->get();
+
         return view('articles.create', compact('categories'));
     }
 
@@ -78,7 +83,7 @@ class ArticleController extends Controller
         }
 
         $validated['user_id'] = auth()->id();
-        $validated['slug'] = Str::slug($validated['title']) . '-' . Str::random(6);
+        $validated['slug'] = Str::slug($validated['title']).'-'.Str::random(6);
 
         if ($validated['status'] === 'published') {
             $validated['published_at'] = now();
@@ -92,7 +97,7 @@ class ArticleController extends Controller
 
     public function show(Article $article)
     {
-        if ($article->status !== 'published' && (!auth()->check() || auth()->id() !== $article->user_id)) {
+        if ($article->status !== 'published' && (! auth()->check() || auth()->id() !== $article->user_id)) {
             abort(404);
         }
 
@@ -106,8 +111,12 @@ class ArticleController extends Controller
 
         if (auth()->check()) {
             $article->load([
-                'likedBy' => function ($q) { $q->where('user_id', auth()->id()); },
-                'bookmarkedBy' => function ($q) { $q->where('user_id', auth()->id()); },
+                'likedBy' => function ($q) {
+                    $q->where('user_id', auth()->id());
+                },
+                'bookmarkedBy' => function ($q) {
+                    $q->where('user_id', auth()->id());
+                },
             ]);
         }
 
@@ -126,6 +135,7 @@ class ArticleController extends Controller
     {
         abort_unless(auth()->id() === $article->user_id, 403);
         $categories = Category::orderBy('name')->get();
+
         return view('articles.edit', compact('article', 'categories'));
     }
 
