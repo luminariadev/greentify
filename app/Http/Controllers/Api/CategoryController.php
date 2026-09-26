@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CategoryController extends Controller
 {
@@ -14,9 +15,9 @@ class CategoryController extends Controller
      * Only categories that actually have a published article — an empty
      * category is dead weight in a mobile client.
      */
-    public function index(): JsonResponse
+    public function index(): AnonymousResourceCollection
     {
-        return response()->json(
+        return CategoryResource::collection(
             Category::query()
                 ->whereHas('articles', fn ($q) => $q->where('status', 'published'))
                 ->withCount(['articles' => fn ($q) => $q->where('status', 'published')])
@@ -30,9 +31,9 @@ class CategoryController extends Controller
      * /api/categories/{id} while the model binds by slug, so resolve it
      * explicitly rather than through implicit binding.
      */
-    public function show(int|string $category): JsonResponse
+    public function show(int|string $category): CategoryResource
     {
-        return response()->json(
+        return new CategoryResource(
             Category::withCount(['articles' => fn ($q) => $q->where('status', 'published')])
                 ->findOrFail($category)
         );
