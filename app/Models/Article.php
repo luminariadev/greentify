@@ -28,26 +28,41 @@ class Article extends Model
         'published_at' => 'datetime',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User>
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\Category>
+     */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\Comment>
+     */
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class)->latest();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\App\Models\User>
+     */
     public function likedBy(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'article_likes')->withTimestamps();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany<\App\Models\User>
+     */
     public function bookmarkedBy(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'article_bookmarks')->withTimestamps();

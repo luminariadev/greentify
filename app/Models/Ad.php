@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,7 +26,11 @@ class Ad extends Model
         'ends_at' => 'datetime',
     ];
 
-    public function scopeActive($query)
+    /**
+     * @param  Builder<Ad>  $query
+     * @return Builder<Ad>
+     */
+    public function scopeActive(Builder $query): Builder
     {
         return $query->where('is_active', true)
             ->where(function ($q) {

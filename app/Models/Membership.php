@@ -24,11 +24,17 @@ class Membership extends Model
         'is_active' => 'boolean',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User>
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\MembershipTier>
+     */
     public function tier(): BelongsTo
     {
         return $this->belongsTo(MembershipTier::class, 'membership_tier_id');

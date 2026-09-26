@@ -23,6 +23,9 @@ class Product extends Model
         'price' => 'decimal:2',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\AffiliateCategory>
+     */
     public function affiliateCategory(): BelongsTo
     {
         return $this->belongsTo(AffiliateCategory::class);

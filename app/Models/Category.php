@@ -12,6 +12,9 @@ class Category extends Model
 
     protected $fillable = ['name', 'slug', 'description', 'color', 'icon'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\Article>
+     */
     public function articles(): HasMany
     {
         return $this->hasMany(Article::class);

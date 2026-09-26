@@ -23,6 +23,9 @@ class MembershipTier extends Model
         'features' => 'array',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\Membership>
+     */
     public function memberships(): HasMany
     {
         return $this->hasMany(Membership::class);

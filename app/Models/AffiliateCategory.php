@@ -15,6 +15,9 @@ class AffiliateCategory extends Model
         'slug',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany<\App\Models\Product>
+     */
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
