@@ -48,10 +48,13 @@ Route::post('/contact', [ContactFormController::class, 'store'])->name('contact.
 Route::get('/marketplace', [MarketplaceController::class, 'index'])->name('marketplace.index');
 Route::get('/marketplace/{product}', [MarketplaceController::class, 'show'])->name('marketplace.show');
 
-// Membership
+// Membership — the pricing table is a public marketing page; only the
+// account-bound actions need auth (a login wall on the price list means
+// nobody can ever see what they would be paying for).
+Route::get('/membership/pricing', [MembershipController::class, 'pricing'])->name('membership.pricing');
+
 Route::middleware('auth')->group(function () {
     Route::get('/membership', [MembershipController::class, 'status'])->name('membership.status');
-    Route::get('/membership/pricing', [MembershipController::class, 'pricing'])->name('membership.pricing');
     Route::post('/membership/subscribe/{tier}', [MembershipController::class, 'subscribe'])->name('membership.subscribe');
     Route::post('/membership/cancel', [MembershipController::class, 'cancel'])->name('membership.cancel');
 });
