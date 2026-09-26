@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(CategorySeeder::class);
         $this->call(ArticleSeeder::class);
-
-        // Optional: add sample likes/bookmarks for demonstration
-        // $this->seedInteractions();
+        $this->call(MembershipTiersSeeder::class);
+        $this->call(AffiliateMarketplaceSeeder::class);
+        $this->call(AdsAndSponsoredSeeder::class);
 
         User::firstOrCreate(
             ['email' => 'test@example.com'],
@@ -31,10 +31,8 @@ class DatabaseSeeder extends Seeder
         $articles = Article::all();
         if ($users->isNotEmpty() && $articles->isNotEmpty()) {
             foreach ($users as $user) {
-                $sampleLikes = $articles->random(3);
-                $sampleBookmarks = $articles->random(2);
-                $user->likes()->syncWithoutDetaching($sampleLikes->pluck('id')->toArray());
-                $user->bookmarks()->syncWithoutDetaching($sampleBookmarks->pluck('id')->toArray());
+                $user->likes()->syncWithoutDetaching($articles->random(3)->pluck('id')->all());
+                $user->bookmarks()->syncWithoutDetaching($articles->random(2)->pluck('id')->all());
             }
         }
     }
