@@ -10,11 +10,6 @@ use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['index', 'show']);
-    }
-
     public function index(Request $request)
     {
         $query = Article::with(['user', 'category'])
@@ -38,13 +33,13 @@ class ArticleController extends Controller
         $articles = $query->paginate(9)->withQueryString();
 
         // Eager load counts and current user pivot for like/bookmark UI
-        $articles->loadCount([
+        $articles->getCollection()->loadCount([
             'likedBy as likes_count',
             'bookmarkedBy as bookmarks_count',
         ]);
 
         if (auth()->check()) {
-            $articles->load([
+            $articles->getCollection()->load([
                 'likedBy' => function ($q) {
                     $q->where('user_id', auth()->id());
                 },

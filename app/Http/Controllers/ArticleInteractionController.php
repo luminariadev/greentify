@@ -9,11 +9,6 @@ use Illuminate\Http\JsonResponse;
 
 class ArticleInteractionController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function toggleLike(Article $article): JsonResponse
     {
         $user = auth()->user();

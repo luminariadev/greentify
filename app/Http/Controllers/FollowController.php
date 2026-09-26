@@ -8,11 +8,6 @@ use Illuminate\Http\JsonResponse;
 
 class FollowController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function toggleFollow(User $user): JsonResponse
     {
         $authUser = auth()->user();
