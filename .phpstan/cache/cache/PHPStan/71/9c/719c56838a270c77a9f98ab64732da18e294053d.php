@@ -7,7 +7,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
   array (
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AdController.php' => 
     array (
-      0 => 'a73b7201736dd53f097a32fbd9dd678cec8c7afc',
+      0 => '8b852314d0c943135e4ca2e2582eea8038b2b68f',
       1 => 
       array (
         0 => 'app\\http\\controllers\\adcontroller',
@@ -89,7 +89,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php' => 
     array (
-      0 => 'b9830c2887c78a2f13aea0414d1301e7763a46f0',
+      0 => 'd84210010c16153b38e063d02ba0320bc155a8bb',
       1 => 
       array (
         0 => 'app\\http\\controllers\\articlecontroller',
@@ -111,7 +111,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleInteractionController.php' => 
     array (
-      0 => '637d37c44227bbe1e39036c9493cbcf1f0cdbe02',
+      0 => '882d3b0bebdb0cfeee8ecfc3ba52e085ed4be5f3',
       1 => 
       array (
         0 => 'app\\http\\controllers\\articleinteractioncontroller',
@@ -128,7 +128,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AuthController.php' => 
     array (
-      0 => 'ee37220daec7a9e0df535b05b2db4373abeab4b1',
+      0 => 'e64d718d9da993c3f1a61cacde130a0bd69f18ae',
       1 => 
       array (
         0 => 'app\\http\\controllers\\authcontroller',
@@ -147,7 +147,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\CommentController.php' => 
     array (
-      0 => '737e6a6883c10924fe8ef2eafd20578772e65391',
+      0 => '0dc0bc1479531cd485ce340fb9b8f099c37b0214',
       1 => 
       array (
         0 => 'app\\http\\controllers\\commentcontroller',
@@ -163,7 +163,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ContactFormController.php' => 
     array (
-      0 => '5e536757c824253977c1b44ed23dbcb88b473d5b',
+      0 => '88c04139831acc31821c92d0ec403a4cfd2dcf93',
       1 => 
       array (
         0 => 'app\\http\\controllers\\contactformcontroller',
@@ -277,7 +277,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\NotificationController.php' => 
     array (
-      0 => 'b2a6229e9166c213af662d70432013685e1794e7',
+      0 => '55852c585df6567157bf1d97b2f53df6d3190933',
       1 => 
       array (
         0 => 'app\\http\\controllers\\notificationcontroller',
@@ -294,7 +294,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ProfileController.php' => 
     array (
-      0 => '7177c915c56ea36a85d2396415463e3a7f0ef79c',
+      0 => '8ff4234af038cf9a22a40f8e68b8bbae94ac3a0c',
       1 => 
       array (
         0 => 'app\\http\\controllers\\profilecontroller',
@@ -309,7 +309,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ReportController.php' => 
     array (
-      0 => '85ea521a4af8f4becb7b50f2ffc884b83810228e',
+      0 => '24b0f7c07eacc8563024fa5f5492a9347eb85231',
       1 => 
       array (
         0 => 'app\\http\\controllers\\reportcontroller',
@@ -451,7 +451,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Article.php' => 
     array (
-      0 => 'e0cd2dfc2abd87d1eb4c8b597d27bbd1bd796958',
+      0 => '249cf216f6689a027fdad57e67ea915c4b5de342',
       1 => 
       array (
         0 => 'app\\models\\article',
@@ -487,7 +487,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php' => 
     array (
-      0 => '9ca86acc16ec48b492c4bfe8f6da2f04f47851f2',
+      0 => '596031f8029c2f8f0ea93d0f33a65db36cdcf9b3',
       1 => 
       array (
         0 => 'app\\models\\comment',
@@ -505,7 +505,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Donation.php' => 
     array (
-      0 => '852bb8a9d90d84b2318c6f676618c19c739cce07',
+      0 => '0f9b34f171088a7e67aac0f6aa43c4b7ba38487f',
       1 => 
       array (
         0 => 'app\\models\\donation',
@@ -521,7 +521,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Membership.php' => 
     array (
-      0 => '2a80b512bd1299f88f4fbc21d094fc9a1d648920',
+      0 => '6e04916e245d4740789af7fd738b29a329e1119d',
       1 => 
       array (
         0 => 'app\\models\\membership',
@@ -567,7 +567,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Product.php' => 
     array (
-      0 => '69b4f60ec990a8cd1a70c9d10097f4a06a066d4b',
+      0 => '1f07331de3d78ec51ff1a0a4d48b09c8bb82c3e0',
       1 => 
       array (
         0 => 'app\\models\\product',
@@ -582,7 +582,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Report.php' => 
     array (
-      0 => '1a06d4c434024464c73583817152f5c0ed7190d1',
+      0 => '72be059cb907cfd52f34027ef91f0ac76380ef47',
       1 => 
       array (
         0 => 'app\\models\\report',
@@ -599,7 +599,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\SponsoredPost.php' => 
     array (
-      0 => '607194786986732fd6c0e822e8dd58e6f5ebf817',
+      0 => '78cf5a360a276ed60cbeaecd6bd74decb47c6adb',
       1 => 
       array (
         0 => 'app\\models\\sponsoredpost',
@@ -630,7 +630,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\User.php' => 
     array (
-      0 => 'eb472b614a36fa811bf77ed9e54afb39aaaf713a',
+      0 => 'd082154a3ec0d96bd34bf7a03c14e9c64d748d8a',
       1 => 
       array (
         0 => 'app\\models\\user',
@@ -660,7 +660,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ArticleBookmarked.php' => 
     array (
-      0 => '615759e883e926e8d73e90fbd30aa1e102f4155e',
+      0 => 'cd4704e9452f0232d30622d978c4561e8f6eb0f5',
       1 => 
       array (
         0 => 'app\\notifications\\articlebookmarked',
@@ -677,7 +677,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ArticleLiked.php' => 
     array (
-      0 => '33f8fdfd1763ee4bd77f21c5789587522bbe1df9',
+      0 => '0bcc1b6a576a70ad270263b5c0002233d4d360ca',
       1 => 
       array (
         0 => 'app\\notifications\\articleliked',
@@ -694,7 +694,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\NewComment.php' => 
     array (
-      0 => '191b9bfdf966577692fa341fbb06c071d7e8edc9',
+      0 => 'adfe74c5e85bcdeaf78a4c44515d7ca418e995f7',
       1 => 
       array (
         0 => 'app\\notifications\\newcomment',
@@ -711,7 +711,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ReportSubmitted.php' => 
     array (
-      0 => '2b9633d5bb301b953af20fa675c02d57792a5b60',
+      0 => '63fac1c30628c62e6c947e03c2bbeced8e41bcd3',
       1 => 
       array (
         0 => 'app\\notifications\\reportsubmitted',
@@ -728,7 +728,7 @@ return \PHPStan\Cache\CacheItem::__set_state(array(
     ),
     'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\UserFollowed.php' => 
     array (
-      0 => 'd74719c7d381bc51ff9f7f537564dac5f2c5e48d',
+      0 => '8355deae5892fa3d87b8463e2c4a6846ff82408e',
       1 => 
       array (
         0 => 'app\\notifications\\userfollowed',

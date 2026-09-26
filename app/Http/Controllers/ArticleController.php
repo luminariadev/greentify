@@ -15,6 +15,7 @@ class ArticleController extends Controller
     public function index(Request $request): View
     {
         $query = Article::with(['user', 'category'])
+            ->withCount(['likedBy', 'bookmarkedBy'])
             ->where('status', 'published')
             ->latest('published_at');
 
@@ -32,25 +33,16 @@ class ArticleController extends Controller
             });
         }
 
-        $articles = $query->paginate(9)->withQueryString();
-
-        // Eager load counts and current user pivot for like/bookmark UI
-        $articles->getCollection()->loadCount([
-            'likedBy as likes_count',
-            'bookmarkedBy as bookmarks_count',
-        ]);
-
+        // The like/bookmark heart state is per-viewer, so it is loaded with a
+        // constraint on the current user rather than counted for everyone.
         if (auth()->check()) {
-            $articles->getCollection()->load([
-                'likedBy' => function ($q) {
-                    $q->where('user_id', auth()->id());
-                },
-                'bookmarkedBy' => function ($q) {
-                    $q->where('user_id', auth()->id());
-                },
+            $query->with([
+                'likedBy' => fn ($q) => $q->where('user_id', auth()->id()),
+                'bookmarkedBy' => fn ($q) => $q->where('user_id', auth()->id()),
             ]);
         }
 
+        $articles = $query->paginate(9)->withQueryString();
         $categories = Category::orderBy('name')->get();
 
         return view('blogspot', compact('articles', 'categories'));

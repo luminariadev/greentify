@@ -25,7 +25,7 @@ class Membership extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User, \App\Models\Membership>
      */
     public function user(): BelongsTo
     {
@@ -33,7 +33,7 @@ class Membership extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\MembershipTier>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\MembershipTier, \App\Models\Membership>
      */
     public function tier(): BelongsTo
     {

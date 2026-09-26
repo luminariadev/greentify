@@ -164,6 +164,8 @@ class User extends Authenticatable
     /**
      * Coerce unknown roles to 'user' so a bad write can never produce a
      * user that silently passes — or silently fails — every access gate.
+     *
+     * @return Attribute<string, string|null>
      */
     protected function role(): Attribute
     {

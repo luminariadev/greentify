@@ -26,7 +26,7 @@ class Donation extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User, \App\Models\Donation>
      */
     public function user(): BelongsTo
     {

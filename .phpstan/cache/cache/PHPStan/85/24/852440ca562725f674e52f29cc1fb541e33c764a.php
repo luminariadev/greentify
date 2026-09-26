@@ -2,6 +2,6 @@
 
 // variadic-method-App\Models\Report-reportable-D:\Rizkia\Project Software\Greentify\app\Models\Report.php
 return \PHPStan\Cache\CacheItem::__set_state(array(
-   'variableKey' => '1790427384-v4',
+   'variableKey' => '1790452060-v4',
    'data' => false,
 ));

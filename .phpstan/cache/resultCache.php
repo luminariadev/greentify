@@ -1811,1096 +1811,6 @@ return [
 	'projectExtensionFiles' => array (
 ),
 	'errorsCallback' => static function (): array { return array (
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AdController.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\AdController::getActiveAds() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AdController.php',
-       'line' => 12,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AdController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 12,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\AdController::trackClick() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AdController.php',
-       'line' => 20,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AdController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 20,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ArticleController::index() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'line' => 13,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 13,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method Illuminate\\Support\\Collection<(int|string), App\\Models\\Article>::loadCount().',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'line' => 36,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 36,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Call to an undefined method Illuminate\\Support\\Collection<(int|string), App\\Models\\Article>::load().',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'line' => 42,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 42,
-       'nodeType' => 'PhpParser\\Node\\Expr\\MethodCall',
-       'identifier' => 'method.notFound',
-       'metadata' => 
-      array (
-      ),
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ArticleController::create() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'line' => 57,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 57,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ArticleController::store() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'line' => 64,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 64,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ArticleController::show() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'line' => 93,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 93,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    6 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ArticleController::edit() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'line' => 129,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 129,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    7 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ArticleController::update() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'line' => 137,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 137,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    8 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ArticleController::destroy() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'line' => 175,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 175,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    9 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ArticleController::myArticles() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'line' => 189,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 189,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleInteractionController.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ArticleInteractionController::indexBookmarks() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleInteractionController.php',
-       'line' => 60,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleInteractionController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 60,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AuthController.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\AuthController::showLoginForm() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AuthController.php',
-       'line' => 11,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AuthController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 11,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\AuthController::login() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AuthController.php',
-       'line' => 16,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AuthController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 16,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\AuthController::showRegistrationForm() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AuthController.php',
-       'line' => 34,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AuthController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 34,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\AuthController::register() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AuthController.php',
-       'line' => 39,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AuthController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 39,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\AuthController::logout() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AuthController.php',
-       'line' => 62,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AuthController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 62,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\CommentController.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\CommentController::store() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\CommentController.php',
-       'line' => 12,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\CommentController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 12,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\CommentController::reply() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\CommentController.php',
-       'line' => 40,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\CommentController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 40,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ContactFormController.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ContactFormController::showForm() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ContactFormController.php',
-       'line' => 10,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ContactFormController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 10,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ContactFormController::store() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ContactFormController.php',
-       'line' => 15,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ContactFormController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 15,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\NotificationController.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\NotificationController::index() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\NotificationController.php',
-       'line' => 10,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\NotificationController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 10,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ProfileController.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ProfileController::show() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ProfileController.php',
-       'line' => 9,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ProfileController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 9,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ReportController.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ReportController::create() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ReportController.php',
-       'line' => 14,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ReportController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 14,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ReportController::store() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ReportController.php',
-       'line' => 28,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ReportController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 28,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ReportController::index() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ReportController.php',
-       'line' => 67,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ReportController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 67,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Http\\Controllers\\ReportController::review() has no return type specified.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ReportController.php',
-       'line' => 79,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ReportController.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 79,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.return',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Article.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Generic type Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo: TRelatedModel, TChildModel',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Article.php',
-       'line' => 34,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Article.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 34,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'generics.lessTypes',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Models\\Article::user() should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User, App\\Models\\Article>.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Article.php',
-       'line' => 36,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Article.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 36,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Generic type Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\Category> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo: TRelatedModel, TChildModel',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Article.php',
-       'line' => 42,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Article.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 42,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'generics.lessTypes',
-       'metadata' => 
-      array (
-      ),
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Models\\Article::category() should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\Category> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\Category, App\\Models\\Article>.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Article.php',
-       'line' => 44,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Article.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 44,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Generic type Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo: TRelatedModel, TChildModel',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php',
-       'line' => 24,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 24,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'generics.lessTypes',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Models\\Comment::user() should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User, App\\Models\\Comment>.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php',
-       'line' => 26,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 26,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Generic type Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\Article> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo: TRelatedModel, TChildModel',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php',
-       'line' => 32,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 32,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'generics.lessTypes',
-       'metadata' => 
-      array (
-      ),
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Models\\Comment::article() should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\Article> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\Article, App\\Models\\Comment>.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php',
-       'line' => 34,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 34,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Generic type Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\Comment> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo: TRelatedModel, TChildModel',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php',
-       'line' => 40,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 40,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'generics.lessTypes',
-       'metadata' => 
-      array (
-      ),
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Models\\Comment::parent() should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\Comment> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\Comment, App\\Models\\Comment>.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php',
-       'line' => 42,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 42,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Donation.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Generic type Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo: TRelatedModel, TChildModel',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Donation.php',
-       'line' => 31,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Donation.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 31,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'generics.lessTypes',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Models\\Donation::user() should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User, App\\Models\\Donation>.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Donation.php',
-       'line' => 33,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Donation.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 33,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Membership.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Generic type Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo: TRelatedModel, TChildModel',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Membership.php',
-       'line' => 30,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Membership.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 30,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'generics.lessTypes',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Models\\Membership::user() should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User, App\\Models\\Membership>.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Membership.php',
-       'line' => 32,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Membership.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 32,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Generic type Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\MembershipTier> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo: TRelatedModel, TChildModel',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Membership.php',
-       'line' => 38,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Membership.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 38,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'generics.lessTypes',
-       'metadata' => 
-      array (
-      ),
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Models\\Membership::tier() should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\MembershipTier> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\MembershipTier, App\\Models\\Membership>.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Membership.php',
-       'line' => 40,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Membership.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 40,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Product.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Generic type Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\AffiliateCategory> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo: TRelatedModel, TChildModel',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Product.php',
-       'line' => 29,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Product.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 29,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'generics.lessTypes',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Models\\Product::affiliateCategory() should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\AffiliateCategory> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\AffiliateCategory, App\\Models\\Product>.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Product.php',
-       'line' => 31,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Product.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 31,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Report.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Generic type Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo: TRelatedModel, TChildModel',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Report.php',
-       'line' => 25,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Report.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 25,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'generics.lessTypes',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Models\\Report::reporter() should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User, App\\Models\\Report>.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Report.php',
-       'line' => 27,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Report.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 27,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Models\\Report::reportable() return type with generic class Illuminate\\Database\\Eloquent\\Relations\\MorphTo does not specify its types: TRelatedModel, TChildModel',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Report.php',
-       'line' => 30,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Report.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 30,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.generics',
-       'metadata' => 
-      array (
-      ),
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Generic type Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo: TRelatedModel, TChildModel',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Report.php',
-       'line' => 38,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Report.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 38,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'generics.lessTypes',
-       'metadata' => 
-      array (
-      ),
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Models\\Report::reviewedBy() should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User, App\\Models\\Report>.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Report.php',
-       'line' => 40,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Report.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 40,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\SponsoredPost.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Generic type Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User> in PHPDoc tag @return does not specify all template types of class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo: TRelatedModel, TChildModel',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\SponsoredPost.php',
-       'line' => 34,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\SponsoredPost.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 34,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'generics.lessTypes',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Models\\SponsoredPost::user() should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<App\\Models\\User, App\\Models\\SponsoredPost>.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\SponsoredPost.php',
-       'line' => 36,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\SponsoredPost.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 36,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\Return_',
-       'identifier' => 'return.type',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\User.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Models\\User::role() return type with generic class Illuminate\\Database\\Eloquent\\Casts\\Attribute does not specify its types: TGet, TSet',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\User.php',
-       'line' => 168,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\User.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 168,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.generics',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ArticleBookmarked.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Notifications\\ArticleBookmarked::via() return type has no value type specified in iterable type array.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ArticleBookmarked.php',
-       'line' => 19,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ArticleBookmarked.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 19,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Notifications\\ArticleBookmarked::toDatabase() return type has no value type specified in iterable type array.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ArticleBookmarked.php',
-       'line' => 24,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ArticleBookmarked.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 24,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ArticleLiked.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Notifications\\ArticleLiked::via() return type has no value type specified in iterable type array.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ArticleLiked.php',
-       'line' => 19,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ArticleLiked.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 19,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Notifications\\ArticleLiked::toDatabase() return type has no value type specified in iterable type array.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ArticleLiked.php',
-       'line' => 24,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ArticleLiked.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 24,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\NewComment.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Notifications\\NewComment::via() return type has no value type specified in iterable type array.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\NewComment.php',
-       'line' => 20,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\NewComment.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 20,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Notifications\\NewComment::toDatabase() return type has no value type specified in iterable type array.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\NewComment.php',
-       'line' => 25,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\NewComment.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 25,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ReportSubmitted.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Notifications\\ReportSubmitted::via() return type has no value type specified in iterable type array.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ReportSubmitted.php',
-       'line' => 18,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ReportSubmitted.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 18,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Notifications\\ReportSubmitted::toDatabase() return type has no value type specified in iterable type array.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ReportSubmitted.php',
-       'line' => 23,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ReportSubmitted.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 23,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
-  'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\UserFollowed.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Notifications\\UserFollowed::via() return type has no value type specified in iterable type array.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\UserFollowed.php',
-       'line' => 17,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\UserFollowed.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 17,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method App\\Notifications\\UserFollowed::toDatabase() return type has no value type specified in iterable type array.',
-       'file' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\UserFollowed.php',
-       'line' => 22,
-       'canBeIgnored' => true,
-       'filePath' => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\UserFollowed.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 22,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-    )),
-  ),
 ); },
 	'locallyIgnoredErrorsCallback' => static function (): array { return array (
 ); },
@@ -3084,7 +1994,7 @@ return [
 	'dependencies' => array (
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AdController.php' => 
   array (
-    'fileHash' => 'a73b7201736dd53f097a32fbd9dd678cec8c7afc',
+    'fileHash' => '8b852314d0c943135e4ca2e2582eea8038b2b68f',
     'dependentFiles' => 
     array (
     ),
@@ -3119,35 +2029,35 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleController.php' => 
   array (
-    'fileHash' => 'b9830c2887c78a2f13aea0414d1301e7763a46f0',
+    'fileHash' => 'd84210010c16153b38e063d02ba0320bc155a8bb',
     'dependentFiles' => 
     array (
     ),
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleInteractionController.php' => 
   array (
-    'fileHash' => '637d37c44227bbe1e39036c9493cbcf1f0cdbe02',
+    'fileHash' => '882d3b0bebdb0cfeee8ecfc3ba52e085ed4be5f3',
     'dependentFiles' => 
     array (
     ),
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AuthController.php' => 
   array (
-    'fileHash' => 'ee37220daec7a9e0df535b05b2db4373abeab4b1',
+    'fileHash' => 'e64d718d9da993c3f1a61cacde130a0bd69f18ae',
     'dependentFiles' => 
     array (
     ),
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\CommentController.php' => 
   array (
-    'fileHash' => '737e6a6883c10924fe8ef2eafd20578772e65391',
+    'fileHash' => '0dc0bc1479531cd485ce340fb9b8f099c37b0214',
     'dependentFiles' => 
     array (
     ),
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ContactFormController.php' => 
   array (
-    'fileHash' => '5e536757c824253977c1b44ed23dbcb88b473d5b',
+    'fileHash' => '88c04139831acc31821c92d0ec403a4cfd2dcf93',
     'dependentFiles' => 
     array (
     ),
@@ -3215,21 +2125,21 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\NotificationController.php' => 
   array (
-    'fileHash' => 'b2a6229e9166c213af662d70432013685e1794e7',
+    'fileHash' => '55852c585df6567157bf1d97b2f53df6d3190933',
     'dependentFiles' => 
     array (
     ),
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ProfileController.php' => 
   array (
-    'fileHash' => '7177c915c56ea36a85d2396415463e3a7f0ef79c',
+    'fileHash' => '8ff4234af038cf9a22a40f8e68b8bbae94ac3a0c',
     'dependentFiles' => 
     array (
     ),
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ReportController.php' => 
   array (
-    'fileHash' => '85ea521a4af8f4becb7b50f2ffc884b83810228e',
+    'fileHash' => '24b0f7c07eacc8563024fa5f5492a9347eb85231',
     'dependentFiles' => 
     array (
     ),
@@ -3298,7 +2208,7 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Article.php' => 
   array (
-    'fileHash' => 'e0cd2dfc2abd87d1eb4c8b597d27bbd1bd796958',
+    'fileHash' => '249cf216f6689a027fdad57e67ea915c4b5de342',
     'dependentFiles' => 
     array (
       0 => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AdminDashboardController.php',
@@ -3328,7 +2238,7 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Comment.php' => 
   array (
-    'fileHash' => '9ca86acc16ec48b492c4bfe8f6da2f04f47851f2',
+    'fileHash' => '596031f8029c2f8f0ea93d0f33a65db36cdcf9b3',
     'dependentFiles' => 
     array (
       0 => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\CommentController.php',
@@ -3339,7 +2249,7 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Donation.php' => 
   array (
-    'fileHash' => '852bb8a9d90d84b2318c6f676618c19c739cce07',
+    'fileHash' => '0f9b34f171088a7e67aac0f6aa43c4b7ba38487f',
     'dependentFiles' => 
     array (
       0 => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AdminDashboardController.php',
@@ -3349,7 +2259,7 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Membership.php' => 
   array (
-    'fileHash' => '2a80b512bd1299f88f4fbc21d094fc9a1d648920',
+    'fileHash' => '6e04916e245d4740789af7fd738b29a329e1119d',
     'dependentFiles' => 
     array (
       0 => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\MembershipController.php',
@@ -3378,7 +2288,7 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Product.php' => 
   array (
-    'fileHash' => '69b4f60ec990a8cd1a70c9d10097f4a06a066d4b',
+    'fileHash' => '1f07331de3d78ec51ff1a0a4d48b09c8bb82c3e0',
     'dependentFiles' => 
     array (
       0 => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\MarketplaceController.php',
@@ -3387,7 +2297,7 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\Report.php' => 
   array (
-    'fileHash' => '1a06d4c434024464c73583817152f5c0ed7190d1',
+    'fileHash' => '72be059cb907cfd52f34027ef91f0ac76380ef47',
     'dependentFiles' => 
     array (
       0 => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ReportController.php',
@@ -3396,7 +2306,7 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\SponsoredPost.php' => 
   array (
-    'fileHash' => '607194786986732fd6c0e822e8dd58e6f5ebf817',
+    'fileHash' => '78cf5a360a276ed60cbeaecd6bd74decb47c6adb',
     'dependentFiles' => 
     array (
       0 => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\SponsoredPostController.php',
@@ -3412,7 +2322,7 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Models\\User.php' => 
   array (
-    'fileHash' => 'eb472b614a36fa811bf77ed9e54afb39aaaf713a',
+    'fileHash' => 'd082154a3ec0d96bd34bf7a03c14e9c64d748d8a',
     'dependentFiles' => 
     array (
       0 => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\AdminDashboardController.php',
@@ -3439,7 +2349,7 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ArticleBookmarked.php' => 
   array (
-    'fileHash' => '615759e883e926e8d73e90fbd30aa1e102f4155e',
+    'fileHash' => 'cd4704e9452f0232d30622d978c4561e8f6eb0f5',
     'dependentFiles' => 
     array (
       0 => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleInteractionController.php',
@@ -3447,7 +2357,7 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ArticleLiked.php' => 
   array (
-    'fileHash' => '33f8fdfd1763ee4bd77f21c5789587522bbe1df9',
+    'fileHash' => '0bcc1b6a576a70ad270263b5c0002233d4d360ca',
     'dependentFiles' => 
     array (
       0 => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ArticleInteractionController.php',
@@ -3455,7 +2365,7 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\NewComment.php' => 
   array (
-    'fileHash' => '191b9bfdf966577692fa341fbb06c071d7e8edc9',
+    'fileHash' => 'adfe74c5e85bcdeaf78a4c44515d7ca418e995f7',
     'dependentFiles' => 
     array (
       0 => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\CommentController.php',
@@ -3463,7 +2373,7 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\ReportSubmitted.php' => 
   array (
-    'fileHash' => '2b9633d5bb301b953af20fa675c02d57792a5b60',
+    'fileHash' => '63fac1c30628c62e6c947e03c2bbeced8e41bcd3',
     'dependentFiles' => 
     array (
       0 => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\ReportController.php',
@@ -3471,7 +2381,7 @@ return [
   ),
   'D:\\Rizkia\\Project Software\\Greentify\\app\\Notifications\\UserFollowed.php' => 
   array (
-    'fileHash' => 'd74719c7d381bc51ff9f7f537564dac5f2c5e48d',
+    'fileHash' => '8355deae5892fa3d87b8463e2c4a6846ff82408e',
     'dependentFiles' => 
     array (
       0 => 'D:\\Rizkia\\Project Software\\Greentify\\app\\Http\\Controllers\\FollowController.php',
@@ -3513,11 +2423,15 @@ return [
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
      * Get active ads for a specific position.
+     *
+     * @return Collection<int, Ad>
      */',
              'namespace' => 'App\\Http\\Controllers',
              'uses' => 
             array (
               'ad' => 'App\\Models\\Ad',
+              'redirectresponse' => 'Illuminate\\Http\\RedirectResponse',
+              'collection' => 'Illuminate\\Support\\Collection',
             ),
              'constUses' => 
             array (
@@ -3529,7 +2443,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => true,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\Support\\Collection',
            'parameters' => 
           array (
             0 => 
@@ -3560,6 +2474,8 @@ return [
              'uses' => 
             array (
               'ad' => 'App\\Models\\Ad',
+              'redirectresponse' => 'Illuminate\\Http\\RedirectResponse',
+              'collection' => 'Illuminate\\Support\\Collection',
             ),
              'constUses' => 
             array (
@@ -3571,7 +2487,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
            'parameters' => 
           array (
             0 => 
@@ -4032,7 +2948,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\View\\View',
            'parameters' => 
           array (
             0 => 
@@ -4061,7 +2977,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\View\\View',
            'parameters' => 
           array (
           ),
@@ -4079,7 +2995,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
            'parameters' => 
           array (
             0 => 
@@ -4108,7 +3024,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\View\\View',
            'parameters' => 
           array (
             0 => 
@@ -4137,7 +3053,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\View\\View',
            'parameters' => 
           array (
             0 => 
@@ -4166,7 +3082,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
            'parameters' => 
           array (
             0 => 
@@ -4206,7 +3122,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
            'parameters' => 
           array (
             0 => 
@@ -4235,7 +3151,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\View\\View',
            'parameters' => 
           array (
           ),
@@ -4337,7 +3253,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\View\\View',
            'parameters' => 
           array (
           ),
@@ -4381,7 +3297,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\View\\View',
            'parameters' => 
           array (
           ),
@@ -4399,7 +3315,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
            'parameters' => 
           array (
             0 => 
@@ -4428,7 +3344,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\View\\View',
            'parameters' => 
           array (
           ),
@@ -4446,7 +3362,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
            'parameters' => 
           array (
             0 => 
@@ -4475,7 +3391,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
            'parameters' => 
           array (
             0 => 
@@ -4530,7 +3446,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
            'parameters' => 
           array (
             0 => 
@@ -4570,7 +3486,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
            'parameters' => 
           array (
             0 => 
@@ -4636,7 +3552,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\View\\View',
            'parameters' => 
           array (
           ),
@@ -4654,7 +3570,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
            'parameters' => 
           array (
             0 => 
@@ -5419,7 +4335,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\View\\View',
            'parameters' => 
           array (
             0 => 
@@ -5532,7 +4448,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\View\\View',
            'parameters' => 
           array (
             0 => 
@@ -5587,7 +4503,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\View\\View',
            'parameters' => 
           array (
             0 => 
@@ -5616,7 +4532,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
            'parameters' => 
           array (
             0 => 
@@ -5645,7 +4561,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\View\\View',
            'parameters' => 
           array (
           ),
@@ -5663,7 +4579,7 @@ return [
            'abstract' => false,
            'final' => false,
            'static' => false,
-           'returnType' => NULL,
+           'returnType' => 'Illuminate\\Http\\RedirectResponse',
            'parameters' => 
           array (
             0 => 
@@ -6548,7 +5464,7 @@ return [
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\User>
+     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\User, \\App\\Models\\Article>
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -6583,7 +5499,7 @@ return [
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\Category>
+     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\Category, \\App\\Models\\Article>
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -6878,7 +5794,7 @@ return [
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\User>
+     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\User, \\App\\Models\\Comment>
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -6912,7 +5828,7 @@ return [
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\Article>
+     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\Article, \\App\\Models\\Comment>
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -6946,7 +5862,7 @@ return [
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\Comment>
+     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\Comment, \\App\\Models\\Comment>
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -7073,7 +5989,7 @@ return [
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\User>
+     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\User, \\App\\Models\\Donation>
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -7212,7 +6128,7 @@ return [
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\User>
+     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\User, \\App\\Models\\Membership>
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -7245,7 +6161,7 @@ return [
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\MembershipTier>
+     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\MembershipTier, \\App\\Models\\Membership>
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -7505,7 +6421,7 @@ return [
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\AffiliateCategory>
+     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\AffiliateCategory, \\App\\Models\\Product>
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -7580,7 +6496,7 @@ return [
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\User>
+     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\User, \\App\\Models\\Report>
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -7610,7 +6526,22 @@ return [
         2 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'reportable',
-           'phpDoc' => NULL,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * @return MorphTo<Model, Report>
+     */',
+             'namespace' => 'App\\Models',
+             'uses' => 
+            array (
+              'model' => 'Illuminate\\Database\\Eloquent\\Model',
+              'belongsto' => 'Illuminate\\Database\\Eloquent\\Relations\\BelongsTo',
+              'morphto' => 'Illuminate\\Database\\Eloquent\\Relations\\MorphTo',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
            'byRef' => false,
            'public' => true,
            'private' => false,
@@ -7631,7 +6562,7 @@ return [
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\User>
+     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\User, \\App\\Models\\Report>
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -7723,7 +6654,7 @@ return [
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
-     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\User>
+     * @return \\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<\\App\\Models\\User, \\App\\Models\\SponsoredPost>
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -8572,6 +7503,8 @@ return [
              'phpDocString' => '/**
      * Coerce unknown roles to \'user\' so a bad write can never produce a
      * user that silently passes — or silently fails — every access gate.
+     *
+     * @return Attribute<string, string|null>
      */',
              'namespace' => 'App\\Models',
              'uses' => 
@@ -8695,7 +7628,21 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'via',
-           'phpDoc' => NULL,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * @return list<string>
+     */',
+             'namespace' => 'App\\Notifications',
+             'uses' => 
+            array (
+              'queueable' => 'Illuminate\\Bus\\Queueable',
+              'notification' => 'Illuminate\\Notifications\\Notification',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
            'byRef' => false,
            'public' => true,
            'private' => false,
@@ -8724,7 +7671,21 @@ return [
         2 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'toDatabase',
-           'phpDoc' => NULL,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * @return array<string, mixed>
+     */',
+             'namespace' => 'App\\Notifications',
+             'uses' => 
+            array (
+              'queueable' => 'Illuminate\\Bus\\Queueable',
+              'notification' => 'Illuminate\\Notifications\\Notification',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
            'byRef' => false,
            'public' => true,
            'private' => false,
@@ -8842,7 +7803,21 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'via',
-           'phpDoc' => NULL,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * @return list<string>
+     */',
+             'namespace' => 'App\\Notifications',
+             'uses' => 
+            array (
+              'queueable' => 'Illuminate\\Bus\\Queueable',
+              'notification' => 'Illuminate\\Notifications\\Notification',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
            'byRef' => false,
            'public' => true,
            'private' => false,
@@ -8871,7 +7846,21 @@ return [
         2 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'toDatabase',
-           'phpDoc' => NULL,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * @return array<string, mixed>
+     */',
+             'namespace' => 'App\\Notifications',
+             'uses' => 
+            array (
+              'queueable' => 'Illuminate\\Bus\\Queueable',
+              'notification' => 'Illuminate\\Notifications\\Notification',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
            'byRef' => false,
            'public' => true,
            'private' => false,
@@ -9000,7 +7989,21 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'via',
-           'phpDoc' => NULL,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * @return list<string>
+     */',
+             'namespace' => 'App\\Notifications',
+             'uses' => 
+            array (
+              'queueable' => 'Illuminate\\Bus\\Queueable',
+              'notification' => 'Illuminate\\Notifications\\Notification',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
            'byRef' => false,
            'public' => true,
            'private' => false,
@@ -9029,7 +8032,21 @@ return [
         2 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'toDatabase',
-           'phpDoc' => NULL,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * @return array<string, mixed>
+     */',
+             'namespace' => 'App\\Notifications',
+             'uses' => 
+            array (
+              'queueable' => 'Illuminate\\Bus\\Queueable',
+              'notification' => 'Illuminate\\Notifications\\Notification',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
            'byRef' => false,
            'public' => true,
            'private' => false,
@@ -9136,7 +8153,21 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'via',
-           'phpDoc' => NULL,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * @return list<string>
+     */',
+             'namespace' => 'App\\Notifications',
+             'uses' => 
+            array (
+              'queueable' => 'Illuminate\\Bus\\Queueable',
+              'notification' => 'Illuminate\\Notifications\\Notification',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
            'byRef' => false,
            'public' => true,
            'private' => false,
@@ -9165,7 +8196,21 @@ return [
         2 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'toDatabase',
-           'phpDoc' => NULL,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * @return array<string, mixed>
+     */',
+             'namespace' => 'App\\Notifications',
+             'uses' => 
+            array (
+              'queueable' => 'Illuminate\\Bus\\Queueable',
+              'notification' => 'Illuminate\\Notifications\\Notification',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
            'byRef' => false,
            'public' => true,
            'private' => false,
@@ -9261,7 +8306,21 @@ return [
         1 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'via',
-           'phpDoc' => NULL,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * @return list<string>
+     */',
+             'namespace' => 'App\\Notifications',
+             'uses' => 
+            array (
+              'queueable' => 'Illuminate\\Bus\\Queueable',
+              'notification' => 'Illuminate\\Notifications\\Notification',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
            'byRef' => false,
            'public' => true,
            'private' => false,
@@ -9290,7 +8349,21 @@ return [
         2 => 
         \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
            'name' => 'toDatabase',
-           'phpDoc' => NULL,
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+     * @return array<string, mixed>
+     */',
+             'namespace' => 'App\\Notifications',
+             'uses' => 
+            array (
+              'queueable' => 'Illuminate\\Bus\\Queueable',
+              'notification' => 'Illuminate\\Notifications\\Notification',
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
            'byRef' => false,
            'public' => true,
            'private' => false,

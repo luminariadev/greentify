@@ -19,7 +19,7 @@ class Comment extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User, \App\Models\Comment>
      */
     public function user(): BelongsTo
     {
@@ -27,7 +27,7 @@ class Comment extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\Article>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\Article, \App\Models\Comment>
      */
     public function article(): BelongsTo
     {
@@ -35,7 +35,7 @@ class Comment extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\Comment>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\Comment, \App\Models\Comment>
      */
     public function parent(): BelongsTo
     {

@@ -29,7 +29,7 @@ class Article extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User, \App\Models\Article>
      */
     public function user(): BelongsTo
     {
@@ -37,7 +37,7 @@ class Article extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\Category>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\Category, \App\Models\Article>
      */
     public function category(): BelongsTo
     {

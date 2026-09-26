@@ -29,7 +29,7 @@ class SponsoredPost extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User, \App\Models\SponsoredPost>
      */
     public function user(): BelongsTo
     {

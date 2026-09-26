@@ -20,20 +20,23 @@ class Report extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User, \App\Models\Report>
      */
     public function reporter(): BelongsTo
     {
         return $this->belongsTo(User::class, 'reporter_id');
     }
 
+    /**
+     * @return MorphTo<Model, Report>
+     */
     public function reportable(): MorphTo
     {
         return $this->morphTo();
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User>
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<\App\Models\User, \App\Models\Report>
      */
     public function reviewedBy(): BelongsTo
     {
