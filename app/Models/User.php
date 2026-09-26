@@ -3,60 +3,107 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
+
+    public const ROLE_USER = 'user';
+
+    public const ROLE_MODERATOR = 'moderator';
+
+    public const ROLE_ADMIN = 'admin';
+
+    /**
+     * Every role the application understands.
+     *
+     * @return list<string>
+     */
+    public static function knownRoles(): array
+    {
+        return [self::ROLE_USER, self::ROLE_MODERATOR, self::ROLE_ADMIN];
+    }
 
     // Role helpers
     public function isAdmin(): bool
     {
-        return $this->role === 'admin';
+        return $this->role === self::ROLE_ADMIN;
     }
 
     public function isModerator(): bool
     {
-        return $this->role === 'moderator';
+        return $this->role === self::ROLE_MODERATOR;
     }
 
-    public function articles()
+    /**
+     * Admins and moderators both reach the staff-only surfaces.
+     */
+    public function isStaff(): bool
+    {
+        return $this->isAdmin() || $this->isModerator();
+    }
+
+    public function hasRole(string $role): bool
+    {
+        return $this->role === $role;
+    }
+
+    public function articles(): HasMany
     {
         return $this->hasMany(Article::class);
     }
 
-    public function likes()
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function donations(): HasMany
+    {
+        return $this->hasMany(Donation::class);
+    }
+
+    public function reports(): HasMany
+    {
+        return $this->hasMany(Report::class);
+    }
+
+    public function likes(): BelongsToMany
     {
         return $this->belongsToMany(Article::class, 'article_likes')->withTimestamps();
     }
 
-    public function bookmarks()
+    public function bookmarks(): BelongsToMany
     {
         return $this->belongsToMany(Article::class, 'article_bookmarks')->withTimestamps();
     }
 
-    public function membership()
+    public function membership(): HasOne
     {
         return $this->hasOne(Membership::class)->where('is_active', true)->latestOfMany();
     }
 
     // Users this user follows
-    public function following()
+    public function following(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'follows', 'follower_id', 'following_id')->withTimestamps();
     }
 
     // Users following this user
-    public function followers()
+    public function followers(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'follows', 'following_id', 'follower_id')->withTimestamps();
     }
 
     /**
-     * The attributes that are mass assignable.
-     *
      * @var array<int, string>
      */
     protected $fillable = [
@@ -67,8 +114,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
      * @var array<int, string>
      */
     protected $hidden = [
@@ -77,8 +122,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
      * @return array<string, string>
      */
     protected function casts(): array
@@ -87,5 +130,18 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Coerce unknown roles to 'user' so a bad write can never produce a
+     * user that silently passes — or silently fails — every access gate.
+     */
+    protected function role(): Attribute
+    {
+        return Attribute::make(
+            set: fn (?string $value) => in_array($value, self::knownRoles(), true)
+                ? $value
+                : self::ROLE_USER,
+        );
     }
 }
