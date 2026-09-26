@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class ArticleController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $query = Article::with(['user', 'category'])
             ->where('status', 'published')
@@ -54,14 +56,14 @@ class ArticleController extends Controller
         return view('blogspot', compact('articles', 'categories'));
     }
 
-    public function create()
+    public function create(): View
     {
         $categories = Category::orderBy('name')->get();
 
         return view('articles.create', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -90,7 +92,7 @@ class ArticleController extends Controller
             ->with('success', 'Artikel berhasil dibuat!');
     }
 
-    public function show(Article $article)
+    public function show(Article $article): View
     {
         if ($article->status !== 'published' && (! auth()->check() || auth()->id() !== $article->user_id)) {
             abort(404);
@@ -126,7 +128,7 @@ class ArticleController extends Controller
         return view('articles.show', compact('article', 'relatedArticles'));
     }
 
-    public function edit(Article $article)
+    public function edit(Article $article): View
     {
         abort_unless(auth()->id() === $article->user_id, 403);
         $categories = Category::orderBy('name')->get();
@@ -134,7 +136,7 @@ class ArticleController extends Controller
         return view('articles.edit', compact('article', 'categories'));
     }
 
-    public function update(Request $request, Article $article)
+    public function update(Request $request, Article $article): RedirectResponse
     {
         abort_unless(auth()->id() === $article->user_id, 403);
 
@@ -172,7 +174,7 @@ class ArticleController extends Controller
             ->with('success', 'Artikel berhasil diperbarui!');
     }
 
-    public function destroy(Article $article)
+    public function destroy(Article $article): RedirectResponse
     {
         abort_unless(auth()->id() === $article->user_id, 403);
 
@@ -186,7 +188,7 @@ class ArticleController extends Controller
             ->with('success', 'Artikel berhasil dihapus!');
     }
 
-    public function myArticles()
+    public function myArticles(): View
     {
         $articles = Article::with('category')
             ->where('user_id', auth()->id())

@@ -17,7 +17,7 @@ class AdController extends Controller
     /**
      * Track ad click.
      */
-    public function trackClick(Ad $ad)
+    public function trackClick(Ad $ad): RedirectResponse
     {
         $ad->increment('clicks');
 

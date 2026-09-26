@@ -6,7 +6,7 @@ use App\Models\User;
 
 class ProfileController extends Controller
 {
-    public function show(?User $user = null)
+    public function show(?User $user = null): View
     {
         $user = $user ?? auth()->user();
 

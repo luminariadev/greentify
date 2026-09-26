@@ -7,11 +7,13 @@ use App\Models\Comment;
 use App\Models\Report;
 use App\Models\User;
 use App\Notifications\ReportSubmitted;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ReportController extends Controller
 {
-    public function create(Request $request)
+    public function create(Request $request): View
     {
         $type = $request->query('type');
         $id = (int) $request->query('id');
@@ -25,7 +27,7 @@ class ReportController extends Controller
         return view('reports.create', compact('reportableType', 'reportableId'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'reportable_type' => 'required|string',
@@ -64,7 +66,7 @@ class ReportController extends Controller
     }
 
     // Admin: list all reports
-    public function index()
+    public function index(): View
     {
         $this->authorizeAdmin();
 
@@ -76,7 +78,7 @@ class ReportController extends Controller
     }
 
     // Admin: update report status
-    public function review(Request $request, Report $report)
+    public function review(Request $request, Report $report): RedirectResponse
     {
         $this->authorizeAdmin();
 

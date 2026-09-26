@@ -3,16 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pesan;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ContactFormController extends Controller
 {
-    public function showForm()
+    public function showForm(): View
     {
         return view('contact');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
             'name' => 'required',

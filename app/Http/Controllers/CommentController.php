@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\Comment;
 use App\Notifications\NewComment;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, Article $article)
+    public function store(Request $request, Article $article): RedirectResponse
     {
         $validated = $request->validate([
             'body' => 'required|string|max:2000',
@@ -37,7 +38,7 @@ class CommentController extends Controller
         return back()->with('success', 'Komentar berhasil ditambahkan!');
     }
 
-    public function reply(Request $request, Comment $comment)
+    public function reply(Request $request, Comment $comment): RedirectResponse
     {
         $validated = $request->validate([
             'body' => 'required|string|max:2000',

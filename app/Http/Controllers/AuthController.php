@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-    public function showLoginForm()
+    public function showLoginForm(): View
     {
         return view('auth.login');
     }
 
-    public function login(Request $request)
+    public function login(Request $request): RedirectResponse
     {
         $credentials = $request->validate([
             'email' => 'required|email',
@@ -31,12 +33,12 @@ class AuthController extends Controller
         ]);
     }
 
-    public function showRegistrationForm()
+    public function showRegistrationForm(): View
     {
         return view('auth.register');
     }
 
-    public function register(Request $request)
+    public function register(Request $request): RedirectResponse
     {
         // Validasi data input
         $validatedData = $request->validate([
@@ -59,7 +61,7 @@ class AuthController extends Controller
         return redirect()->route('welcome')->with('success', 'Registration successful! Welcome, '.$user->name);
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
 

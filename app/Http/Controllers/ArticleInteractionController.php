@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Notifications\ArticleBookmarked;
 use App\Notifications\ArticleLiked;
 use Illuminate\Http\JsonResponse;
+use Illuminate\View\View;
 
 class ArticleInteractionController extends Controller
 {
@@ -57,7 +58,7 @@ class ArticleInteractionController extends Controller
         ]);
     }
 
-    public function indexBookmarks()
+    public function indexBookmarks(): View
     {
         $user = auth()->user();
 
