@@ -19,3 +19,6 @@ yarn-error.log
 /.idea
 /.vscode
 composer-setup.php
+
+# PHPStan analysis cache
+.phpstan/
