@@ -35,4 +35,35 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Payments
+    |--------------------------------------------------------------------------
+    |
+    | 'gateway' selects the PaymentGateway implementation. The default,
+    | 'manual', produces bank-transfer/QRIS instructions and settles on
+    | confirmation. A real provider (midtrans, xendit) is a drop-in once
+    | its credentials are set here.
+    |
+    */
+
+    'payments' => [
+        'gateway' => env('PAYMENT_GATEWAY', 'manual'),
+
+        'midtrans' => [
+            'server_key' => env('MIDTRANS_SERVER_KEY'),
+            'client_key' => env('MIDTRANS_CLIENT_KEY'),
+            'is_production' => (bool) env('MIDTRANS_IS_PRODUCTION', false),
+        ],
+
+        'xendit' => [
+            'secret_key' => env('XENDIT_SECRET_KEY'),
+        ],
+
+        'bank' => [
+            'account_name' => env('PAYMENT_BANK_NAME', 'Greentify Sustainability Fund'),
+            'account_number' => env('PAYMENT_BANK_NUMBER', '1234-5678-90'),
+        ],
+    ],
+
 ];
