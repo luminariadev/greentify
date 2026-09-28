@@ -22,3 +22,9 @@ composer-setup.php
 
 # PHPStan analysis cache
 .phpstan/
+
+# Local SQLite databases — never commit app data
+*.sqlite
+*.sqlite3
+/database/*.sqlite
+/database/*.sqlite3
