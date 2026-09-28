@@ -6,6 +6,7 @@ use App\Models\Payment;
 use App\Payments\PaymentGateway;
 use App\Payments\Support\ChargeRequest;
 use App\Payments\Support\ChargeResult;
+use Illuminate\Support\Facades\Config;
 
 /**
  * The gateway used when no real provider is configured.
@@ -19,22 +20,6 @@ use App\Payments\Support\ChargeResult;
  */
 class ManualGateway implements PaymentGateway
 {
-    /**
-     * Destinations shown to the payer, keyed by the payment method.
-     *
-     * @var array<string, array{label: string, account: string}>
-     */
-    private const DESTINATIONS = [
-        'bank_transfer' => [
-            'label' => 'Bank Central Asia (BCA)',
-            'account' => '1234-5678-90',
-        ],
-        'ewallet' => [
-            'label' => 'GoPay',
-            'account' => '0812-0000-0000',
-        ],
-    ];
-
     public function name(): string
     {
         return 'manual';
@@ -78,12 +63,13 @@ class ManualGateway implements PaymentGateway
      */
     private function transferInstructions(ChargeRequest $request, float $amount): array
     {
-        $destination = self::DESTINATIONS[$request->payment->method] ?? self::DESTINATIONS['bank_transfer'];
+        $accountName = (string) Config::get('services.payments.bank.account_name');
+        $accountNumber = (string) Config::get('services.payments.bank.account_number');
 
         return [
-            'Transfer Rp '.number_format($amount, 0, ',', '.').' ke: '.$destination['label'],
-            'Nomor rekening: '.$destination['account'],
-            'Atas nama: Greentify Sustainability Fund',
+            'Transfer Rp '.number_format($amount, 0, ',', '.').' ke rekening Greentify.',
+            'Nomor rekening: '.$accountNumber,
+            'Atas nama: '.$accountName,
             'Kode unik / reference: '.$request->reference(),
         ];
     }
