@@ -166,6 +166,92 @@ class PaymentManager
         });
     }
 
+    /**
+     * Re-read every payment the gateway can report on and apply whatever
+     * it now says.
+     *
+     * Manual gateways return null for everything, so this is a safe no-op
+     * until a real provider is bound — which is the point: the loop that
+     * replaces the roadmap's "rekonsiliasi otomatis" item exists and is
+     * correct, and switching providers turns it on.
+     *
+     * @return array{checked: int, applied: int, skipped: int}
+     */
+    public function reconcile(?int $limit = 100): array
+    {
+        $payments = Payment::query()
+            ->pending()
+            ->latest('id')
+            ->limit($limit)
+            ->get();
+
+        $checked = 0;
+        $applied = 0;
+        $skipped = 0;
+
+        foreach ($payments as $payment) {
+            $checked++;
+
+            $result = $this->refresh($payment);
+
+            // null means "the provider has no opinion" — not a failure.
+            if ($result === null) {
+                $skipped++;
+
+                continue;
+            }
+
+            $status = match (true) {
+                $result->isPaid() => Payment::STATUS_PAID,
+                $result->isFailed() => Payment::STATUS_FAILED,
+                default => null,
+            };
+
+            if ($status === null) {
+                $skipped++;
+
+                continue;
+            }
+
+            if ($this->apply(new GatewayEvent(
+                payment: $payment,
+                status: $status,
+                gatewayReference: $result->gatewayReference,
+                message: $result->message,
+                payload: $result->payload,
+            ))) {
+                $applied++;
+            } else {
+                $skipped++;
+            }
+        }
+
+        return ['checked' => $checked, 'applied' => $applied, 'skipped' => $skipped];
+    }
+
+    /**
+     * Payments that will never settle on their own, so an operator knows
+     * where to look first.
+     *
+     * @return array<string, int>
+     */
+    public function staleSummary(): array
+    {
+        return [
+            'awaiting_review' => Payment::query()->awaitingReview()->count(),
+            'expired_pending' => Payment::query()
+                ->pending()
+                ->where('status', Payment::STATUS_PENDING)
+                ->whereNotNull('expires_at')
+                ->where('expires_at', '<', now())
+                ->count(),
+            'failed_today' => Payment::query()
+                ->where('status', Payment::STATUS_FAILED)
+                ->whereDate('failed_at', now()->toDateString())
+                ->count(),
+        ];
+    }
+
     private function charge(
         Model $payable,
         string $method,

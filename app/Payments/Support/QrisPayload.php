@@ -88,7 +88,7 @@ class QrisPayload
     /**
      * @param  array<string, string>  $fields
      */
-    private function encode(array $fields): string
+    private static function encode(array $fields): string
     {
         $tlv = '';
 
