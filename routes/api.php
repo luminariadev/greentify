@@ -3,12 +3,18 @@
 use App\Http\Controllers\Api\ApiAuthController;
 use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Provider callback. Public by necessity and CSRF-exempt because it
+// lives in the API stack; the amount check inside the controller is what
+// stops a forged "paid" from settling a payment.
+Route::post('/payments/webhook', [PaymentController::class, 'webhook'])->name('api.payments.webhook');
 
 // Public API routes
 Route::post('/register', [ApiAuthController::class, 'register']);
