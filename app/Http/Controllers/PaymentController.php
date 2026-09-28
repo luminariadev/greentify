@@ -46,10 +46,15 @@ class PaymentController extends Controller
     /**
      * The payer says the money is on its way.
      *
-     * For a manual gateway this is the only path to settlement, which is
-     * why it is rate limited and why the operator still has to verify the
-     * bank statement. It deliberately does not accept an amount — the
-     * amount is whatever the payment was created with.
+     * This is a claim, not a settlement. Before 29 Sep 2026 the endpoint
+     * pushed a paid event straight through PaymentManager::apply(), which
+     * meant anyone could mark their own donation completed by pressing one
+     * button — the manual gateway's "verification manual" was a sentence
+     * in the UI and nothing in the code. It now only moves the payment
+     * into the operator queue; an admin has to look at the bank statement.
+     *
+     * It deliberately does not accept an amount — the amount is whatever
+     * the payment was created with.
      */
     public function confirm(Request $request, string $reference): RedirectResponse
     {
@@ -57,25 +62,20 @@ class PaymentController extends Controller
 
         $this->authorizePaymentOwner($request, $payment);
 
-        if ($payment->effectiveStatus() !== Payment::STATUS_PENDING) {
+        if ($payment->status !== Payment::STATUS_PENDING) {
             return redirect()->route('payments.show', $reference)
-                ->with('error', 'Pembayaran ini sudah tidak berstatus menunggu.');
+                ->with('error', $payment->isInReview()
+                    ? 'Pembayaran ini sudah menunggu verifikasi operator.'
+                    : 'Pembayaran ini sudah tidak berstatus menunggu.');
         }
 
-        $event = new GatewayEvent(
-            payment: $payment,
-            status: Payment::STATUS_PAID,
-            message: 'Dikonfirmasi manual oleh payer.',
-            payload: ['confirmed_by' => (string) ($request->user()?->id ?? 'guest')],
-        );
-
-        $applied = $this->payments->apply($event);
+        $submitted = $this->payments->submitForReview($payment, 'user:'.(string) $request->user()->id);
 
         return redirect()->route('payments.show', $reference)->with(
-            $applied ? 'success' : 'error',
-            $applied
-                ? 'Terima kasih! Pembayaran dikonfirmasi dan sedang diproses.'
-                : 'Pembayaran ini sudah pernah dikonfirmasi.',
+            $submitted ? 'success' : 'error',
+            $submitted
+                ? 'Terima kasih! Tim Greentify akan memverifikasi transfer Anda dalam 1x24 jam.'
+                : 'Pembayaran ini sudah pernah dikirim untuk verifikasi.',
         );
     }
 
