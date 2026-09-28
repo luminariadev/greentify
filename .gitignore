@@ -23,7 +23,12 @@ composer-setup.php
 # PHPStan analysis cache
 .phpstan/
 
-# Local SQLite databases — never commit app data
+# Local SQLite databases — never commit app data.
+# The extensionless entries matter: `php artisan migrate` writes the
+# default connection name (`greentify`) at the repo root with no suffix,
+# which an extension-only pattern never catches.
+/greentify
+/database/greentify
 *.sqlite
 *.sqlite3
 /database/*.sqlite
