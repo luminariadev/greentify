@@ -194,3 +194,69 @@ php vendor/bin/phpstan analyse        → [OK] No errors
 php artisan route:list                → 66 routes
 ```
 - 2026-09-26 — Daily commit: perbaikan regresi + API mobile + toolchain hijau
+
+# Daily commit 2026-09-28
+
+Fase 6 — Payment Gateway. Bukan streak-saver: gate dijalankan dulu dan
+sudah hijau (phpunit 53/53), roadmap 0–5 sudah tuntas, jadi focus ke
+fokus roadmap berikutnya.
+
+## 19 commit
+
+| #  | Commit | Scope |
+| --:|--------|-------|
+| 1  | feat(db): add payments table | db |
+| 2  | feat(payments): add Payment model with idempotent settlement | payments |
+| 3  | feat(payments): define the PaymentGateway contract and charge DTOs | payments |
+| 4  | feat(payments): add ChargeResult and GatewayEvent value objects | payments |
+| 5  | feat(payments): add PaymentManager to orchestrate charge and settlement | payments |
+| 6  | feat(payments): add ManualGateway that produces real instructions | payments |
+| 7  | feat(payments): bind PaymentGateway and PaymentManager in the container | payments |
+| 8  | feat(payments): add PaymentController with payer instructions and confirmation | payments |
+| 9  | feat(payments): expose the provider webhook | payments |
+| 10 | feat(donations): route donations through PaymentManager | donations |
+| 11 | fix(membership): stop granting paid tiers for free on button press | membership |
+| 12 | test(payments): cover the payment lifecycle end to end | test |
+| 13 | docs(ui): tell payers the new two-step flow | ui |
+| 14 | feat(payments): add payments config block and env documentation | config |
+| 15 | refactor(payments): read the bank account from config, not a const | payments |
+| 16 | fix(types): correct MorphMany generics on Donation relations | types |
+| 17 | docs(roadmap): open Fase 6 — 8 done / 4 open | docs |
+| 18 | test(donations): land the rewritten DonationTest and the PaymentFactory | test |
+| 19 | chore(gitignore): ignore local SQLite database files | chore |
+
+## Dua bug monetization yang sudah lama ada
+
+**Donasi dihitung sebagai pendapatan sebelum uang masuk.** `DonationController::store()`
+menulis `status='completed'` di baris yang sama dengan pembuatan record, dengan
+komentar "Mock: langsung sukses". Effectifnya `/donasi` menampilkan donasi yang
+belum dibayar di "Total Terkumpul" — angka utama di halaman itu fiksi.
+
+**Membership berbayar gratis.** `MembershipController::subscribe()` memakai
+`Membership::updateOrCreate(..., is_active => true, expires_at => now()->addMonth())`
+untuk semua tier. Klik tombol = Green 25rb / Pro Green 50rb / Community Leader
+100rb aktif sebulan penuh. Komentarnya jujur: "payment gateway integration is a
+future task". Itu gap yang ditutup seri ini.
+
+Keduanya kini butuh settlement: `Donation` pending → `Payment` pending →
+`PaymentManager::apply()` → efek dijalankan. `apply()` ambil row lock dan
+return boolean apakah *panggilan itu* yang mentransisi status, jadi webhook
+duplikat tidak menambah 1 bulan membership lagi.
+
+## Yang sengaja TIDAK dikerjakan
+- SDK Midtrans/Xendit — butuh credential; slot env sudah disiapkan
+- QRIS EMVCo compliant — placeholder format, perlu acquirer
+- Admin verification queue — sekarang payer bisa self-confirm (throttle 10/menit)
+- Rekonsiliasi otomatis — loop `PaymentManager::refresh()` belum ada
+
+Semuanya tercatat sebagai ☐ di roadmap.md, bukan dicentang hijau.
+
+## Verifikasi (semua diukur ulang setelah edit terakhir)
+```
+php vendor/bin/phpunit --no-coverage   → OK (72 tests, 186 assertions)   [dari 53/143]
+php vendor/bin/pint --test            → PASS (124 files)                 [dari 111]
+php vendor/bin/phpstan analyse        → [OK] No errors
+npm run build                         → ✓ built in 776ms
+php artisan route:list --json         → api 10 / web 56 / total 66       [dari 62]
+```
+- 2026-09-28 — Daily commit: payment gateway (donasi & membership tidak lagi free-activation)
