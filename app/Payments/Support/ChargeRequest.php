@@ -31,6 +31,9 @@ class ChargeRequest
 
     public function reference(): string
     {
-        return $this->payment->reference;
+        // The payment has not been inserted yet when the gateway is
+        // called, so the creating hook has not run. Generate here rather
+        // than returning a null and breaking the return type.
+        return $this->payment->reference ??= Payment::generateReference();
     }
 }

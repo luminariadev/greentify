@@ -27,6 +27,23 @@ class PaymentController extends Controller
     }
 
     /**
+     * Guest receipt, reached through a temporary signed URL.
+     *
+     * A guest donation has no user_id, so it cannot go through
+     * authorizePaymentOwner() — and the bare reference must never be
+     * enough on its own. The signature expires, so the link is useless
+     * once the payment is stale.
+     */
+    public function guestShow(Request $request, string $reference): View
+    {
+        abort_unless($request->hasValidSignature(), 403);
+
+        $payment = Payment::where('reference', $reference)->firstOrFail();
+
+        return view('payments.show', compact('payment'));
+    }
+
+    /**
      * The payer says the money is on its way.
      *
      * For a manual gateway this is the only path to settlement, which is

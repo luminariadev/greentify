@@ -30,3 +30,10 @@ Route::middleware('auth')->group(function () {
             ->name('payments.confirm');
     });
 });
+
+// Guest donation receipts. The signature is the authorisation — the
+// payer has no session, and the link stops working after 6 hours.
+Route::get('/payments/guest/{reference}', [PaymentController::class, 'guestShow'])
+    ->where('reference', '[A-Za-z0-9\-]+')
+    ->middleware('signed')
+    ->name('payment.guest.receipt');
