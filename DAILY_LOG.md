@@ -260,3 +260,62 @@ npm run build                         → ✓ built in 776ms
 php artisan route:list --json         → api 10 / web 56 / total 66       [dari 62]
 ```
 - 2026-09-28 — Daily commit: payment gateway (donasi & membership tidak lagi free-activation)
+
+# Daily commit 2026-09-29
+
+fix(payments): operator verification — bayar tidak bisa mencairkan dirinya sendiri
+
+## Bug yang ditemukan
+`POST /payments/{ref}/confirm` mengirim `GatewayEvent(status: paid)` langsung
+ke `PaymentManager::apply()`. Artinya **payer menekan satu tombol dan
+donasinya jadi `completed`, membership-nya aktif sebulan** — tanpa transfer
+apa pun. Halaman pembayaran menulis "Verifikasi manual oleh tim Greentify"
+dan tidak ada verifikasi manual di mana pun.
+
+Terverifikasi ulang hari ini: `test_confirming_a_payment_settles_it_once`
+mengasersi `isPaid()` setelah payer menekan tombol. Test itu lulus karena
+bug-nya masih ada, bukan karena perilakunya benar.
+
+## Yang dikerjakan
+- Status `in_review` + kolom `submitted_at` / `reviewed_by` / `reviewed_at` /
+  `review_note`. Klaim = payer, keputusan = operator.
+- `PaymentManager::submitForReview()` hanya mengantre; `review()` yang
+  mencairkan, lewat `apply()` yang sama dengan webhook (idempoten, row lock).
+- Antrean operator di `/admin/payments`: approve / reject (alasan wajib
+  minimal 10 karakter), notifikasi `PaymentReviewed` ke payer.
+- QRIS EMVCo: TLV + CRC16-CCITT-FALSE (dicek dengan test vector standar
+  `123456789` → `0x29B1`), reference pembawa di tag 26 supaya acquirer bisa
+  rekonsiliasi.
+- Rekonsiliasi: `PaymentManager::reconcile()` + `php artisan payments:reconcile`.
+
+## Bug kedua yang ditemukan test
+`iconv(...//TRANSLIT...)` mengubah `É` menjadi `E'` — tanda kutip ikut
+terbawa. Merchant "Greentify Ékoprese" akan jadi "Greentify E'koprese" di
+QR yang benar-benar dipindai user. `normalise()` kini membuang semua
+non-ASCII outright; aksen yang hilang tidak terlihat, tanda kutip yang
+menyisa terlihat.
+
+## Test yang diperbaiki
+`test_confirming_a_payment_settles_it_once` ditulis ulang menjadi
+`test_confirming_queues_the_payment_and_pressing_twice_does_nothing` —
+sekarang mengasersi semantik klaim. Ditambah 16 test review flow + 13 test
+EMVCo.
+
+## Yang sengaja TIDAK dikerjakan
+- SDK Midtrans/Xendit — butuh server key + UUID notification dari akun PSP.
+  Kontrak `PaymentGateway` dan binding di `AppServiceProvider` sudah siap;
+  yang kurang kredensial, bukan kode. Tetap ☐ di roadmap.md.
+
+## Verifikasi (diukur ulang setelah edit terakhir)
+```
+php vendor/bin/phpunit --no-coverage   → OK (101 tests, 351 assertions)  [dari 72/186]
+php vendor/bin/pint --test            → PASS (131 files)
+php vendor/bin/phpstan analyse        → [OK] No errors
+npm run build                         → ✓ built in 690ms
+php artisan route:list --json         → api 10 / web 59 / total 69       [dari 66]
+```
+
+17 commit: 6eb0af4, 8c34017, f4d4fd1, 159b4f6, 837feae, 8f73b3b, 012fbda,
+39ba7a5, a7dc6c3, cab7f53, 3a19274, 42ef4fc, bdafeee, 4082b04, fc38fe4,
+948df75, 35810bd
+- 2026-09-29 — Daily commit: verifikasi operator + QRIS EMVCo + rekonsiliasi
