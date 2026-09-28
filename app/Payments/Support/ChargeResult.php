@@ -8,6 +8,7 @@ class ChargeResult
      * @param  string  $status  One of the Payment::STATUS_* values.
      * @param  list<string>  $instructions  Human-readable steps the payer
      *                                      follows (VA number, QRIS payload…).
+     * @param  array<string, mixed>  $payload  Raw provider JSON, kept for auditing.
      */
     public function __construct(
         public readonly string $status,
