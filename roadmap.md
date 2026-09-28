@@ -1,8 +1,8 @@
 # Greentify — Roadmap & Development Plan
 
 > **Greentify**: Platform blog dan komunitas lingkungan
-> **Status**: Fase 2–5 Selesai — API Mobile (Fase 5) baru diselesaikan 26 Sep 2026
-> **Update Terakhir**: 26 September 2026
+> **Status**: Fase 0–5 Selesai — Payment Gateway (Fase 6) baru dimulai 28 Sep 2026
+> **Update Terakhir**: 28 September 2026
 
 ---
 
@@ -107,6 +107,27 @@
 
 Semua response memakai `App\Http\Resources` sehingga payload konsisten
 (`data`, `meta`, `links`) dan tanggal dalam format ISO-8601.
+
+### 🟠 Fase 6: Payment Gateway (Oktober 2026) — Sebagian Selesai
+
+| Item                                         | Status | Notes                                           |
+| -------------------------------------------- | ------ | ----------------------------------------------- |
+| Tabel `payments` (polymorphic settlement)   | ✅     | Migration 2026_09_28_000001                    |
+| Kontrak `PaymentGateway` + DTO              | ✅     | Swap provider = 1 binding di AppServiceProvider |
+| `PaymentManager` (charge + settlement)      | ✅     | Idempoten, row lock, applyEffect sekali saja   |
+| `ManualGateway` (transfer/QRIS + konfirmasi) | ✅     | Default, settlement via konfirmasi payer       |
+| Webhook `POST /api/payments/webhook`         | ✅     | Amount check mencegah forging "paid"           |
+| Donasi tidak auto-"completed"               | ✅     | Pending dulu, masuk total setelah dibayar     |
+| Membership berbayar tidak free-activation    | ✅     | Aktif hanya setelah payment settle             |
+| Test lifecycle payment (16 test)             | ✅     | Termasuk duplicate-webhook & amount mismatch  |
+| Integrasi Midtrans / Xendit (real SDK)      | ☐     | `PAYMENT_GATEWAY` env, credential sudah slot   |
+| QRIS EMVCo compliant                         | ☐     | Placeholder format, perlu acquirer            |
+| Verifikasi manual oleh operator             | ☐     | Saat ini payer self-confirm, perlu admin queue |
+| Rekonsiliasi otomatis                        | ☐     | Loop poll `PaymentManager::refresh()`          |
+
+> **Perubahan perilaku 28 Sep 2026:** sebelumnya donasi langsung
+> `status=completed` saat form disubmit dan membership berbayar langsung
+> aktif selama 1 bulan. Keduanya kini butuh settlement payment dulu.
 
 ## 💰 Analisis Monetisasi Detail
 
