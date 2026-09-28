@@ -41,6 +41,9 @@
     <div class="mt-10 p-6 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl">
         <h2 class="text-xl font-bold text-blue-800 dark:text-blue-200 mb-4">Aksi Admin</h2>
         <div class="flex flex-wrap gap-4">
+            <a href="{{ route('admin.payments.index') }}" class="inline-flex items-center gap-2 bg-amber-500 text-white font-semibold px-6 py-3 rounded-xl hover:bg-amber-600 transition-colors">
+                <span class="material-symbols-outlined text-sm">fact_check</span> Verifikasi Pembayaran
+            </a>
             <a href="{{ route('admin.newsletter.send') }}" class="inline-flex items-center gap-2 bg-primary text-white font-semibold px-6 py-3 rounded-xl hover:bg-primary-dark transition-colors">
                 <span class="material-symbols-outlined text-sm">send</span> Kirim Newsletter
             </a>

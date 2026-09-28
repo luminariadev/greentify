@@ -25,6 +25,7 @@
         $status = $payment->effectiveStatus();
         $statusStyles = [
             \App\Models\Payment::STATUS_PENDING => ['label' => 'Menunggu Pembayaran', 'icon' => '⏳', 'class' => 'border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-200'],
+            \App\Models\Payment::STATUS_IN_REVIEW => ['label' => 'Menunggu Verifikasi Operator', 'icon' => '🔍', 'class' => 'border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200'],
             \App\Models\Payment::STATUS_PAID => ['label' => 'Sudah Dibayar', 'icon' => '✅', 'class' => 'border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200'],
             \App\Models\Payment::STATUS_FAILED => ['label' => 'Gagal', 'icon' => '❌', 'class' => 'border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200'],
             \App\Models\Payment::STATUS_EXPIRED => ['label' => 'Kedaluwarsa', 'icon' => '⌛', 'class' => 'border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300'],
@@ -78,11 +79,35 @@
             <form method="POST" action="{{ route('payments.confirm', $payment->reference) }}">
                 @csrf
                 <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded-xl transition-colors">
-                    Saya Sudah Transfer
+                    Sudah Saya Transfer
                 </button>
             </form>
             <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 text-center">
-                Verifikasi manual oleh tim Greentify. Jika nominal atau reference tidak cocok, pembayaran tidak akan diproses.
+                Setelah transfer, tekan tombol di atas. Tim Greentify akan mencocokkan nominal dan reference
+                dengan rekening sebelum donasi/membership diproses.
+            </p>
+        </div>
+    @endif
+
+    @if($status === \App\Models\Payment::STATUS_IN_REVIEW)
+        <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-200 rounded-xl p-6 mb-6">
+            <p class="font-bold mb-2">🔍 Menunggu verifikasi operator</p>
+            <p class="text-sm mb-3">
+                Transfer Anda sudah kami terima dan sedang dicocokkan dengan rekening Greentify.
+                Donasi atau membership baru diproses setelah operator menyetujuinya.
+            </p>
+            @if($payment->submitted_at)
+                <p class="text-xs opacity-80">Dikirim {{ $payment->submitted_at->diffForHumans() }}.</p>
+            @endif
+        </div>
+    @endif
+
+    @if($status === \App\Models\Payment::STATUS_FAILED && $payment->review_note)
+        <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-200 rounded-xl p-6 mb-6">
+            <p class="font-bold mb-2">⚠️ Pembayaran tidak diverifikasi</p>
+            <p class="text-sm">{{ $payment->review_note }}</p>
+            <p class="text-xs mt-3 opacity-80">
+                Silakan lakukan transfer ulang dengan nominal yang sama lalu kirim ulang konfirmasi.
             </p>
         </div>
     @endif
