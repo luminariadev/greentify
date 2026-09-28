@@ -64,6 +64,14 @@ return [
             'account_name' => env('PAYMENT_BANK_NAME', 'Greentify Sustainability Fund'),
             'account_number' => env('PAYMENT_BANK_NUMBER', '1234-5678-90'),
         ],
+
+        // Static QRIS. The acquirer issues the merchant account id; the
+        // country/currency codes are fixed by the Indonesian standard.
+        'qris' => [
+            'merchant_account_id' => env('QRIS_MERCHANT_ACCOUNT_ID', 'ID1024398201947'),
+            'merchant_name' => env('QRIS_MERCHANT_NAME', 'GREENTIFY'),
+            'merchant_city' => env('QRIS_MERCHANT_CITY', 'Bandung'),
+        ],
     ],
 
 ];

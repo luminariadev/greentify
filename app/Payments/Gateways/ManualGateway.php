@@ -6,6 +6,7 @@ use App\Models\Payment;
 use App\Payments\PaymentGateway;
 use App\Payments\Support\ChargeRequest;
 use App\Payments\Support\ChargeResult;
+use App\Payments\Support\QrisPayload;
 use Illuminate\Support\Facades\Config;
 
 /**
@@ -38,7 +39,7 @@ class ManualGateway implements PaymentGateway
             status: Payment::STATUS_PENDING,
             instructions: $instructions,
             gatewayReference: $request->reference(),
-            qrString: $method === 'qris' ? $this->qrisPayload($request, $amount) : null,
+            qrString: $method === 'qris' ? $this->qrisPayload($request) : null,
             message: 'Transfer dulu, lalu konfirmasi agar donasi/membership diproses.',
             payload: [
                 'manual' => true,
@@ -88,16 +89,17 @@ class ManualGateway implements PaymentGateway
     }
 
     /**
-     * A QRIS-style payload. Not a spec-compliant EMVCo string yet — that
-     * comes from the acquirer — but it is unique per payment and safe to
-     * render, which is what the current UI needs.
+     * A real EMVCo/QRIS payload: TLV-encoded, CRC-tagged, and carrying
+     * the payment reference so the acquirer can reconcile a static QR
+     * against our payments table.
      */
-    private function qrisPayload(ChargeRequest $request, float $amount): string
+    private function qrisPayload(ChargeRequest $request): string
     {
-        return sprintf(
-            'GRNTIFY|IDR|%d|GRENTIFY|%s',
-            (int) $amount,
-            $request->reference(),
-        );
+        return QrisPayload::forPayment(
+            payment: $request->payment,
+            merchantAccountId: (string) Config::get('services.payments.qris.merchant_account_id'),
+            merchantName: (string) Config::get('services.payments.qris.merchant_name'),
+            merchantCity: (string) Config::get('services.payments.qris.merchant_city'),
+        )->toString();
     }
 }
