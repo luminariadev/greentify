@@ -25,6 +25,11 @@
         </div>
     @endif
 
+    <div class="mb-8 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 text-blue-800 dark:text-blue-200 rounded-xl p-4 text-sm">
+        💡 Donasi dicatat sebagai <strong>menunggu</strong> dan baru masuk ke "Total Terkumpul" setelah
+        pembayaran Anda dikonfirmasi. Anda akan menerima instruksi transfer lengkap setelah menekan tombol.
+    </div>
+
     <!-- Stats -->
     <div class="grid sm:grid-cols-2 gap-6 mb-10">
         <div class="nature-shadow rounded-2xl p-6 text-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
@@ -83,6 +88,9 @@
             <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl transition-colors text-lg">
                 💚 Donasi Sekarang
             </button>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 text-center">
+                Anda akan diarahkan ke halaman pembayaran untuk menyelesaikan transfer.
+            </p>
         </form>
     </div>
 </div>

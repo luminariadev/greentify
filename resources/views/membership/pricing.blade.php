@@ -60,6 +60,11 @@
                                 {{ $tier->slug === 'free' ? 'Turun ke Free' : 'Pilih ' . $tier->name }}
                             </button>
                         </form>
+                        @if($tier->slug !== 'free')
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 text-center">
+                                Membership aktif setelah pembayaran dikonfirmasi.
+                            </p>
+                        @endif
                     @endif
                 @else
                     <a href="{{ route('login') }}" class="mt-6 block w-full text-center bg-primary hover:bg-primary-dark text-white font-semibold py-3 rounded-xl transition-colors">
