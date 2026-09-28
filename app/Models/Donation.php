@@ -41,7 +41,7 @@ class Donation extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany<\App\Models\Payment, \App\Models\Donation>
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany<\App\Models\Payment>
      */
     public function payments(): MorphMany
     {
@@ -50,6 +50,8 @@ class Donation extends Model
 
     /**
      * The payment that will settle this donation, newest first.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany<\App\Models\Payment>
      */
     public function latestPayment(): MorphMany
     {
