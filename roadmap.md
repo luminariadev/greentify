@@ -1,8 +1,8 @@
 # Greentify — Roadmap & Development Plan
 
 > **Greentify**: Platform blog dan komunitas lingkungan
-> **Status**: Fase 0–5 Selesai — Payment Gateway (Fase 6) baru dimulai 28 Sep 2026
-> **Update Terakhir**: 28 September 2026
+> **Status**: Fase 0–5 Selesai — Payment Gateway (Fase 6) berjalan, tinggal 1 item
+> **Update Terakhir**: 29 September 2026
 
 ---
 
@@ -121,13 +121,24 @@ Semua response memakai `App\Http\Resources` sehingga payload konsisten
 | Membership berbayar tidak free-activation    | ✅     | Aktif hanya setelah payment settle             |
 | Test lifecycle payment (16 test)             | ✅     | Termasuk duplicate-webhook & amount mismatch  |
 | Integrasi Midtrans / Xendit (real SDK)      | ☐     | `PAYMENT_GATEWAY` env, credential sudah slot   |
-| QRIS EMVCo compliant                         | ☐     | Placeholder format, perlu acquirer            |
-| Verifikasi manual oleh operator             | ☐     | Saat ini payer self-confirm, perlu admin queue |
-| Rekonsiliasi otomatis                        | ☐     | Loop poll `PaymentManager::refresh()`          |
+| QRIS EMVCo compliant                         | ✅     | TLV + CRC16-CCITT; dynamic CRC & MCC butuh PSP |
+| Verifikasi manual oleh operator             | ✅     | Antrean admin, approve/reject + notifikasi     |
+| Rekonsiliasi otomatis                        | ✅     | `payments:reconcile`, no-op sampai ada provider |
 
 > **Perubahan perilaku 28 Sep 2026:** sebelumnya donasi langsung
 > `status=completed` saat form disubmit dan membership berbayar langsung
 > aktif selama 1 bulan. Keduanya kini butuh settlement payment dulu.
+>
+> **Perubahan perilaku 29 Sep 2026 — bug keamanan.** Tombol "Saya Sudah
+> Transfer" ternyata men-*cairkan* pembayarannya sendiri: `confirm()`
+> mengirim event `paid` langsung ke `PaymentManager::apply()`. Siapa pun
+> bisa menandai donasinya selesai tanpa transfer apa pun. Sekarang tombol
+> itu hanya mengirim klaim ke status `in_review`; operator yang memutuskan
+> lewat `/admin/payments`. Alasan penolakan dikirim balik ke payer.
+>
+> Sisa 1 item: integrasi SDK provider asli (butuh kredensial & UUID
+> notification dari Midtrans/Xendit — bukan pekerjaan kode yang bisa
+> diselesaikan tanpa akses ke akun tersebut).
 
 ## 💰 Analisis Monetisasi Detail
 
@@ -213,8 +224,21 @@ User bisa lihat & beli produk ramah lingkungan via link afiliasi.
 - [x] API untuk Mobile (Sanctum token + ArticleResource/CategoryResource)
 
 > ## 🎉 Fase 5 Skalabilitas — 6/6 Selesai
-> Roadmap seluruh fase (0–5) sudah tuntas. Fokus berikutnya: integrasi
-> payment gateway (Membership & Donasi masih free-activation).
+> Roadmap seluruh fase (0–5) sudah tuntas. Payment gateway (Fase 6)
+> berjalan dengan verifikasi operator; tersisa integrasi SDK provider
+> asli yang menunggu kredensial.
+
+---
+
+## 🔜 Fokus Berikutnya
+
+1. **Integrasi Midtrans / Xendit** — 1 item Fase 6 yang tersisa. Butuh
+   server key + UUID notification dari akun PSP; kontrak `PaymentGateway`
+   dan binding di `AppServiceProvider` sudah siap.
+2. **Rekonsiliasi terjadwal** — jalankan `payments:reconcile` lewat
+   scheduler setiap 5 menit begitu provider aktif.
+3. **Dashboard operator** — grafik pendapatan dan filter tanggal di
+   antrean verifikasi, supaya tidak harus scroll 20 item per halaman.
 
 ---
 
