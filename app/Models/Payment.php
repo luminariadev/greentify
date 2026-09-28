@@ -14,6 +14,15 @@ class Payment extends Model
 
     public const STATUS_PENDING = 'pending';
 
+    /**
+     * The payer said they transferred, an operator has not looked yet.
+     *
+     * This is the state that stops a payment from being self-settled:
+     * arriving here is the payer's claim, leaving it is the operator's
+     * decision.
+     */
+    public const STATUS_IN_REVIEW = 'in_review';
+
     public const STATUS_PAID = 'paid';
 
     public const STATUS_FAILED = 'failed';
@@ -36,6 +45,10 @@ class Payment extends Model
         'instructions',
         'payload',
         'expires_at',
+        'submitted_at',
+        'reviewed_by',
+        'reviewed_at',
+        'review_note',
         'paid_at',
         'failed_at',
     ];
@@ -44,6 +57,8 @@ class Payment extends Model
         'amount' => 'decimal:2',
         'payload' => 'array',
         'expires_at' => 'datetime',
+        'submitted_at' => 'datetime',
+        'reviewed_at' => 'datetime',
         'paid_at' => 'datetime',
         'failed_at' => 'datetime',
     ];
@@ -98,9 +113,25 @@ class Payment extends Model
         return $query->whereIn('status', [self::STATUS_PAID, self::STATUS_REFUNDED]);
     }
 
+    /**
+     * The operator queue: awaiting a human, oldest claim first.
+     *
+     * @param  Builder<Payment>  $query
+     * @return Builder<Payment>
+     */
+    public function scopeAwaitingReview(Builder $query): Builder
+    {
+        return $query->where('status', self::STATUS_IN_REVIEW)->oldest('submitted_at');
+    }
+
     public function isPending(): bool
     {
-        return $this->status === self::STATUS_PENDING;
+        return in_array($this->status, [self::STATUS_PENDING, self::STATUS_IN_REVIEW], true);
+    }
+
+    public function isInReview(): bool
+    {
+        return $this->status === self::STATUS_IN_REVIEW;
     }
 
     public function isPaid(): bool
@@ -115,15 +146,49 @@ class Payment extends Model
 
     /**
      * A pending payment past its expiry is reported as expired so the UI
-     * can stop showing a QR code nobody will ever pay.
+     * can stop showing a QR code nobody will ever pay. A payment already
+     * in review keeps its status — the money may well have landed, and
+     * that is exactly what the operator is being asked to check.
      */
     public function effectiveStatus(): string
     {
-        if ($this->isPending() && $this->isExpired()) {
+        if ($this->status === self::STATUS_PENDING && $this->isExpired()) {
             return self::STATUS_EXPIRED;
         }
 
         return $this->status;
+    }
+
+    /**
+     * The payer's claim: move a pending payment into the operator queue.
+     *
+     * Idempotent, so a double-click on the confirm button cannot create
+     * two queue entries or reset a decision already made.
+     */
+    public function submitForReview(): bool
+    {
+        if ($this->status !== self::STATUS_PENDING) {
+            return false;
+        }
+
+        $this->forceFill([
+            'status' => self::STATUS_IN_REVIEW,
+            'submitted_at' => now(),
+        ])->save();
+
+        return true;
+    }
+
+    /**
+     * The operator's decision, on both outcomes.
+     */
+    public function markReviewed(?int $reviewerId, ?string $note = null): void
+    {
+        $this->forceFill([
+            'reviewed_by' => $reviewerId,
+            'reviewed_at' => now(),
+            'review_note' => $note,
+        ])->save();
     }
 
     /**
