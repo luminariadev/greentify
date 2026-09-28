@@ -206,7 +206,7 @@ class PaymentTest extends TestCase
             ->assertSee($payment->reference);
     }
 
-    public function test_confirming_a_payment_settles_it_once(): void
+    public function test_confirming_queues_the_payment_and_pressing_twice_does_nothing(): void
     {
         $user = User::factory()->create();
         $donation = Donation::factory()->create(['user_id' => $user->id]);
@@ -216,9 +216,12 @@ class PaymentTest extends TestCase
             ->post('/payments/'.$payment->reference.'/confirm')
             ->assertRedirect();
 
-        $this->assertTrue($payment->refresh()->isPaid());
+        // Confirming is a claim, not a settlement — see PaymentReviewTest
+        // for the operator side. This assertion is the regression guard
+        // for the self-settling bug fixed on 29 Sep 2026.
+        $this->assertSame(Payment::STATUS_IN_REVIEW, $payment->refresh()->status);
 
-        // Second press must not re-apply anything.
+        // Second press must not re-queue or reset the claim.
         $this->actingAs($user)
             ->post('/payments/'.$payment->reference.'/confirm')
             ->assertSessionHas('error');
