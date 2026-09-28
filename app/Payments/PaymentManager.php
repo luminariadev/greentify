@@ -100,6 +100,72 @@ class PaymentManager
         return $this->gateway->status($payment);
     }
 
+    /**
+     * Record the payer's claim that the money was sent.
+     *
+     * This is the fix for the self-settling bug: confirm() used to push a
+     * paid event straight through apply(), so the payer both claimed and
+     * settled. Now the claim only moves the payment into the operator
+     * queue. Returns true when this call was the one that enqueued it.
+     */
+    public function submitForReview(Payment $payment, ?string $submittedBy = null): bool
+    {
+        return DB::transaction(function () use ($payment, $submittedBy): bool {
+            $locked = Payment::whereKey($payment->getKey())->lockForUpdate()->firstOrFail();
+
+            if (! $locked->submitForReview()) {
+                return false;
+            }
+
+            if ($submittedBy !== null) {
+                $locked->forceFill(['payload' => array_merge(
+                    $locked->payload ?? [],
+                    ['submitted_by' => $submittedBy],
+                )])->save();
+            }
+
+            return true;
+        });
+    }
+
+    /**
+     * An operator's decision on a claimed payment.
+     *
+     * Approving settles the payment for real (the donation completes, the
+     * membership activates) and records the reviewer. Rejecting marks it
+     * failed and keeps the note so the payer knows why.
+     *
+     * @param  int  $reviewerId  The admin who made the call.
+     */
+    public function review(Payment $payment, int $reviewerId, bool $approve, ?string $note = null): bool
+    {
+        return DB::transaction(function () use ($payment, $reviewerId, $approve, $note): bool {
+            $locked = Payment::whereKey($payment->getKey())->lockForUpdate()->firstOrFail();
+
+            if (! $locked->isInReview()) {
+                return false;
+            }
+
+            $locked->markReviewed($reviewerId, $note);
+
+            if (! $approve) {
+                $locked->markFailed('rejected_by_operator');
+
+                return true;
+            }
+
+            $this->apply(new GatewayEvent(
+                payment: $locked,
+                status: Payment::STATUS_PAID,
+                gatewayReference: $locked->gateway_reference,
+                message: $note ?? 'Disetujui oleh operator.',
+                payload: ['reviewed_by' => $reviewerId],
+            ));
+
+            return true;
+        });
+    }
+
     private function charge(
         Model $payable,
         string $method,
