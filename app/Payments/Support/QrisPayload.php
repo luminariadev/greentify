@@ -129,15 +129,16 @@ class QrisPayload
      * EMVCo has no room for accented characters, so transliterate and drop
      * anything outside the printable range rather than emitting a payload
      * a scanner will reject.
+     *
+     * iconv's TRANSLIT mode turns "É" into "E'" — it keeps a quote for the
+     * unknown glyph, which is how "Ékoprese" becomes "E'koprese" in a QR
+     * code a real customer scans. Anything non-ASCII is therefore dropped
+     * outright: a missing accent is invisible, a stray quote is not.
      */
     private static function normalise(string $value, int $maxLength): string
     {
-        $ascii = @iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $value);
+        $ascii = preg_replace('/[^\x20-\x7E]/', '', $value);
 
-        if ($ascii === false) {
-            $ascii = preg_replace('/[^\x20-\x7E]/', '', $value) ?? $value;
-        }
-
-        return substr((string) $ascii, 0, $maxLength);
+        return substr($ascii ?? $value, 0, $maxLength);
     }
 }
