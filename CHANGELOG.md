@@ -4,6 +4,34 @@ Semua perubahan penting pada Greentify dicatat di sini.
 
 Format berdasarkan [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.6.0] - 2026-09-29
+
+### Security
+- **Fixed:** `POST /payments/{reference}/confirm` settled the payer's own
+  payment. Any user could mark a donation `completed` or activate a paid
+  membership by pressing one button, with no transfer and no verification —
+  while the payment page stated the opposite. Confirming now only submits a
+  claim; settlement requires an operator decision.
+
+### Added
+- Payment status `in_review` with `submitted_at`, `reviewed_by`,
+  `reviewed_at`, and `review_note` columns
+- Operator review queue at `/admin/payments` with approve/reject, a
+  mandatory rejection reason, and decision history
+- `PaymentReviewed` notification so the payer learns the outcome
+- EMVCo/QRIS payload builder with CRC-16/CCITT-FALSE and the payment
+  reference embedded in the merchant account tag
+- `PaymentManager::reconcile()` and `php artisan payments:reconcile` for
+  scheduled gateway polling and a stale-payment report
+
+### Fixed
+- Merchant names containing accented characters emitted a stray apostrophe
+  (`É` → `E'`) into the QR payload via `iconv` transliteration
+
+### Changed
+- Test count 72 → 101; `test_confirming_a_payment_settles_it_once` was
+  asserting the buggy behaviour and now asserts the claim semantics
+
 ## [0.5.1] - 2026-08-31
 
 ### Maintenance
