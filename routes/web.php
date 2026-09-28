@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdController;
+use App\Http\Controllers\Admin\PaymentReviewController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ArticleInteractionController;
@@ -79,6 +80,11 @@ Route::post('/newsletter/unsubscribe', [NewsletterController::class, 'unsubscrib
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::post('/admin/newsletter/send', [NewsletterController::class, 'send'])->name('admin.newsletter.send');
+
+    // Manual-gateway settlement. The payer only claims; an admin decides.
+    Route::get('/admin/payments', [PaymentReviewController::class, 'index'])->name('admin.payments.index');
+    Route::post('/admin/payments/{reference}/approve', [PaymentReviewController::class, 'approve'])->name('admin.payments.approve');
+    Route::post('/admin/payments/{reference}/reject', [PaymentReviewController::class, 'reject'])->name('admin.payments.reject');
 });
 
 // Blog
