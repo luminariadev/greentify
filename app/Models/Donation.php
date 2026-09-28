@@ -6,10 +6,17 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Donation extends Model
 {
     use HasFactory;
+
+    public const STATUS_PENDING = 'pending';
+
+    public const STATUS_COMPLETED = 'completed';
+
+    public const STATUS_FAILED = 'failed';
 
     protected $fillable = [
         'user_id',
@@ -34,11 +41,27 @@ class Donation extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany<\App\Models\Payment, \App\Models\Donation>
+     */
+    public function payments(): MorphMany
+    {
+        return $this->morphMany(Payment::class, 'payable');
+    }
+
+    /**
+     * The payment that will settle this donation, newest first.
+     */
+    public function latestPayment(): MorphMany
+    {
+        return $this->payments()->orderByDesc('id');
+    }
+
+    /**
      * @param  Builder<Donation>  $query
      * @return Builder<Donation>
      */
     public function scopeCompleted(Builder $query): Builder
     {
-        return $query->where('status', 'completed');
+        return $query->where('status', self::STATUS_COMPLETED);
     }
 }
