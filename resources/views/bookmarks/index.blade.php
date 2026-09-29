@@ -62,18 +62,18 @@
                         class="flex items-center gap-1 text-primary font-label-sm text-label-sm hover:text-secondary transition-colors"
                         data-action="like"
                         data-article-id="{{ $article->id }}"
-                        aria-pressed="{{ auth()->check() && $article->liked_by->isNotEmpty() ? 'true' : 'false' }}"
+                        aria-pressed="{{ auth()->check() && $article->likedBy->isNotEmpty() ? 'true' : 'false' }}"
                     >
-                        <span class="material-symbols-outlined">{{ auth()->check() && $article->liked_by->isNotEmpty() ? 'favorite' : 'favorite_border' }}</span>
+                        <span class="material-symbols-outlined">{{ auth()->check() && $article->likedBy->isNotEmpty() ? 'favorite' : 'favorite_border' }}</span>
                         <span class="like-count">{{ $article->likes_count }}</span>
                     </button>
                     <button
                         class="flex items-center gap-1 text-primary font-label-sm text-label-sm hover:text-secondary transition-colors"
                         data-action="bookmark"
                         data-article-id="{{ $article->id }}"
-                        aria-pressed="{{ auth()->check() && $article->bookmarked_by->isNotEmpty() ? 'true' : 'false' }}"
+                        aria-pressed="{{ auth()->check() && $article->bookmarkedBy->isNotEmpty() ? 'true' : 'false' }}"
                     >
-                        <span class="material-symbols-outlined">{{ auth()->check() && $article->bookmarked_by->isNotEmpty() ? 'bookmark' : 'bookmark_border' }}</span>
+                        <span class="material-symbols-outlined">{{ auth()->check() && $article->bookmarkedBy->isNotEmpty() ? 'bookmark' : 'bookmark_border' }}</span>
                         <span class="bookmark-count">{{ $article->bookmarks_count }}</span>
                     </button>
                 </div>

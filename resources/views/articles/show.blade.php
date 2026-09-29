@@ -31,9 +31,9 @@
                         class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-lg text-primary font-label-md text-label-md hover:bg-surface-container transition-colors"
                         data-action="like"
                         data-article-id="{{ $article->id }}"
-                        aria-pressed="{{ $article->liked_by->isNotEmpty() ? 'true' : 'false' }}"
+                        aria-pressed="{{ $article->likedBy->isNotEmpty() ? 'true' : 'false' }}"
                     >
-                        <span class="material-symbols-outlined">{{ $article->liked_by->isNotEmpty() ? 'favorite' : 'favorite_border' }}</span>
+                        <span class="material-symbols-outlined">{{ $article->likedBy->isNotEmpty() ? 'favorite' : 'favorite_border' }}</span>
                         <span class="like-count">{{ $article->likes_count }}</span>
                     </button>
 
@@ -42,9 +42,9 @@
                         class="flex items-center gap-2 px-4 py-2 border border-outline-variant rounded-lg text-primary font-label-md text-label-md hover:bg-surface-container transition-colors"
                         data-action="bookmark"
                         data-article-id="{{ $article->id }}"
-                        aria-pressed="{{ $article->bookmarked_by->isNotEmpty() ? 'true' : 'false' }}"
+                        aria-pressed="{{ $article->bookmarkedBy->isNotEmpty() ? 'true' : 'false' }}"
                     >
-                        <span class="material-symbols-outlined">{{ $article->bookmarked_by->isNotEmpty() ? 'bookmark' : 'bookmark_border' }}</span>
+                        <span class="material-symbols-outlined">{{ $article->bookmarkedBy->isNotEmpty() ? 'bookmark' : 'bookmark_border' }}</span>
                         <span class="bookmark-count">{{ $article->bookmarks_count }}</span>
                     </button>
 
