@@ -4,6 +4,53 @@ Semua perubahan penting pada Greentify dicatat di sini.
 
 Format berdasarkan [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.7.0] - 2026-09-30
+
+### Security
+- **Fixed:** the report queue and report review were gated on
+  `auth()->user()->email === 'admin@greentify.id'` while the rest of the
+  application used the `role` column (present since 2026-08-10). A real
+  admin on any other address got 403, and whoever held that address got in
+  regardless of role — an address `ArticleSeeder` provisions for a content
+  author with no role at all, and which `/register` could therefore claim on
+  a fresh install. Now `isStaff()` (admin + moderator), consistent with
+  `Api\ArticleController`.
+- **Fixed:** `ReportSubmitted` was delivered by looking up
+  `admin@greentify.id` as a single user, so a report went to an article
+  author, or nowhere. It now goes to every non-`user` role, so a promoted
+  moderator is notified too.
+- **Added:** named rate limiters per trust boundary in
+  `AppServiceProvider`. Before this exactly one of 69 routes was throttled —
+  login, registration, comments, replies, likes, bookmarks, follows,
+  notifications, reports, the contact form and the newsletter were all
+  open, so a single client could mass-create accounts, flood the admin's
+  notifications, or use the contact form as a mail relay. 14 routes are now
+  throttled. Login is limited per email+IP so a shared office or campus NAT
+  is not locked out after a few typos while credential stuffing still is.
+
+### Fixed
+- **Fixed:** every successful article write redirected to
+  `route('articles.index')`, a name no route has ever defined — so the
+  redirect 500'd. The create and edit forms linked to the same dead name and
+  threw on render. The public list is `blogspot`.
+- **Fixed:** the public article page, the blog list and the bookmarks page
+  referenced `$article->liked_by` and `$article->bookmarked_by`; the
+  relations are `likedBy()` and `bookmarkedBy()`. All three threw
+  "Call to a member function isNotEmpty() on null" — 500 for any signed-in
+  visitor, and the like/bookmark buttons never rendered at all.
+- **Fixed:** a successful web login redirected to the literal URL
+  `/welcome`, which no route defines. Every login ended on a 404. The
+  fallback is now `route('welcome')`, so a renamed route throws instead of
+  silently producing a dead URL.
+
+### Added
+- Feature tests for the article write flow and authorship checks (11),
+  auth (13), report authorization (13) and rate limiting (11) — the four
+  areas above had no coverage at all
+
+### Changed
+- Test count 101 → 149
+
 ## [0.6.0] - 2026-09-29
 
 ### Security
