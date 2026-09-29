@@ -56,11 +56,17 @@ class ReportController extends Controller
             'description' => $validated['description'] ?? null,
         ]);
 
-        // Notify admin
-        $admin = User::where('email', 'admin@greentify.id')->first();
-        if ($admin) {
-            $admin->notify(new ReportSubmitted($report->id, $model, $reportable->id));
-        }
+        // Notify staff. Was User::where('email', 'admin@greentify.id')->first(),
+        // which delivered the notification to whoever happened to hold that
+        // address -- an address ArticleSeeder provisions for a content
+        // author, and which /register can therefore be claimed on a fresh
+        // install. Now it follows the role column, so a promoted moderator
+        // is notified too.
+        User::query()
+            ->where('role', '!=', User::ROLE_USER)
+            ->each(fn (User $staff) => $staff->notify(
+                new ReportSubmitted($report->id, $model, $reportable->id)
+            ));
 
         return back()->with('success', 'Laporan berhasil dikirim. Terima kasih atas kontribusi Anda menjaga komunitas!');
     }
@@ -68,7 +74,7 @@ class ReportController extends Controller
     // Admin: list all reports
     public function index(): View
     {
-        $this->authorizeAdmin();
+        $this->authorizeStaff();
 
         $reports = Report::with(['reporter', 'reportable'])
             ->latest()
@@ -80,7 +86,7 @@ class ReportController extends Controller
     // Admin: update report status
     public function review(Request $request, Report $report): RedirectResponse
     {
-        $this->authorizeAdmin();
+        $this->authorizeStaff();
 
         $validated = $request->validate([
             'status' => 'required|in:pending,reviewed,dismissed,action_taken',
@@ -95,8 +101,28 @@ class ReportController extends Controller
         return back()->with('success', 'Status laporan diperbarui.');
     }
 
-    private function authorizeAdmin(): void
+    /**
+     * Staff gate for the report surfaces.
+     *
+     * This used to be a hardcoded comparison against 'admin@greentify.id'.
+     * The role column has existed since 2026-08-10 and the `admin` middleware
+     * alias checks it properly, so the role system was already in place and
+     * this controller was the one place ignoring it. Two bugs came out of
+     * that: a genuine admin on any other address got 403, and whoever held
+     * the admin@greentify.id address got in regardless of role -- an address
+     * ArticleSeeder provisions for a *content author* with no role at all.
+     *
+     * isStaff() rather than isAdmin() because moderators reach staff-only
+     * surfaces everywhere else in the app (see CheckAdminRole's sibling
+     * surfaces and Api\ArticleController's use of isStaff()); locking them
+     * out of the report queue was an inconsistency, not a decision.
+     */
+    private function authorizeStaff(): void
     {
-        abort_unless(auth()->check() && auth()->user()->email === 'admin@greentify.id', 403);
+        abort_unless(
+            auth()->check() && auth()->user()->isStaff(),
+            403,
+            'Akses ditolak. Hanya staff yang dapat mengelola laporan.',
+        );
     }
 }
