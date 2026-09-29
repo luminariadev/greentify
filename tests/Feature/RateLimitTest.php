@@ -3,9 +3,6 @@
 namespace Tests\Feature;
 
 use App\Models\Article;
-use App\Models\Comment;
-use App\Models\Pesan;
-use App\Models\Subscriber;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\RateLimiter;
