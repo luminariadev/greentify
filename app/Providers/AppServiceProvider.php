@@ -87,7 +87,10 @@ class AppServiceProvider extends ServiceProvider
 
         // Content reports. Each report notifies an admin, so this is the
         // one unauthenticated-ish surface that can wake a human up.
-        RateLimiter::for('report', fn (Request $request): Limit => Limit::perHours(1, 10)
+        //
+        // perHour() not perHours(): Laravel 11's Limit has no perHours()
+        // and the typo would only surface on the first real report.
+        RateLimiter::for('report', fn (Request $request): Limit => Limit::perHour(10)
             ->by('report:'.($request->user()?->id ?? $request->ip())));
 
         // Password-reset link sends and any other outbound-mail trigger.
