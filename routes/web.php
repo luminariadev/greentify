@@ -33,17 +33,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Auth
+// Every credential surface is throttled by a named limiter declared in
+// AppServiceProvider. Login is limited per email+IP so a shared NAT is not
+// punished for a few typos, while credential stuffing against one account
+// is. The bare `redirect()->intended('/welcome')` on success is a
+// pre-existing oddity (no /welcome route exists; 'welcome' is the name) and
+// is left alone here -- see its own commit.
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:login');
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register'])->middleware('throttle:register');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Public pages
 Route::get('/', fn () => view('landing'))->name('welcome');
 
 Route::get('/contact', [ContactFormController::class, 'showForm'])->name('contact.form');
-Route::post('/contact', [ContactFormController::class, 'store'])->name('contact.store');
+// Low limit and no identity to rate on: this writes to a shared inbox and
+// is otherwise an open mail relay.
+Route::post('/contact', [ContactFormController::class, 'store'])
+    ->middleware('throttle:public-submit')
+    ->name('contact.store');
 
 // Marketplace (Green Affiliate)
 Route::get('/marketplace', [MarketplaceController::class, 'index'])->name('marketplace.index');
@@ -72,9 +82,15 @@ Route::get('/donasi', [DonationController::class, 'index'])->name('donation.inde
 Route::post('/donasi', [DonationController::class, 'store'])->name('donation.store');
 
 // Newsletter
-Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+// Subscribe and unsubscribe both write to the shared mailing list; an
+// attacker could otherwise sign someone else's address up to spam them.
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])
+    ->middleware('throttle:public-submit')
+    ->name('newsletter.subscribe');
 Route::get('/newsletter/unsubscribe', [NewsletterController::class, 'showUnsubscribeForm'])->name('newsletter.unsubscribe.page');
-Route::post('/newsletter/unsubscribe', [NewsletterController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
+Route::post('/newsletter/unsubscribe', [NewsletterController::class, 'unsubscribe'])
+    ->middleware('throttle:public-submit')
+    ->name('newsletter.unsubscribe');
 
 // Admin
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -110,29 +126,44 @@ Route::middleware('auth')->group(function () {
     Route::delete('/articles/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 
     // Comments
-    Route::post('/articles/{article}/comments', [CommentController::class, 'store'])->name('comments.store');
-    Route::post('/comments/{comment}/reply', [CommentController::class, 'reply'])->name('comments.reply');
+    Route::middleware('throttle:write')->group(function () {
+        Route::post('/articles/{article}/comments', [CommentController::class, 'store'])->name('comments.store');
+        Route::post('/comments/{comment}/reply', [CommentController::class, 'reply'])->name('comments.reply');
+    });
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.user');
 
     // Like & Bookmark
-    Route::post('/articles/{article:slug}/like', [ArticleInteractionController::class, 'toggleLike'])->name('articles.like');
-    Route::post('/articles/{article:slug}/bookmark', [ArticleInteractionController::class, 'toggleBookmark'])->name('articles.bookmark');
+    // Throttled together with the other authenticated writes: one account
+    // could otherwise toggle thousands of likes in a loop and inflate both
+    // the article's counter and the author's notification list.
+    Route::middleware('throttle:write')->group(function () {
+        Route::post('/articles/{article:slug}/like', [ArticleInteractionController::class, 'toggleLike'])->name('articles.like');
+        Route::post('/articles/{article:slug}/bookmark', [ArticleInteractionController::class, 'toggleBookmark'])->name('articles.bookmark');
+    });
     Route::get('/bookmarks', [ArticleInteractionController::class, 'indexBookmarks'])->name('bookmarks.index');
 
     // Follow
-    Route::post('/users/{user}/follow', [FollowController::class, 'toggleFollow'])->name('users.follow');
+    Route::post('/users/{user}/follow', [FollowController::class, 'toggleFollow'])
+        ->middleware('throttle:write')
+        ->name('users.follow');
 
     // Notifications
     Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
-    Route::post('/notifications/mark-read', [NotificationController::class, 'markAsRead'])->name('notifications.markRead');
-    Route::post('/notifications/mark-all-read', [NotificationController::class, 'markAllAsRead'])->name('notifications.markAllRead');
+    Route::middleware('throttle:write')->group(function () {
+        Route::post('/notifications/mark-read', [NotificationController::class, 'markAsRead'])->name('notifications.markRead');
+        Route::post('/notifications/mark-all-read', [NotificationController::class, 'markAllAsRead'])->name('notifications.markAllRead');
+    });
 
     // Reports
+    // Separate, tighter budget than generic writes: every report notifies
+    // an admin, so this is the surface that can actually wake a human up.
     Route::get('/reports/create', [ReportController::class, 'create'])->name('reports.create');
-    Route::post('/reports', [ReportController::class, 'store'])->name('reports.store');
+    Route::post('/reports', [ReportController::class, 'store'])
+        ->middleware('throttle:report')
+        ->name('reports.store');
     Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
     Route::patch('/reports/{report}/review', [ReportController::class, 'review'])->name('reports.review');
 });

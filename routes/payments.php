@@ -23,8 +23,10 @@ Route::middleware('auth')->group(function () {
         ->name('payments.show');
 
     // Rate limited because this is the manual gateway's only settlement
-    // path — an unguarded POST here would let anyone self-approve.
-    Route::middleware('throttle:10,1')->group(function () {
+    // path — an unguarded POST here would let anyone self-approve. The
+    // limit itself is the named 'payment' limiter (AppServiceProvider), so
+    // it can be retuned without editing this file.
+    Route::middleware('throttle:payment')->group(function () {
         Route::post('/payments/{reference}/confirm', [PaymentController::class, 'confirm'])
             ->where('reference', '[A-Za-z0-9\-]+')
             ->name('payments.confirm');
