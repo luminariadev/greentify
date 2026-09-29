@@ -36,9 +36,8 @@ use Illuminate\Support\Facades\Route;
 // Every credential surface is throttled by a named limiter declared in
 // AppServiceProvider. Login is limited per email+IP so a shared NAT is not
 // punished for a few typos, while credential stuffing against one account
-// is. The bare `redirect()->intended('/welcome')` on success is a
-// pre-existing oddity (no /welcome route exists; 'welcome' is the name) and
-// is left alone here -- see its own commit.
+// is. The login redirect target was a dead '/welcome' URL and is fixed in
+// its own commit.
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:login');
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');

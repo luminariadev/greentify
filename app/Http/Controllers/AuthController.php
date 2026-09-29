@@ -25,7 +25,17 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/welcome'); // Ganti '/welcome' dengan rute setelah login berhasil
+            // intended() falls back to the landing page when the user did not
+            // get interrupted by an auth gate. The fallback was a literal
+            // '/welcome' URL, which no route has ever defined -- the landing
+            // page is the root and 'welcome' is a route *name*. Every
+            // successful web login therefore landed on a 404.
+            //
+            // route() instead of a string is the point: a missing name throws
+            // instead of silently producing a dead URL, which is what let
+            // the placeholder survive with a comment admitting it was
+            // unfinished.
+            return redirect()->intended(route('welcome'));
         }
 
         return back()->withErrors([
