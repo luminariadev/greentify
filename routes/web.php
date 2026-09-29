@@ -88,6 +88,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
 });
 
 // Blog
+// The public list is named 'blogspot' (restored 2026-09-26 from ec27b03) but
+// every redirect after create/update/destroy and both article forms' cancel
+// button pointed at 'articles.index', which no route has ever defined. The
+// result: every successful article write 500'd on the redirect and both form
+// pages threw on render. 101 green tests never caught it because nothing
+// asserts on the redirect target after a write.
 Route::get('/blogspot', [ArticleController::class, 'index'])->name('blogspot');
 Route::get('/limbah', fn () => view('blog.limbah'))->name('limbah');
 Route::get('/konservasi', fn () => view('blog.konservasi'))->name('konservasi');

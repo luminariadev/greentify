@@ -84,7 +84,7 @@
 
         <!-- Actions -->
         <div class="flex flex-col sm:flex-row gap-4 pt-8 border-t border-outline-variant/30">
-            <a href="{{ route('articles.index') }}" class="flex-1 sm:flex-none px-8 py-4 bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-colors text-center">Batal</a>
+            <a href="{{ route('blogspot') }}" class="flex-1 sm:flex-none px-8 py-4 bg-surface-container text-on-surface border border-outline-variant/30 rounded-lg font-label-md text-label-md hover:bg-surface-container-high transition-colors text-center">Batal</a>
             <button class="flex-1 sm:flex-none px-8 py-4 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-all active:scale-[0.98] flex items-center justify-center gap-2" type="submit">
                 Perbarui Artikel
                 <span class="material-symbols-outlined text-sm">save</span>
