@@ -4,6 +4,47 @@ Semua perubahan penting pada Greentify dicatat di sini.
 
 Format berdasarkan [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.8.0] - 2026-09-30
+
+### Fixed
+- **Fixed:** nothing ever moved a payment from `pending` to `expired`.
+  `Payment::effectiveStatus()` computed the answer on every render, but the
+  row kept saying `pending` forever — so a payment whose QR had been closed
+  for a week still counted towards every pending total, and the payer could
+  still press "I have transferred" on a code no bank would accept. Added
+  `Payment::markExpired()` (only `pending` qualifies; a payment already
+  claimed keeps its status because the money may well have landed) plus
+  `scopeExpiredPending()`.
+- **Fixed:** a payment past its window could still be claimed by the payer.
+  `confirm()` checked `status`, and `pending` is always true for an expired
+  payment, so the claim reached the operator queue. That is worse than a
+  refusal: an operator is asked to check a transfer that cannot exist. The
+  claim is now refused with an explanation and the row stays `pending` so
+  the sweeper can retire it.
+- **Fixed:** `payments:reconcile` existed as a command and was never
+  registered in the scheduler — `routes/console.php` contained only
+  `inspire`, so the roadmap's "run reconciliation every 5 minutes" was a
+  sentence rather than code. Both payment jobs are now scheduled.
+
+### Added
+- `payments:expire-stale` command and a scheduler entry every minute, which
+  is what turns the expired status into something real
+- Date filter (from/to on `submitted_at`) for the operator payment queue,
+  with `withQueryString()` so pagination keeps it. An unparseable bound is
+  dropped rather than rejected — this is a read-only view of the
+  operator's own queue, and a typo should widen the result set instead of
+  erroring mid-reconcile.
+- The header's "awaiting" figure now uses the same predicate as the list, so
+  a filtered page cannot show a number that disagrees with the table under it
+- An "expired" card in the queue header. Without a number here, a dead
+  scheduler is indistinguishable from a healthy system: no error, no log, the
+  queue still works.
+- Tests for expiry, the scheduler, the leaky claim path and the queue
+  filter (17)
+
+### Changed
+- Test count 149 → 166
+
 ## [0.7.0] - 2026-09-30
 
 ### Security
