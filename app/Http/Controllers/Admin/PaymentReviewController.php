@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use App\Notifications\PaymentReviewed;
 use App\Payments\PaymentManager;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\View\View;
 
@@ -24,13 +26,21 @@ class PaymentReviewController extends Controller
 
     /**
      * Claimed payments, oldest first, with the last decision for context.
+     *
+     * Optionally narrowed to a submitted-at date range. An unparseable
+     * bound is dropped rather than rejected: this is a read-only view of
+     * the operator's own queue, so a typo in the date box should widen
+     * the result set, not hand the operator an error page mid-reconcile.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        $awaiting = Payment::query()
-            ->awaitingReview()
+        $from = $this->parseDate($request->query('from'));
+        $to = $this->parseDate($request->query('to'));
+
+        $awaiting = $this->filteredAwaiting($from, $to)
             ->with(['user', 'payable'])
-            ->paginate(20);
+            ->paginate(20)
+            ->withQueryString();
 
         $recentlyReviewed = Payment::query()
             ->whereNotNull('reviewed_at')
@@ -40,7 +50,14 @@ class PaymentReviewController extends Controller
             ->get();
 
         $stats = [
-            'awaiting' => Payment::query()->awaitingReview()->count(),
+            // The header number has to describe the table under it. If it
+            // counted every claim while the list showed one page of a
+            // filtered range, the operator would be reading a figure that
+            // does not match what they are looking at.
+            'awaiting' => $this->filteredAwaiting($from, $to)->count(),
+            'expired' => Payment::query()
+                ->where('status', Payment::STATUS_EXPIRED)
+                ->count(),
             'settled_today' => Payment::query()
                 ->where('status', Payment::STATUS_PAID)
                 ->whereDate('paid_at', now()->toDateString())
@@ -48,7 +65,7 @@ class PaymentReviewController extends Controller
             'settled_total' => Payment::query()->where('status', Payment::STATUS_PAID)->count(),
         ];
 
-        return view('admin.payments.index', compact('awaiting', 'recentlyReviewed', 'stats'));
+        return view('admin.payments.index', compact('awaiting', 'recentlyReviewed', 'stats', 'from', 'to'));
     }
 
     /**
@@ -97,6 +114,47 @@ class PaymentReviewController extends Controller
 
         return redirect()->route('admin.payments.index')
             ->with('success', "Pembayaran {$payment->reference} ditolak. Payer sudah diberi tahu alasannya.");
+    }
+
+    /**
+     * The claim queue, narrowed to a submitted-at range when given.
+     *
+     * Built as a fresh query rather than reusing a scope so the exact same
+     * predicate feeds the list and the header count — that equality is
+     * what the tests pin down.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder<Payment>
+     */
+    private function filteredAwaiting(?Carbon $from, ?Carbon $to): Builder
+    {
+        return Payment::query()
+            ->awaitingReview()
+            ->when(
+                $from !== null,
+                fn (Builder $query) => $query->where('submitted_at', '>=', $from->startOfDay()),
+            )
+            ->when(
+                $to !== null,
+                fn (Builder $query) => $query->where('submitted_at', '<=', $to->endOfDay()),
+            );
+    }
+
+    /**
+     * A date box the operator can mistype should widen the result set, not
+     * blow up their queue with a validation error. Anything unparseable
+     * becomes null, which the caller reads as "no bound".
+     */
+    private function parseDate(mixed $value): ?Carbon
+    {
+        if (! is_string($value) || trim($value) === '') {
+            return null;
+        }
+
+        try {
+            return Carbon::createFromFormat('Y-m-d', trim($value))?->startOfDay();
+        } catch (\Throwable) {
+            return null;
+        }
     }
 
     /**
