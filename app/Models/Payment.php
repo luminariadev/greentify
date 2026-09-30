@@ -134,6 +134,21 @@ class Payment extends Model
         return $query->where('status', self::STATUS_IN_REVIEW)->oldest('submitted_at');
     }
 
+    /**
+     * Pending payments whose window has closed — the exact rows
+     * markExpired() may transition. Bounded by id so the sweeper pages
+     * instead of loading a table that only ever grows.
+     *
+     * @param  Builder<Payment>  $query
+     * @return Builder<Payment>
+     */
+    public function scopeExpiredPending(Builder $query): Builder
+    {
+        return $query->where('status', self::STATUS_PENDING)
+            ->whereNotNull('expires_at')
+            ->where('expires_at', '<', now());
+    }
+
     public function isPending(): bool
     {
         return in_array($this->status, [self::STATUS_PENDING, self::STATUS_IN_REVIEW], true);
@@ -159,6 +174,10 @@ class Payment extends Model
      * can stop showing a QR code nobody will ever pay. A payment already
      * in review keeps its status — the money may well have landed, and
      * that is exactly what the operator is being asked to check.
+     *
+     * This is a *computation* for the view. It does not write anything,
+     * so the row keeps saying `pending` until something calls
+     * markExpired() — which is why `payments:expire-stale` exists.
      */
     public function effectiveStatus(): string
     {
@@ -167,6 +186,30 @@ class Payment extends Model
         }
 
         return $this->status;
+    }
+
+    /**
+     * Persist the expiry that effectiveStatus() only reports.
+     *
+     * Without this the status column was a permanent lie: a payment whose
+     * QR had been dead for a week still said `pending`, so the payer could
+     * still press "I have transferred" and the row kept showing up in
+     * every "pending" count.
+     *
+     * Only `pending` may be expired. A payment in review keeps its status
+     * because the money may well have landed, and that is precisely what
+     * the operator is being asked to look at. Idempotent, because the
+     * sweeper runs every minute over overlapping windows.
+     */
+    public function markExpired(): bool
+    {
+        if ($this->status !== self::STATUS_PENDING || ! $this->isExpired()) {
+            return false;
+        }
+
+        $this->forceFill(['status' => self::STATUS_EXPIRED])->save();
+
+        return true;
     }
 
     /**
