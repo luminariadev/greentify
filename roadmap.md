@@ -2,7 +2,7 @@
 
 > **Greentify**: Platform blog dan komunitas lingkungan
 > **Status**: Fase 0–5 Selesai — Payment Gateway (Fase 6) berjalan, tinggal 1 item
-> **Update Terakhir**: 29 September 2026
+> **Update Terakhir**: 30 September 2026
 
 ---
 
@@ -234,11 +234,17 @@ User bisa lihat & beli produk ramah lingkungan via link afiliasi.
 
 1. **Integrasi Midtrans / Xendit** — 1 item Fase 6 yang tersisa. Butuh
    server key + UUID notification dari akun PSP; kontrak `PaymentGateway`
-   dan binding di `AppServiceProvider` sudah siap.
-2. **Rekonsiliasi terjadwal** — jalankan `payments:reconcile` lewat
-   scheduler setiap 5 menit begitu provider aktif.
-3. **Dashboard operator** — grafik pendapatan dan filter tanggal di
-   antrean verifikasi, supaya tidak harus scroll 20 item per halaman.
+   dan binding di `AppServiceProvider` sudah siap. Scheduler rekonsiliasi
+   sudah aktif, jadi begitu provider terpasang pembayaran mulai settle
+   tanpa perlu menulis ulang command apa pun.
+2. ~~**Rekonsiliasi terjadwal**~~ ✅ 30 Sep 2026 — `payments:reconcile`
+   dijadwalkan tiap 5 menit, plus `payments:expire-stale` tiap menit.
+3. ~~**Dashboard operator**~~ ✅ 30 Sep 2026 — filter tanggal dari/sampai
+   di antrean verifikasi, dan angka header sekarang memakai predicate
+   yang sama dengan daftarnya.
+4. **Grafik pendapatan** — angka harian sudah ada di header
+   ("Diterima Hari Ini" / "Total Diterima"); yang belum ada visualisasi
+   tren. Butuh keputusan dulu:_series per hari, per minggu, atau per bulan.
 
 ---
 
