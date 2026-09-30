@@ -69,6 +69,16 @@ class PaymentController extends Controller
                     : 'Pembayaran ini sudah tidak berstatus menunggu.');
         }
 
+        // The window has closed. Accepting a claim here would queue a
+        // payment the bank will never reconcile, which is worse than
+        // refusing it: the payer would sit waiting for an operator to
+        // approve money that was never sent. effectiveStatus() already
+        // reported this to the view; the claim path just ignored it.
+        if ($payment->effectiveStatus() === Payment::STATUS_EXPIRED) {
+            return redirect()->route('payments.show', $reference)
+                ->with('error', 'Masa berlaku pembayaran ini sudah habis. Silakan buat pembayaran baru.');
+        }
+
         $submitted = $this->payments->submitForReview($payment, 'user:'.(string) $request->user()->id);
 
         return redirect()->route('payments.show', $reference)->with(
