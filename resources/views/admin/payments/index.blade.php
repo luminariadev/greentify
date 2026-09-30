@@ -28,10 +28,13 @@
         </div>
     @endif
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-8">
         <div class="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700">
             <p class="text-sm text-gray-500 dark:text-gray-400">Menunggu Verifikasi</p>
             <p class="text-3xl font-bold text-amber-600 dark:text-amber-400">{{ $stats['awaiting'] }}</p>
+            @if($from || $to)
+                <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">dalam rentang filter</p>
+            @endif
         </div>
         <div class="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700">
             <p class="text-sm text-gray-500 dark:text-gray-400">Diterima Hari Ini</p>
@@ -41,7 +44,39 @@
             <p class="text-sm text-gray-500 dark:text-gray-400">Total Diterima</p>
             <p class="text-3xl font-bold text-gray-900 dark:text-gray-100">{{ $stats['settled_total'] }}</p>
         </div>
+        <div class="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700">
+            <p class="text-sm text-gray-500 dark:text-gray-400">Kedaluwarsa</p>
+            <p class="text-3xl font-bold text-gray-500 dark:text-gray-400">{{ $stats['expired'] }}</p>
+            <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">disapu otomatis tiap menit</p>
+        </div>
     </div>
+
+    {{-- Date filter. The queue is read-only, so a wrong date widens the
+         result set rather than erroring out on the operator mid-reconcile. --}}
+    <form method="GET" action="{{ route('admin.payments.index') }}"
+          class="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700 mb-6 flex flex-wrap items-end gap-3">
+        <div>
+            <label for="from" class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Dari tanggal</label>
+            <input type="date" id="from" name="from" value="{{ $from?->toDateString() }}"
+                   class="rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-900 px-3 py-2 text-sm focus:ring-primary focus:border-primary">
+        </div>
+        <div>
+            <label for="to" class="block text-xs text-gray-500 dark:text-gray-400 mb-1">Sampai tanggal</label>
+            <input type="date" id="to" name="to" value="{{ $to?->toDateString() }}"
+                   class="rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-900 px-3 py-2 text-sm focus:ring-primary focus:border-primary">
+        </div>
+        <button type="submit" class="bg-primary hover:bg-primary-dark text-white font-semibold px-5 py-2 rounded-lg transition-colors">
+            Terapkan
+        </button>
+        @if($from || $to)
+            <a href="{{ route('admin.payments.index') }}" class="text-sm text-gray-500 dark:text-gray-400 hover:underline py-2">
+                Reset filter
+            </a>
+            <span class="text-xs text-gray-400 dark:text-gray-500 py-2">
+                Menampilkan {{ $awaiting->total() }} klaim{{ $from ? ' sejak '.$from->translatedFormat('d M Y') : '' }}{{ $to ? ' sampai '.$to->translatedFormat('d M Y') : '' }}
+            </span>
+        @endif
+    </form>
 
     <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
         Antrean Verifikasi ({{ $awaiting->total() }})
