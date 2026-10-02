@@ -111,7 +111,19 @@ Greentify/
 │   │   ├── SponsoredPostController.php
 │   │   ├── MarketplaceController.php (Green Affiliate)
 │   │   ├── AdminDashboardController.php
+│   │   ├── PaymentController.php     (charge, confirm, webhook)
+│   │   ├── Admin/PaymentReviewController.php (antrean verifikasi manual)
 │   │   └── Api/                     (Auth, Article, Category — REST API)
+│   ├── Payments/
+│   │   ├── PaymentGateway.php        (kontrak; swap provider = 1 binding)
+│   │   ├── PaymentManager.php        (charge + settlement, idempoten, row lock)
+│   │   ├── Gateways/ManualGateway.php
+│   │   ├── Concerns/GatewayEvent.php
+│   │   └── Support/                  (ChargeRequest, ChargeResult, QrisPayload)
+│   ├── Console/Commands/
+│   │   ├── ReconcilePaymentsCommand.php   (payments:reconcile)
+│   │   └── ExpireStalePaymentsCommand.php (payments:expire-stale)
+│   ├── Notifications/PaymentReviewed.php
 │   ├── Mail/NewsletterEmail.php     (Mailable queueable)
 │   ├── Models/
 │   │   ├── User.php                 (role: user|admin|moderator)

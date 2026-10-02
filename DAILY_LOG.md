@@ -319,3 +319,5 @@ php artisan route:list --json         → api 10 / web 59 / total 69       [dari
 39ba7a5, a7dc6c3, cab7f53, 3a19274, 42ef4fc, bdafeee, 4082b04, fc38fe4,
 948df75, 35810bd
 - 2026-09-29 — Daily commit: verifikasi operator + QRIS EMVCo + rekonsiliasi
+
+- 2026-10-03: README project structure disinkronkan dengan app/Payments, Console/Commands, Notifications
