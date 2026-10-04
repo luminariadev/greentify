@@ -88,17 +88,10 @@
         <div class="flex flex-wrap items-center justify-between gap-3 mb-1">
             <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100">Tren Pendapatan</h2>
             <div class="flex gap-1" role="group" aria-label="Granularitas grafik">
-                @php
-                    $granularityOptions = [
-                        'daily' => 'Harian',
-                        'weekly' => 'Mingguan',
-                        'monthly' => 'Bulanan',
-                    ];
-                @endphp
-                @foreach($granularityOptions as $value => $caption)
-                    {{-- Only the granularity travels; the queue's date filter
-                         belongs to the claims table and has no bearing on
-                         settled income. --}}
+                {{-- Only the granularity travels; the queue's date filter
+                     belongs to the claims table and has no bearing on
+                     settled income. --}}
+                @foreach($granularities as $value => $caption)
                     <a href="{{ route('admin.payments.index', ['granularity' => $value]) }}"
                        class="px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors {{ $granularity === $value
                             ? 'bg-primary text-white'
@@ -136,7 +129,7 @@
                     </p>
                 </div>
                 <div>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">Rata-rata per {{ \App\Payments\Support\RevenueTrend::DAILY === $granularity ? 'hari' : (\App\Payments\Support\RevenueTrend::WEEKLY === $granularity ? 'minggu' : 'bulan') }}</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">Rata-rata per {{ $granularityUnit }}</p>
                     <p class="text-xl font-bold text-gray-900 dark:text-gray-100">
                         Rp {{ number_format($revenue['average'], 0, ',', '.') }}
                     </p>

@@ -48,11 +48,47 @@ final class RevenueTrend
     ];
 
     /**
+     * The caption and the period's unit, in Indonesian.
+     *
+     * This lives beside the constants rather than in the view because the
+     * view needs all three — the button label, the unit in "Rata-rata
+     * per ___", and the normalised key — and a hardcoded array in Blade
+     * means a fourth granularity would appear on the axis while the
+     * controller quietly rejected it.
+     */
+    private const CAPTIONS = [
+        self::DAILY => ['label' => 'Harian', 'unit' => 'hari'],
+        self::WEEKLY => ['label' => 'Mingguan', 'unit' => 'minggu'],
+        self::MONTHLY => ['label' => 'Bulanan', 'unit' => 'bulan'],
+    ];
+
+    /**
      * @return list<string>
      */
     public static function granularities(): array
     {
-        return [self::DAILY, self::WEEKLY, self::MONTHLY];
+        return array_keys(self::CAPTIONS);
+    }
+
+    /**
+     * The caption for a granularity switcher, keyed by the value.
+     *
+     * @return array<string, string>
+     */
+    public static function captions(): array
+    {
+        return array_map(
+            static fn (array $caption): string => $caption['label'],
+            self::CAPTIONS,
+        );
+    }
+
+    /**
+     * "hari" / "minggu" / "bulan" — the unit a bucket is measured in.
+     */
+    public static function unitFor(string $granularity): string
+    {
+        return self::CAPTIONS[$granularity]['unit'] ?? self::CAPTIONS[self::DAILY]['unit'];
     }
 
     /**

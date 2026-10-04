@@ -26,6 +26,11 @@ class RevenueTrendTest extends TestCase
 {
     use RefreshDatabase;
 
+    private function admin(): User
+    {
+        return User::factory()->create(['role' => 'admin']);
+    }
+
     private function paid(int $amount, string $paidAt): Payment
     {
         $user = User::factory()->create();
@@ -288,6 +293,49 @@ class RevenueTrendTest extends TestCase
 
             $this->assertCount(3, $buckets, 'Only the requested window, not the 14-day default.');
             $this->assertSame(30_000.0, RevenueTrend::summary($buckets)['total']);
+        });
+    }
+
+    /**
+     * The switcher renders whatever captions() returns, so a granularity
+     * without a caption is a button the operator can click and the
+     * controller will throw away. Cheaper to catch here.
+     */
+    public function test_every_accepted_granularity_has_a_caption_unit_and_span(): void
+    {
+        foreach (RevenueTrend::granularities() as $granularity) {
+            $this->assertArrayHasKey(
+                $granularity,
+                RevenueTrend::captions(),
+                "The {$granularity} switcher would render a blank button.",
+            );
+            $this->assertNotSame('', RevenueTrend::unitFor($granularity));
+            $this->assertGreaterThan(0, RevenueTrend::spanFor($granularity));
+        }
+
+        // And the reverse: a caption nobody can select is a button that
+        // silently snaps back to daily.
+        $this->assertSame(RevenueTrend::granularities(), array_keys(RevenueTrend::captions()));
+
+        // normaliseGranularity() must accept exactly the advertised set.
+        foreach (RevenueTrend::captions() as $value => $_) {
+            $this->assertSame($value, RevenueTrend::normaliseGranularity($value));
+        }
+    }
+
+    public function test_the_unit_is_used_in_the_rendered_average_caption(): void
+    {
+        $this->travelTo(now()->setDate(2026, 10, 10)->startOfDay()->addHours(9), function (): void {
+            $this->paid(90_000, '2026-10-08 09:00:00');
+
+            foreach (RevenueTrend::granularities() as $granularity) {
+                $response = $this->actingAs($this->admin())
+                    ->get('/admin/payments?granularity='.$granularity);
+
+                $response->assertOk();
+                $response->assertViewHas('granularityUnit', RevenueTrend::unitFor($granularity));
+                $response->assertSee('Rata-rata per '.RevenueTrend::unitFor($granularity));
+            }
         });
     }
 }

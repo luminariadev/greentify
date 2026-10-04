@@ -76,6 +76,13 @@ class PaymentReviewController extends Controller
         $revenueBuckets = RevenueTrend::build($granularity);
         $revenue = RevenueTrend::summary($revenueBuckets);
 
+        // The captions and the period unit are resolved here rather than
+        // called from Blade: the switcher needs them and the switcher is
+        // the one place a new granularity could drift out of sync with
+        // what the controller accepts.
+        $granularities = RevenueTrend::captions();
+        $granularityUnit = RevenueTrend::unitFor($granularity);
+
         return view('admin.payments.index', compact(
             'awaiting',
             'recentlyReviewed',
@@ -83,6 +90,8 @@ class PaymentReviewController extends Controller
             'from',
             'to',
             'granularity',
+            'granularities',
+            'granularityUnit',
             'revenueBuckets',
             'revenue',
         ));
