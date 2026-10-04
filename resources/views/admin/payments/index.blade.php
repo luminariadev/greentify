@@ -78,6 +78,119 @@
         @endif
     </form>
 
+    {{-- Revenue trend. Bars are inline SVG on a fixed viewBox rather than a
+         charting library: the shape is a dozen rectangles, and pulling in
+         Chart.js for that would add ~200 kB of JavaScript to a page whose
+         only real content is a table an operator reads at 2am. Height is
+         computed server-side so the tallest bar is always full height
+         regardless of currency magnitude. --}}
+    <section class="bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 p-5 mb-8">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-1">
+            <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100">Tren Pendapatan</h2>
+            <div class="flex gap-1" role="group" aria-label="Granularitas grafik">
+                @php
+                    $granularityOptions = [
+                        'daily' => 'Harian',
+                        'weekly' => 'Mingguan',
+                        'monthly' => 'Bulanan',
+                    ];
+                @endphp
+                @foreach($granularityOptions as $value => $caption)
+                    {{-- Only the granularity travels; the queue's date filter
+                         belongs to the claims table and has no bearing on
+                         settled income. --}}
+                    <a href="{{ route('admin.payments.index', ['granularity' => $value]) }}"
+                       class="px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors {{ $granularity === $value
+                            ? 'bg-primary text-white'
+                            : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700' }}">
+                        {{ $caption }}
+                    </a>
+                @endforeach
+            </div>
+        </div>
+        <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">
+            Hanya pembayaran berstatus <span class="font-semibold">paid</span>. Refund tidak dihitung sebagai pendapatan.
+        </p>
+
+        @php
+            $peak = max($revenue['peak'], 1);
+            $barCount = max(count($revenueBuckets), 1);
+            $barWidth = 100 / $barCount;
+            $barHeight = 100;
+            $gapPercent = $barCount > 30 ? 1.5 : 4;
+        @endphp
+
+        @if($revenue['total'] <= 0)
+            <div class="py-8 text-center">
+                <p class="text-3xl mb-2">📉</p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm">
+                    Belum ada pembayaran yang lunas pada rentang ini.
+                </p>
+            </div>
+        @else
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-5">
+                <div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Total Tren</p>
+                    <p class="text-xl font-bold text-gray-900 dark:text-gray-100">
+                        Rp {{ number_format($revenue['total'], 0, ',', '.') }}
+                    </p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Rata-rata per {{ \App\Payments\Support\RevenueTrend::DAILY === $granularity ? 'hari' : (\App\Payments\Support\RevenueTrend::WEEKLY === $granularity ? 'minggu' : 'bulan') }}</p>
+                    <p class="text-xl font-bold text-gray-900 dark:text-gray-100">
+                        Rp {{ number_format($revenue['average'], 0, ',', '.') }}
+                    </p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Periode Tertinggi</p>
+                    <p class="text-xl font-bold text-green-600 dark:text-green-400">
+                        Rp {{ number_format($revenue['peak'], 0, ',', '.') }}
+                    </p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">Transaksi Lunas</p>
+                    <p class="text-xl font-bold text-gray-900 dark:text-gray-100">{{ $revenue['count'] }}</p>
+                </div>
+            </div>
+
+            <svg viewBox="0 0 100 {{ $barHeight + 6 }}" class="w-full h-40" role="img"
+                 aria-label="Tren pendapatan, {{ count($revenueBuckets) }} periode">
+                {{-- Baseline: without it a chart of small numbers floating in
+                     whitespace reads as "there is no axis here" rather than
+                     "these are the amounts". --}}
+                <line x1="0" y1="{{ $barHeight }}" x2="100" y2="{{ $barHeight }}"
+                      stroke="currentColor" class="text-gray-300 dark:text-gray-600" stroke-width="0.4" />
+                @foreach($revenueBuckets as $bucket)
+                    @php
+                        // A zero bucket still gets a 2% stub rather than nothing:
+                        // an absent bar and a no-revenue bar must not look
+                        // identical, or the quiet days read as missing data.
+                        $height = $bucket['total'] > 0
+                            ? max($bucket['total'] / $peak * $barHeight, 2)
+                            : 1;
+                        $x = $loop->index * $barWidth;
+                    @endphp
+                    <rect x="{{ round($x + $barWidth * ($gapPercent / 200), 3) }}"
+                          y="{{ round($barHeight - $height, 3) }}"
+                          width="{{ round($barWidth * (1 - $gapPercent / 100), 3) }}"
+                          height="{{ round($height, 3) }}"
+                          rx="0.6"
+                          class="{{ $bucket['total'] > 0 ? 'fill-primary' : 'fill-gray-300 dark:fill-gray-700' }}">
+                        <title>{{ $bucket['label'] }}: Rp {{ number_format($bucket['total'], 0, ',', '.') }} ({{ $bucket['count'] }} transaksi)</title>
+                    </rect>
+                @endforeach
+            </svg>
+
+            {{-- Labels are thinned rather than rotated: 14 daily buckets fit
+                 under the chart, 12 weekly ones do too, and a 90-degree
+                 label is unreadable at any width. --}}
+            <div class="flex justify-between mt-2 text-xs text-gray-500 dark:text-gray-400">
+                <span>{{ $revenueBuckets[0]['label'] ?? '' }}</span>
+                <span>{{ $revenueBuckets[count($revenueBuckets) - 1]['label'] ?? '' }}</span>
+            </div>
+        @endif
+    </section>
+
     <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">
         Antrean Verifikasi ({{ $awaiting->total() }})
     </h2>

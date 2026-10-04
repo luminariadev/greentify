@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use App\Notifications\PaymentReviewed;
 use App\Payments\PaymentManager;
+use App\Payments\Support\RevenueTrend;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -65,7 +66,26 @@ class PaymentReviewController extends Controller
             'settled_total' => Payment::query()->where('status', Payment::STATUS_PAID)->count(),
         ];
 
-        return view('admin.payments.index', compact('awaiting', 'recentlyReviewed', 'stats', 'from', 'to'));
+        // The trend reads from settled payments, so the queue's submitted-at
+        // window is the wrong one to hand it: a claim sitting in the queue
+        // has no revenue yet, and the paid_at window is a different set of
+        // rows than the list under it. Sharing the range would tie a chart
+        // of income to a filter about claims — two different questions that
+        // happen to use the same two date inputs.
+        $granularity = RevenueTrend::normaliseGranularity($request->query('granularity'));
+        $revenueBuckets = RevenueTrend::build($granularity);
+        $revenue = RevenueTrend::summary($revenueBuckets);
+
+        return view('admin.payments.index', compact(
+            'awaiting',
+            'recentlyReviewed',
+            'stats',
+            'from',
+            'to',
+            'granularity',
+            'revenueBuckets',
+            'revenue',
+        ));
     }
 
     /**
