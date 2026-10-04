@@ -4,6 +4,57 @@ Semua perubahan penting pada Greentify dicatat di sini.
 
 Format berdasarkan [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.9.0] - 2026-10-04
+
+### Added
+- **Revenue trend on the operator queue** (`App\Payments\Support\RevenueTrend`),
+  selectable per day / week / month. The header carried a lifetime total and a
+  "today" figure for a while, but an operator still could not tell whether
+  revenue was trending up or had been flat for a month — which is the whole
+  reason to look at a payment queue at all.
+  Three decisions live in the class rather than the view, because each one is
+  the difference between a useful figure and a wrong one:
+  - Only `paid` counts. `refunded` is excluded on purpose — money that came in
+    and went back out is not income, and the page says so out loud so an
+    operator can tell "no revenue" from "revenue net of refunds".
+  - Periods with no sales are filled with zero, not skipped. Fetching only the
+    periods that happen to have rows draws a straight line across a week with
+    nothing in it, and a straight line reads as steady revenue.
+  - The bucket count is capped at 400. `from`/`to` arrive from the query
+    string, and without a ceiling a single mistyped parameter could build
+    20 000 buckets on the queue page.
+- The chart is deliberately **not** wired to the queue's date filter. A claim
+  still sitting in the queue is not revenue, so the two read different rows
+  (`submitted_at` against `paid_at`); coupling them would mean filtering the
+  claims table silently changed an income figure. Pinned by a test.
+- Rendered as inline SVG on a fixed `viewBox`, not a charting library: the
+  shape is a dozen rectangles, and Chart.js would add ~200 kB of JavaScript to
+  a page whose real content is a table.
+
+### Fixed
+- **Two tests in `PaymentQueueFilterTest` were a time bomb.** They asked for
+  `from=2026-09-29` while the rows were created with `now()->subDay()`. The two
+  agreed for three days, then the suite failed with an empty result set. The
+  filter never changed — the window it was measured against did. The window is
+  now derived from the rows it is supposed to select.
+- Chart axis labels were rendered in English. `config/app.php` ships locale
+  `en` and nothing in the app ever calls `Carbon::setLocale()`, so
+  `translatedFormat()` produced "04 Oct" on an interface that is entirely in
+  Indonesian. Month abbreviations are now spelled out in `RevenueTrend`, which
+  is also deterministic instead of ambient.
+- Weekly and monthly spans were computed in days regardless of granularity,
+  producing a 12-day "weekly" chart and an 11-day "monthly" one. An operator
+  comparing last week with the week before was comparing a week against three
+  days.
+
+### Verification
+```
+php vendor/bin/phpunit --no-coverage   → OK (186 tests, 594 assertions)  [dari 179]
+php vendor/bin/pint --test            → PASS (141 files)
+php vendor/bin/phpstan analyse        → [OK] No errors
+npm run build                         → ✓ built
+```
+
 ## [0.8.0] - 2026-09-30
 
 ### Fixed

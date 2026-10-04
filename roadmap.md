@@ -242,9 +242,13 @@ User bisa lihat & beli produk ramah lingkungan via link afiliasi.
 3. ~~**Dashboard operator**~~ ✅ 30 Sep 2026 — filter tanggal dari/sampai
    di antrean verifikasi, dan angka header sekarang memakai predicate
    yang sama dengan daftarnya.
-4. **Grafik pendapatan** — angka harian sudah ada di header
-   ("Diterima Hari Ini" / "Total Diterima"); yang belum ada visualisasi
-   tren. Butuh keputusan dulu:_series per hari, per minggu, atau per bulan.
+4. ~~**Grafik pendapatan**~~ ✅ 4 Okt 2026 — `RevenueTrend` dengan pilihan
+   harian / mingguan / bulanan, dirender sebagai SVG tanpa library chart.
+   Hanya `paid` yang dihitung (refund bukan pendapatan), periode sepi diisi
+   nol supaya garis lurus tidak terbaca sebagai pendapatan stabil, dan
+   jumlah bucket dibatasi 400 karena rentang datang dari query string.
+   Grafik sengaja tidak memakai filter tanggal antrean: keduanya membaca
+   kolom berbeda dan milik dua pertanyaan berbeda.
 
 ---
 

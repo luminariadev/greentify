@@ -321,3 +321,8 @@ php artisan route:list --json         → api 10 / web 59 / total 69       [dari
 - 2026-09-29 — Daily commit: verifikasi operator + QRIS EMVCo + rekonsiliasi
 
 - 2026-10-03: README project structure disinkronkan dengan app/Payments, Console/Commands, Notifications
+
+- 2026-10-04: Grafik pendapatan (RevenueTrend) di antrean operator, plus dua
+  test PaymentQueueFilterTest yang sudah jadi time bomb (hardcode 2026-09-29
+  melawan now()->subDay()). Item roadmap "Grafik pendapatan" ditutup; hanya
+  Midtrans/Xendit yang tersisa dan itu butuh kredensial, bukan kode.
