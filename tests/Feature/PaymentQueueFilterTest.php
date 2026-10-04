@@ -53,7 +53,14 @@ class PaymentQueueFilterTest extends TestCase
         $old = $this->claimed('GRN-OLD', now()->subDays(10)->toDateTimeString());
         $recent = $this->claimed('GRN-RECENT', now()->subDay()->toDateTimeString());
 
-        $response = $this->actingAs($admin)->get('/admin/payments?to=2026-09-29&from=2026-09-29');
+        // The window is derived from the rows, never from a literal date.
+        // The previous version asked for 2026-09-29 while the rows were
+        // `now()->subDay()`, so the suite passed for three days and then
+        // failed on the fourth with an empty result set — the filter was
+        // never the thing that changed.
+        $day = now()->subDay()->toDateString();
+
+        $response = $this->actingAs($admin)->get('/admin/payments?from='.$day.'&to='.$day);
 
         $response->assertOk();
         // Asserted on the paginated set, not on rendered HTML: the
@@ -113,7 +120,9 @@ class PaymentQueueFilterTest extends TestCase
         $this->claimed('GRN-OLD', now()->subDays(10)->toDateTimeString());
         $this->claimed('GRN-RECENT', now()->subDay()->toDateTimeString());
 
-        $response = $this->actingAs($admin)->get('/admin/payments?from=2026-09-29&to=2026-09-29');
+        $day = now()->subDay()->toDateString();
+
+        $response = $this->actingAs($admin)->get('/admin/payments?from='.$day.'&to='.$day);
 
         $response->assertOk();
         $response->assertViewHas('stats', function (array $stats): bool {
