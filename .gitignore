@@ -23,6 +23,13 @@ composer-setup.php
 # PHPStan analysis cache
 .phpstan/
 
+# AI agent config files — NEVER commit
+AGENTS.md
+CLAUDE.md
+CURSOR.md
+CLINE.md
+*.cursorrules
+
 # Local SQLite databases — never commit app data.
 # The extensionless entries matter: `php artisan migrate` writes the
 # default connection name (`greentify`) at the repo root with no suffix,
