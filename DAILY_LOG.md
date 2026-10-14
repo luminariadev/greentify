@@ -326,3 +326,5 @@ php artisan route:list --json         → api 10 / web 59 / total 69       [dari
   test PaymentQueueFilterTest yang sudah jadi time bomb (hardcode 2026-09-29
   melawan now()->subDay()). Item roadmap "Grafik pendapatan" ditutup; hanya
   Midtrans/Xendit yang tersisa dan itu butuh kredensial, bukan kode.
+
+- 2026-10-14: Daily touch & streak maintenance
