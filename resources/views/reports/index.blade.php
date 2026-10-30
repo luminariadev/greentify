@@ -3,8 +3,8 @@
 @section('title', 'Kelola Laporan - Greentify')
 
 @section('content')
-<div class="max-w-5xl mx-auto px-gutter pt-24 pb-24 min-h-screen">
-    <section class="pt-8 pb-10">
+<div class="max-w-5xl mx-auto px-gutter py-10 min-h-screen">
+    <section class="pb-8">
         <h1 class="font-headline-md text-headline-md text-primary">Kelola Laporan</h1>
     </section>
 

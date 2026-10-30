@@ -344,3 +344,4 @@ php artisan route:list --json         → api 10 / web 59 / total 69       [dari
 - 2026-10-28: Daily touch & streak maintenance
 - 2026-10-29: Daily touch & streak maintenance
 - 2026-10-30: Daily touch & streak maintenance
+- 2026-10-31: Refactor UI ke User-Centered Design (single responsive top navbar, eliminasi dual navigation sidebar/headbar, normalisasi spacing py-10) & daily streak maintenance

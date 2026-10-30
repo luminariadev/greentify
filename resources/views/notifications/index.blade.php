@@ -3,8 +3,8 @@
 @section('title', 'Notifikasi - Greentify')
 
 @section('content')
-<div class="max-w-3xl mx-auto px-gutter pt-24 pb-24 min-h-screen">
-    <section class="pt-8 pb-10">
+<div class="max-w-3xl mx-auto px-gutter py-10 min-h-screen">
+    <section class="pb-8">
         <div class="flex flex-col gap-4">
             <div class="flex items-center justify-between gap-4 flex-wrap">
                 <h1 class="font-headline-md text-headline-md text-primary">Notifikasi</h1>

@@ -3,9 +3,9 @@
 @section('title', 'Bookmark Saya - Greentify')
 
 @section('content')
-<div class="max-w-container-max-width mx-auto px-gutter pt-24 pb-24 min-h-screen">
+<div class="max-w-container-max-width mx-auto px-gutter py-10 min-h-screen">
     <!-- Page Header -->
-    <section class="pt-8 pb-12">
+    <section class="pb-10">
         <div class="flex flex-col gap-4">
             <div class="flex items-center gap-2">
                 <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm">

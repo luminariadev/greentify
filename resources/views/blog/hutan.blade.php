@@ -3,9 +3,8 @@
 @section('title', 'Hutan (Forestry) - Greentify')
 
 @section('content')
-<div class="max-w-container-max-width mx-auto px-gutter pt-24">
-    <!-- Main Content (full width, no sidebar) -->
-    <main class="py-12 relative z-10">
+<div class="max-w-container-max-width mx-auto px-gutter py-10">
+    <div class="pb-12 relative z-10">
         <!-- Category Header -->
         <section class="mb-16">
             <div class="max-w-3xl">
@@ -151,6 +150,6 @@
                 </div>
             </div>
         </section>
-    </main>
+    </div>
 </div>
 @endsection

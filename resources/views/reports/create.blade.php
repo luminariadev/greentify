@@ -3,8 +3,8 @@
 @section('title', 'Laporkan Konten - Greentify')
 
 @section('content')
-<div class="max-w-2xl mx-auto px-gutter pt-24 pb-24 min-h-screen">
-    <section class="pt-8 pb-10">
+<div class="max-w-2xl mx-auto px-gutter py-10 min-h-screen">
+    <section class="pb-8">
         <h1 class="font-headline-md text-headline-md text-primary mb-2">Laporkan Konten</h1>
         <p class="font-body-md text-body-md text-on-surface-variant">Bantu kami menjaga komunitas tetap aman. Pilih alasan pelaporan Anda.</p>
     </section>
