@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Contact Page -->
-<main class="min-h-[calc(100vh-200px)] flex items-center py-margin-desktop bg-sage-wash">
+<section class="min-h-[calc(100vh-200px)] flex items-center py-margin-desktop bg-sage-wash">
     <div class="max-w-container-max-width mx-auto px-gutter w-full grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
         <!-- Left Column: Identity & Contact Details -->
         <div class="md:col-span-5 space-y-12">
@@ -104,7 +104,7 @@
             </div>
         </div>
     </div>
-</main>
+</section>
 
 <!-- Map Section -->
 <section class="w-full h-96 bg-surface-container relative overflow-hidden">
