@@ -181,5 +181,6 @@ Route::get('/api/docs', fn () => response()->json([
         '/api/articles/{id}',
         '/api/categories',
         '/api/categories/{id}',
+        '/api/payments/webhook',
     ],
 ]))->name('api.docs');

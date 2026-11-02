@@ -20,12 +20,14 @@
             <div>
                 <h4 class="font-label-md text-label-md mb-6 uppercase tracking-wider">Quick Links</h4>
                 <ul class="space-y-4 font-label-sm">
+                    <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('blogspot') }}">Artikel</a></li>
                     <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('limbah') }}">Limbah</a></li>
                     <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('konservasi') }}">Konservasi</a></li>
                     <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('penghijauan') }}">Penghijauan</a></li>
                     <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('hutan') }}">Hutan</a></li>
                     <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('marketplace.index') }}">Marketplace</a></li>
                     <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('donation.index') }}">Donasi</a></li>
+                    <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('membership.pricing') }}">Membership</a></li>
                     <li><a class="text-on-primary/80 hover:text-secondary-fixed transition-colors" href="{{ route('contact.form') }}">Contact</a></li>
                 </ul>
             </div>
@@ -41,6 +43,6 @@
         </div>
     </div>
     <div class="max-w-container-max-width mx-auto px-gutter py-8 editorial-border">
-        <p class="font-label-sm text-label-sm text-on-primary/60 text-center md:text-left">© 2024 Greentify. Inspired by Rizkia Nuari Fujiana.</p>
+        <p class="font-label-sm text-label-sm text-on-primary/60 text-center md:text-left">© {{ date('Y') }} Greentify. Inspired by Rizkia Nuari Fujiana.</p>
     </div>
 </footer>
