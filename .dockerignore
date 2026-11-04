@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+vendor/
+node_modules/
+public/build/
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+.git/
+.gitignore
+.phpunit.result.cache
+.phpstan/
+Software/
+*.zip

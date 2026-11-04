@@ -1,185 +1,172 @@
-# 🌿 Greentify
+# 🌿 Greentify — Environmental Community & Sustainable Ecosystem Platform
 
-> Platform blog dan komunitas lingkungan untuk meningkatkan kesadaran dan tindakan positif terhadap pelestarian alam.
+[![Greentify CI](https://github.com/luminariadev/greentify/actions/workflows/ci.yml/badge.svg)](https://github.com/luminariadev/greentify/actions/workflows/ci.yml)
+[![Tests Passing](https://img.shields.io/badge/Tests-188%20Passed-brightgreen?logo=phpunit&logoColor=white)](tests/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Laravel](https://img.shields.io/badge/Laravel-11.x-FF2D20?logo=laravel&logoColor=white)](https://laravel.com/)
+[![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?logo=php&logoColor=white)](https://www.php.net/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)](https://www.docker.com/)
 
-![Laravel](https://img.shields.io/badge/Laravel-11-FF2D20?logo=laravel&logoColor=white)
-![CI](https://github.com/luminariadev/greentify/actions/workflows/ci.yml/badge.svg)
-![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?logo=php&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-8.4-4479A1?logo=mysql&logoColor=white)
-![Tailwind](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss&logoColor=white)
-![PWA](https://img.shields.io/badge/PWA-Ready-5A0FC8)
-![License](https://img.shields.io/badge/License-MIT-green)
+**Greentify** adalah platform publikasi digital, komunitas lingkungan hidup, dan ekosistem donasi konservasi alam berbasis **Laravel 11**. Platform ini dirancang dengan standar arsitektur *production-grade*, dilengkapi verifikasi pengujian otomatis (**188 automated test suites passing**), pipeline pembayaran QRIS berstandar EMVCo, moderasi konten multi-role, marketplace produk ramah lingkungan, serta analitik pendapatan *real-time*.
 
-## 📈 Status Proyek
+---
 
-| Fase | Status |
-|------|--------|
-| Fase 0-3 (Fitur Inti) | ✅ Selesai |
-| Fase 4: Monetisasi | ✅ 100% (Marketplace, Membership, Iklan, Donasi) |
-| Fase 5: Skalabilitas | ✅ 100% (Landing SEO, Admin, Newsletter, Role, PWA, API Mobile) |
+## 🌟 Arsitektur Fitur Utama
 
-## 📖 About
+1. **Environmental Community & Publishing Engine**
+   - Publikasi artikel dengan rich-text editor, upload gambar terproteksi, dan kategori dinamis (*Limbah, Konservasi Air, Penghijauan Kota, Perlindungan Hutan*).
+   - Threaded komentar dan reply terproteksi dari spam serta serangan XSS.
+   - Manajemen profil pengguna, bio, tracking riwayat artikel, dan followers.
 
-**Greentify** adalah platform blog dan komunitas lingkungan yang didedikasikan untuk meningkatkan kesadaran dan tindakan positif terhadap lingkungan. Platform ini menyediakan berbagai informasi, sumber daya, dan ide kreatif untuk membantu individu dan komunitas dalam upaya mereka untuk menjaga dan merawat alam.
+2. **QRIS EMVCo Payment & Donation Engine**
+   - Generator payload QRIS dinamis yang mengimplementasikan standardisasi EMVCo QR Code.
+   - Kalkulasi checksum **CRC16-CCITT** secara mandiri untuk memvalidasi integritas payload QR.
+   - Background job rekonsiliasi otomatis (`payment:reconcile`) untuk mendeteksi transaksi expired dan sinkronisasi status pembayaran via webhook.
 
-> *"The environment is where we all meet; where we all have a mutual interest; it is the one thing all of us share."* — Rizkia Nuari Fujiana
+3. **Content Moderation & Role-Based Access Control (RBAC)**
+   - Tingkatan peran: **Admin**, **Moderator**, dan **Member**.
+   - Antrean moderasi laporan konten (*Report Review Queue*) dengan proteksi anti-self-reporting dan rate-limiting ketat.
+   - Visualisasi analitik pendapatan donasi & langganan membership menggunakan chart trend interaktif.
 
-## 🛠️ Tech Stack
+4. **188 Automated Tests Suite**
+   - Pengujian unit dan feature end-to-end mencakup autentikasi, API Sanctum, siklus hidup donasi, webhook settlement, validasi format QRIS, hingga kontrol akses admin.
 
-| Layer | Technology |
-|-------|-----------|
-| Backend | Laravel 11 (PHP 8.2+) |
-| Frontend | Tailwind CSS + Vite |
-| Database | MySQL / SQLite |
-| Authentication | Custom Laravel Auth |
+---
 
-## 🚀 Features
+## 🏛️ Arsitektur Alur Sistem
 
-### Saat Ini (MVP)
-- 🔐 User Authentication (Login/Register/Logout)
-- 📝 Blog Posts — 4 Kategori Lingkungan (dinamis dari database)
-- ✍️ **User Generated Content (CRUD Artikel) — Lengkap dengan Rich Text Editor & Upload Gambar**
-- 💬 **Sistem Komentar & Reply per Artikel**
-- 👤 **Profil Pengguna — Foto, Bio, & Artikel Saya**
-- 📬 Contact Form (Halaman Penuh)
-- 📱 Responsive Design (Mobile-First)
-- 🎨 Modern UI dengan Design System (Tailwind + Material 3 Forest Theme)
+```mermaid
+graph TD
+    User([Pengguna / Donatur]) --> WebRouter["Laravel 11 Routing & Middleware"]
+    
+    subgraph CoreFeatures ["Core Platform Services"]
+        WebRouter --> ArticleService["Article & Community Engine"]
+        WebRouter --> DonationService["Donation & Membership Engine"]
+        WebRouter --> ReportService["Content Moderation Queue"]
+    end
 
-### Rencana Pengembangan (Fase 3+)
-- ❤️ Like, Bookmark, Follow User
-- 🔍 Search & Filter Kategori
-- 🏪 Green Marketplace (Affiliate)
-- 💎 Premium Membership
-- 🌙 Dark Mode Toggle
-- 📊 Dashboard Admin
+    subgraph PaymentPipeline ["QRIS Payment & Settlement Engine"]
+        DonationService --> QRISGen["EMVCo QRIS Payload Builder"]
+        QRISGen --> CRC16["CRC16-CCITT Checksum Validator"]
+        CRC16 --> PaymentDB[(MySQL Database)]
+        Webhook["Payment Gateway Webhook"] --> SettleService["Payment Settlement Handler"]
+        SettleService --> PaymentDB
+        Cron["Scheduler (Every 5 Mins)"] --> SweepExpired["Expire Stale Payments Sweeper"]
+        SweepExpired --> PaymentDB
+    end
 
-## 📂 Documentation
+    subgraph AdminHub ["Admin & Analytics Hub"]
+        ReportService --> AdminDashboard["Admin Review Queue"]
+        DonationService --> RevenueTrend["Revenue & Trend Analytics Chart"]
+    end
+```
 
-| Dokumen | Deskripsi |
-|---------|-----------|
-| [design.md](design.md) | Design system, palet warna, typography, wireframe |
-| [roadmap.md](roadmap.md) | Development plan, timeline, monetisasi, tracking |
+---
 
-## 🌱 Blog Categories
+## 📁 Struktur Direktori
 
-| # | Kategori | Deskripsi |
-|---|----------|-----------|
-| 1 | ♻️ **Limbah** | Pengurangan Limbah Plastik |
-| 2 | 💧 **Konservasi** | Konservasi Air & Sumber Daya |
-| 3 | 🌿 **Penghijauan** | Penghijauan Kota & Perubahan Iklim |
-| 4 | 🌲 **Hutan** | Perlindungan Hutan Hujan & Keanekaragaman |
+```text
+greentify/
+├── .github/
+│   └── workflows/
+│       └── ci.yml               # Matrix CI pipeline (PHP 8.2, 8.3, 8.4 + MySQL 8.0)
+├── app/
+│   ├── Console/Commands/        # Background artisan schedulers (payment expiry & reconcile)
+│   ├── Http/
+│   │   ├── Controllers/         # REST API & Web Controllers
+│   │   └── Middleware/          # Role guard, throttle, and security middleware
+│   ├── Models/                  # Eloquent models (Article, Donation, Payment, User)
+│   └── Services/                # Domain services (QRIS Payload Builder, CRC calculation)
+├── config/                      # Konfigurasi aplikasi Laravel
+├── database/
+│   ├── factories/               # Model factories untuk testing
+│   ├── migrations/              # Skema database MySQL
+│   └── seeders/                 # Seeder data awal & kategori lingkungan
+├── public/                      # DocumentRoot publik & compiled assets
+├── resources/
+│   ├── views/                   # Template Blade responsive
+│   └── js/                      # Script interaksi frontend
+├── routes/                      # Definisi rute web, API, dan console
+├── tests/
+│   ├── Feature/                 # 188 automated feature tests
+│   └── Unit/                    # Unit tests (QRIS EMVCo, CRC, User scopes)
+├── .dockerignore                # Rule exclude Docker
+├── .gitignore                   # Rule exclude Git
+├── Dockerfile                   # Apache PHP 8.2 container
+├── docker-compose.yml           # Orkestras Apache + MySQL 8.0
+├── LICENSE                      # Lisensi MIT
+└── README.md                    # Dokumentasi utama proyek
+```
 
-## 📦 Installation
+---
+
+## 🚀 Panduan Menjalankan
+
+### Opsi 1: Menggunakan Docker Compose (Direkomendasikan)
+
+Prasyarat: Terinstal Docker dan Docker Compose.
 
 ```bash
-# Clone repository
-git clone <repository-url>
-cd Greentify
+# 1. Clone repository
+git clone https://github.com/luminariadev/greentify.git
+cd greentify
 
-# Install dependencies
+# 2. Salin environment
+cp .env.example .env
+
+# 3. Jalankan container
+docker compose up -d --build
+
+# 4. Generate application key & migrasi database di container
+docker compose exec app php artisan key:generate
+docker compose exec app php artisan migrate --seed
+
+# 5. Akses platform di browser:
+# http://localhost:8000
+```
+
+---
+
+### Opsi 2: Menjalankan Menggunakan Server Lokal (PHP CLI & Composer)
+
+```bash
+# 1. Install dependensi
 composer install
-npm install
+npm install && npm run build
 
-# Setup environment
+# 2. Setup environment & database
 cp .env.example .env
 php artisan key:generate
+php artisan migrate --seed
 
-# Configure database in .env, then:
-php artisan migrate
-php artisan db:seed   # kategori + artikel contoh
+# 3. Menjalankan pengujian otomatis (188 tests)
+php artisan test
 
-# Build assets & run
-npm run build
+# 4. Menjalankan server lokal
 php artisan serve
 ```
 
-## 📁 Project Structure
+---
 
-```
-Greentify/
-├── app/
-│   ├── Http/Controllers/
-│   │   ├── AuthController.php
-│   │   ├── ArticleController.php    (CRUD + myArticles)
-│   │   ├── CommentController.php    (store + reply)
-│   │   ├── ProfileController.php    (show user + articles)
-│   │   ├── ContactFormController.php
-│   │   ├── MembershipController.php (Premium tiers)
-│   │   ├── DonationController.php   (QRIS/Transfer/E-Wallet)
-│   │   ├── NewsletterController.php (subscribe/unsubscribe/send)
-│   │   ├── AdController.php         (Iklan ramah lingkungan)
-│   │   ├── SponsoredPostController.php
-│   │   ├── MarketplaceController.php (Green Affiliate)
-│   │   ├── AdminDashboardController.php
-│   │   ├── PaymentController.php     (charge, confirm, webhook)
-│   │   ├── Admin/PaymentReviewController.php (antrean verifikasi manual)
-│   │   └── Api/                     (Auth, Article, Category — REST API)
-│   ├── Payments/
-│   │   ├── PaymentGateway.php        (kontrak; swap provider = 1 binding)
-│   │   ├── PaymentManager.php        (charge + settlement, idempoten, row lock)
-│   │   ├── Gateways/ManualGateway.php
-│   │   ├── Concerns/GatewayEvent.php
-│   │   └── Support/                  (ChargeRequest, ChargeResult, QrisPayload)
-│   ├── Console/Commands/
-│   │   ├── ReconcilePaymentsCommand.php   (payments:reconcile)
-│   │   └── ExpireStalePaymentsCommand.php (payments:expire-stale)
-│   ├── Notifications/PaymentReviewed.php
-│   ├── Mail/NewsletterEmail.php     (Mailable queueable)
-│   ├── Models/
-│   │   ├── User.php                 (role: user|admin|moderator)
-│   │   ├── Article.php, Category.php, Comment.php, Pesan.php
-│   │   ├── Membership.php, MembershipTier.php
-│   │   ├── Donation.php, Subscriber.php, Ad.php, SponsoredPost.php
-│   │   └── Product.php, AffiliateCategory.php
-│   └── Http/Middleware/
-│       ├── CheckMembershipAccess.php
-│       └── CheckAdminRole.php
-├── database/
-│   ├── migrations/   (users, categories, articles, comments, pesan, dll.)
-│   └── seeders/      (CategorySeeder, ArticleSeeder, MembershipTiersSeeder, dll.)
-├── public/
-│   ├── manifest.json + service-worker.js  (PWA)
-│   └── images/icons/                      (PWA icons)
-├── resources/views/
-│   ├── membership/    (pricing, status)
-│   ├── donation/      (index)
-│   ├── newsletter/    (unsubscribe)
-│   ├── sponsored/     (index, show)
-│   ├── admin/         (dashboard, newsletter/send)
-│   └── layouts/       (app, blog)
-├── routes/
-│   ├── web.php
-│   └── api.php        (REST API: /api/auth, /api/articles, /api/categories)
-├── tests/Feature/     (Donation, Membership, Marketplace, Newsletter, API)
-└── .github/workflows/ (ci.yml — PHP matrix, Pint, Node build)
-```
+## 🧪 Pipeline CI/CD
 
-## 🔌 API Endpoints (REST)
+Repository ini dipantau secara berkala melalui **GitHub Actions** (`.github/workflows/ci.yml`):
+- Matrix testing lintas versi PHP: **PHP 8.2**, **PHP 8.3**, dan **PHP 8.4**.
+- Pengujian database nyata menggunakan service container MySQL 8.0.
+- Eksekusi 188 unit & feature tests tanpa failure toleration.
 
-| Method | Endpoint | Deskripsi | Auth |
-|--------|----------|-----------|------|
-| POST | `/api/register` | Registrasi user | ❌ |
-| POST | `/api/login` | Login + token Sanctum | ❌ |
-| POST | `/api/logout` | Logout + revoke token | ✅ |
-| GET | `/api/articles` | List artikel (paginasi) | ❌ |
-| GET | `/api/articles/{id}` | Detail artikel | ❌ |
-| GET | `/api/categories` | List kategori | ❌ |
-| GET | `/api/categories/{id}` | Detail kategori | ❌ |
+---
 
-Contoh auth: `Authorization: Bearer {token}` (Sanctum).
+## 📄 Lisensi
 
-## 📈 Roadmap
+Proyek ini didistribusikan di bawah lisensi **MIT**. Silakan tinjau file [`LICENSE`](LICENSE) untuk informasi lebih lanjut.
 
-Lihat [roadmap.md](roadmap.md) untuk detail timeline, monetisasi, dan tracking progress.
+---
 
-## 📄 License
+## 👤 Pembuat
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-<!-- Daily commit: Wed, Aug 26, 2026  2:02:39 PM -->
-
-<!-- Daily commit 2: Thu, Aug 27, 2026  2:35:20 AM -->
-
-# sync: 2026-09-12 19:49:49
-# sync: 2026-09-13 03:27:56 - Streak-Saver
-# sync: 2026-09-13 03:28:40 - Streak-Saver
+**luminariadev**  
+- GitHub: [@luminariadev](https://github.com/luminariadev)  
+- Email: rizkianuari83@gmail.com
